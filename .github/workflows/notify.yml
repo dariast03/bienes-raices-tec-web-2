@@ -1,0 +1,36 @@
+name: Notify
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get commit info
+        id: commit
+        run: |
+          echo "::set-output name=message::$(git log -1 --pretty=%B)"
+          echo "::set-output name=author::$(git log -1 --pretty=%an)"
+          echo "::set-output name=hash::$(git log -1 --pretty=%H)"
+
+      - name: Send Message
+        env:
+          SERVER_URL: ${{ secrets.WHATSAPP_SERVER_URL }}
+          API_KEY: ${{ secrets.WHATSAPP_API_KEY }}
+          GROUP_ID: ${{ secrets.WHATSAPP_GROUP_ID }}
+        run: |
+          MESSAGE="Nuevo commit en el repo no olviden hacerse un pull :D
+          Autor: ${{ steps.commit.outputs.author }}
+          Mensaje: ${{ steps.commit.outputs.message }}
+          Hash: ${{ steps.commit.outputs.hash }}"
+
+          curl -X POST $SERVER_URL \
+          -H "Content-Type: application/json" \
+          -H "Authorization: Bearer $API_KEY" \
+          -d '{
+            "group_id": "'"$GROUP_ID"'",
+            "message": "'"$MESSAGE"'"
+          }'
