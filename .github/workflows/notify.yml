@@ -27,8 +27,12 @@ jobs:
           Mensaje: ${{ github.event.head_commit.message }}
           Hash: ${{ github.event.head_commit.id }}"
 
+          JSON_PAYLOAD="{\"group\":\"$GROUP_ID\",\"message\":\"$MESSAGE\"}"
+          echo "JSON Payload:"
+          echo "$JSON_PAYLOAD"
+
           curl --request POST \
             --url $SERVER_URL \
             --header 'Content-Type: application/json' \
              -H "Authorization: Bearer $API_KEY" \
-            --data "{\"group\":\"$GROUP_ID\",\"message\":\"$MESSAGE\"}"
+            --data "$JSON_PAYLOAD"
