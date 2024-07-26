@@ -44,10 +44,10 @@
 		<div class="container">
 			<div class="menu-bg-wrap">
 				<div class="site-navigation">
-					<a href="index.html" class="logo m-0 float-start">Bienes Raices</a>
+					<a href="index.php" class="logo m-0 float-start">Bienes Raices</a>
 
 					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
-						<li class="active"><a href="index.html">Inicio</a></li>
+						<li class="active"><a href="index.php">Inicio</a></li>
 						<li class="has-children">
 							<a href="properties.html">Propiedades</a>
 							<ul class="dropdown">
@@ -63,9 +63,9 @@
 								</li>
 							</ul>
 						</li>
-						<li><a href="services.html">Servicios</a></li>
-						<li><a href="about.html">Acerca de nosotros</a></li>
-						<li><a href="contact.html">Contactanos</a></li>
+						<li><a href="services.php">Servicios</a></li>
+						<li><a href="about.php">Acerca de nosotros</a></li>
+						<li><a href="contact.php">Contactanos</a></li>
 					</ul>
 
 					<a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
