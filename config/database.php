@@ -3,5 +3,5 @@ return [
     'host' => 'localhost',
     'username' => 'root',
     'password' => '',
-    'database' => 'etc_db'
+    'database' => 'bienes-raices'
 ];
