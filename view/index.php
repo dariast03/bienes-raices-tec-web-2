@@ -1,3 +1,9 @@
+<?php
+require_once '../config/web.php'
+
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -15,12 +21,12 @@
 	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 
-	<link rel="stylesheet" href="fonts/icomoon/style.css">
-	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/fonts/icomoon/style.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/fonts/flaticon/font/flaticon.css">
 
-	<link rel="stylesheet" href="css/tiny-slider.css">
-	<link rel="stylesheet" href="css/aos.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/css/tiny-slider.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/css/aos.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/css/style.css">
 
 	<title>Bienes Raices UPDS &mdash;</title>
 </head>
@@ -40,7 +46,7 @@
 		<div class="container">
 			<div class="menu-bg-wrap">
 				<div class="site-navigation">
-					<a href="index.html" class="logo m-0 float-start">Proyecto</a>
+					<a href="index.html" class="logo m-0 float-start"><?php echo BASE_URL; ?></a>
 
 					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
 						<li class="active"><a href="index.html">Inicio</a></li>
@@ -64,9 +70,7 @@
 						<li><a href="contact.html">Contactanos</a></li>
 					</ul>
 
-					<a href="#"
-						class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none"
-						data-toggle="collapse" data-target="#main-navbar">
+					<a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
 						<span></span>
 					</a>
 
@@ -88,8 +92,7 @@
 			<div class="row justify-content-center align-items-center">
 				<div class="col-lg-9 text-center">
 					<h1 class="heading" data-aos="fade-up">Encuentra la casa de tus sueños</h1>
-					<form action="#" class="narrow-w form-search d-flex align-items-stretch mb-3" data-aos="fade-up"
-						data-aos-delay="200">
+					<form action="#" class="narrow-w form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
 						<input type="text" class="form-control px-4" placeholder="Buscar propiedades">
 						<button type="submit" class="btn btn-primary">Buscar</button>
 					</form>
@@ -757,7 +760,9 @@
             -->
 
 					<p>Copyright &copy;
-						<script>document.write(new Date().getFullYear());</script>. Todos los Derechos Reservados. &mdash;
+						<script>
+							document.write(new Date().getFullYear());
+						</script>. Todos los Derechos Reservados. &mdash;
 						Diseñado con amor en <a href="https://untree.co">Untree.co</a>
 						<!-- License information: https://untree.co/license/ -->
 					</p>
