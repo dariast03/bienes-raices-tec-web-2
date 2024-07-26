@@ -22,10 +22,7 @@ jobs:
           API_KEY: ${{ secrets.WHATSAPP_API_KEY }}
           GROUP_ID: ${{ secrets.WHATSAPP_GROUP_ID }}
         run: |
-          MESSAGE="Nuevo commit en el repo no olviden hacerse un pull :D
-          Autor: ${{ github.event.head_commit.author.name }}
-          Mensaje: ${{ github.event.head_commit.message }}
-          Hash: ${{ github.event.head_commit.id }}"
+          MESSAGE="Nuevo commit en el repo no olviden hacerse un pull :D\nAutor: ${{ github.event.head_commit.author.name }}\nMensaje: ${{ github.event.head_commit.message }}\nHash: ${{ github.event.head_commit.id }}"
 
           JSON_PAYLOAD="{\"group\":\"$GROUP_ID\",\"message\":\"$MESSAGE\"}"
           echo "JSON Payload:"
