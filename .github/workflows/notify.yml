@@ -31,4 +31,4 @@ jobs:
             --url $SERVER_URL \
             --header 'Content-Type: application/json' \
              -H "Authorization: Bearer $API_KEY" \
-            --data '{"group":"$GROUP_ID","message":"$MESSAGE"}'
+            --data "{\"group\":\"$GROUP_ID\",\"message\":\"$MESSAGE\"}"
