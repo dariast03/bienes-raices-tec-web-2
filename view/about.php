@@ -6,6 +6,7 @@
 */ -->
 <!doctype html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,21 +15,22 @@
 
 	<meta name="description" content="" />
 	<meta name="keywords" content="bootstrap, bootstrap5" />
-	
+
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 
-	<link rel="stylesheet" href="fonts/icomoon/style.css">
-	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/fonts/icomoon/style.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/fonts/flaticon/font/flaticon.css">
 
-	<link rel="stylesheet" href="css/tiny-slider.css">
-	<link rel="stylesheet" href="css/aos.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/tiny-slider.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/aos.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/style.css">
 
 	<title>Property &mdash; Free Bootstrap 5 Website Template by Untree.co</title>
 </head>
+
 <body>
 
 	<div class="site-mobile-menu site-navbar-target">
@@ -77,7 +79,7 @@
 		</div>
 	</nav>
 
-	<div class="hero page-inner overlay" style="background-image: url('images/hero_bg_3.jpg');">
+	<div class="hero page-inner overlay" style="background-image: url('<?php echo BASE_URL ?>/assets/images/hero_bg_3.jpg');">
 
 		<div class="container">
 			<div class="row justify-content-center align-items-center">
@@ -108,7 +110,7 @@
 					<p class="text-black-50">Enim, nisi labore exercitationem facere cupiditate nobis quod autem veritatis quis minima expedita. Cumque odio illo iusto reiciendis, labore impedit omnis, nihil aut atque, facilis necessitatibus asperiores porro qui nam.</p>
 				</div>
 				<div class="col-lg-6">
-					
+
 					<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni saepe, explicabo nihil. Est, autem error cumque ipsum repellendus veniam sed blanditiis unde ullam maxime veritatis perferendis cupiditate, at non esse!</p>
 					<p class="text-black-50">Enim, nisi labore exercitationem facere cupiditate nobis quod autem veritatis quis minima expedita. Cumque odio illo iusto reiciendis, labore impedit omnis, nihil aut atque, facilis necessitatibus asperiores porro qui nam.</p>
 				</div>
@@ -122,7 +124,7 @@
 			<div class="row justify-content-between mb-5">
 				<div class="col-lg-7 mb-5 mb-lg-0 order-lg-2">
 					<div class="img-about dots">
-						<img src="images/hero_bg_3.jpg" alt="Image" class="img-fluid">
+						<img src="<?php echo BASE_URL ?>/assets/images/hero_bg_3.jpg" alt="Image" class="img-fluid">
 					</div>
 				</div>
 				<div class="col-lg-4">
@@ -132,7 +134,7 @@
 						</span>
 						<div class="feature-text">
 							<h3 class="heading">Quality properties</h3>
-							<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste.</p>   
+							<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste.</p>
 						</div>
 					</div>
 
@@ -142,7 +144,7 @@
 						</span>
 						<div class="feature-text">
 							<h3 class="heading">Top rated agents</h3>
-							<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste.</p>   
+							<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste.</p>
 						</div>
 					</div>
 
@@ -152,7 +154,7 @@
 						</span>
 						<div class="feature-text">
 							<h3 class="heading">Easy and safe</h3>
-							<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste.</p>   
+							<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste.</p>
 						</div>
 					</div>
 				</div>
@@ -165,7 +167,7 @@
 			<div class="row justify-content-between mb-5">
 				<div class="col-lg-7 mb-5 mb-lg-0">
 					<div class="img-about dots">
-						<img src="images/hero_bg_2.jpg" alt="Image" class="img-fluid">
+						<img src="<?php echo BASE_URL ?>/assets/images/hero_bg_2.jpg" alt="Image" class="img-fluid">
 					</div>
 				</div>
 				<div class="col-lg-4">
@@ -175,7 +177,7 @@
 						</span>
 						<div class="feature-text">
 							<h3 class="heading">Quality properties</h3>
-							<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste.</p>   
+							<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste.</p>
 						</div>
 					</div>
 
@@ -185,7 +187,7 @@
 						</span>
 						<div class="feature-text">
 							<h3 class="heading">Top rated agents</h3>
-							<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste.</p>   
+							<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste.</p>
 						</div>
 					</div>
 
@@ -195,7 +197,7 @@
 						</span>
 						<div class="feature-text">
 							<h3 class="heading">Easy and safe</h3>
-							<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste.</p>   
+							<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste.</p>
 						</div>
 					</div>
 				</div>
@@ -206,13 +208,13 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
-					<img src="images/img_1.jpg" alt="Image" class="img-fluid">
+					<img src="<?php echo BASE_URL ?>/assets/images/img_1.jpg" alt="Image" class="img-fluid">
 				</div>
 				<div class="col-md-4 mt-lg-5" data-aos="fade-up" data-aos-delay="100">
-					<img src="images/img_3.jpg" alt="Image" class="img-fluid">
+					<img src="<?php echo BASE_URL ?>/assets/images/img_3.jpg" alt="Image" class="img-fluid">
 				</div>
 				<div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-					<img src="images/img_2.jpg" alt="Image" class="img-fluid">
+					<img src="<?php echo BASE_URL ?>/assets/images/img_2.jpg" alt="Image" class="img-fluid">
 				</div>
 			</div>
 			<div class="row section-counter mt-5">
@@ -270,7 +272,7 @@
 				<div class="testimonial-slider">
 					<div class="item">
 						<div class="testimonial">
-							<img src="images/person_1-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+							<img src="<?php echo BASE_URL ?>/assets/images/person_1-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
 							<h3 class="h5 text-primary">James Smith</h3>
 							<p class="text-black-50">Designer, Co-founder</p>
 
@@ -288,7 +290,7 @@
 
 					<div class="item">
 						<div class="testimonial">
-							<img src="images/person_2-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+							<img src="<?php echo BASE_URL ?>/assets/images/person_2-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
 							<h3 class="h5 text-primary">Carol Houston</h3>
 							<p class="text-black-50">Designer, Co-founder</p>
 
@@ -307,7 +309,7 @@
 
 					<div class="item">
 						<div class="testimonial">
-							<img src="images/person_3-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+							<img src="<?php echo BASE_URL ?>/assets/images/person_3-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
 							<h3 class="h5 text-primary">Synthia Cameron</h3>
 							<p class="text-black-50">Designer, Co-founder</p>
 
@@ -326,7 +328,7 @@
 
 					<div class="item">
 						<div class="testimonial">
-							<img src="images/person_4.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+							<img src="<?php echo BASE_URL ?>/assets/images/person_4.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
 							<h3 class="h5 text-primary">Davin Smith</h3>
 							<p class="text-black-50">Designer, Co-founder</p>
 
@@ -414,29 +416,32 @@
               **==========
             -->
 
-            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ -->
-            </p>
+					<p>Copyright &copy;<script>
+							document.write(new Date().getFullYear());
+						</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ -->
+					</p>
 
-          </div>
-        </div>
-      </div> <!-- /.container -->
-    </div> <!-- /.site-footer -->
-
-
-    <!-- Preloader -->
-    <div id="overlayer"></div>
-    <div class="loader">
-    	<div class="spinner-border" role="status">
-    		<span class="visually-hidden">Loading...</span>
-    	</div>
-    </div>
+				</div>
+			</div>
+		</div> <!-- /.container -->
+	</div> <!-- /.site-footer -->
 
 
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/tiny-slider.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/navbar.js"></script>
-    <script src="js/counter.js"></script>
-    <script src="js/custom.js"></script>
-  </body>
-  </html>
+	<!-- Preloader -->
+	<div id="overlayer"></div>
+	<div class="loader">
+		<div class="spinner-border" role="status">
+			<span class="visually-hidden">Loading...</span>
+		</div>
+	</div>
+
+
+	<script src="<?php echo BASE_URL ?>/assets/js/bootstrap.bundle.min.js"></script>
+	<script src="<?php echo BASE_URL ?>/assets/js/tiny-slider.js"></script>
+	<script src="<?php echo BASE_URL ?>/assets/js/aos.js"></script>
+	<script src="<?php echo BASE_URL ?>/assets/js/navbar.js"></script>
+	<script src="<?php echo BASE_URL ?>/assets/js/counter.js"></script>
+	<script src="<?php echo BASE_URL ?>/assets/js/custom.js"></script>
+</body>
+
+</html>
