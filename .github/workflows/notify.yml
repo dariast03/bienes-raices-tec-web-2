@@ -12,9 +12,8 @@ jobs:
       - name: Get commit info
         id: commit
         run: |
-          echo "::set-output name=message::$(git log -1 --pretty=%B)"
-          echo "::set-output name=author::$(git log -1 --pretty=%an)"
-          echo "::set-output name=hash::$(git log -1 --pretty=%H)"
+          echo "Author: ${{ github.event.head_commit.author.name }}"
+          echo "Commit Message: ${{ github.event.head_commit.message}}"
 
       - name: Send Message
         env:
@@ -23,14 +22,12 @@ jobs:
           GROUP_ID: ${{ secrets.WHATSAPP_GROUP_ID }}
         run: |
           MESSAGE="Nuevo commit en el repo no olviden hacerse un pull :D
-          Autor: ${{ steps.commit.outputs.author }}
-          Mensaje: ${{ steps.commit.outputs.message }}
-          Hash: ${{ steps.commit.outputs.hash }}"
+          Autor: ${{ github.event.head_commit.author.name }}
+          Mensaje: ${{ github.event.head_commit.message }}
+          Hash: ${{ github.event.head_commit.id }}"
 
-          curl -X POST $SERVER_URL \
-          -H "Content-Type: application/json" \
-          -H "Authorization: Bearer $API_KEY" \
-          -d '{
-            "group_id": "'"$GROUP_ID"'",
-            "message": "'"$MESSAGE"'"
-          }'
+          curl --request POST \
+            --url $SERVER_URL \
+            --header 'Content-Type: application/json' \
+            --header 'Token: $API_KEY' \
+            --data '{"group":"$GROUP_ID","message":"$MESSAGE"}'
