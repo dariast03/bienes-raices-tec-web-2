@@ -13,7 +13,8 @@ jobs:
         id: commit
         run: |
           echo "Author: ${{ github.event.head_commit.author.name }}"
-          echo "Commit Message: ${{ github.event.head_commit.message}}"
+          echo "Message: ${{ github.event.head_commit.message}}"
+          echo "Hash: ${{ github.event.head_commit.id }}"
 
       - name: Send Message
         env:
@@ -29,5 +30,5 @@ jobs:
           curl --request POST \
             --url $SERVER_URL \
             --header 'Content-Type: application/json' \
-            --header 'Token: $API_KEY' \
+             -H "Authorization: Bearer $API_KEY" \
             --data '{"group":"$GROUP_ID","message":"$MESSAGE"}'
