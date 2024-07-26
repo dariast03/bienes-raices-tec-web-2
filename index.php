@@ -8,15 +8,23 @@ $request = $_SERVER['REQUEST_URI'];
 $request = str_replace(BASE_PATH, '', $request);
 $request = ltrim($request, '/');
 
+/* echo $request . "<br>";
+exit; */
+
+//TODO: Add more routes
+
 switch ($request) {
     case '':
     case 'index.php':
-        require __DIR__ . '/view/index.php';
+        require __DIR__ . '/view/client/index.php';
         break;
     case 'about.php':
-        require __DIR__ . '/view/about.php';
+        require __DIR__ . '/view/client/about.php';
         break;
-
+    case 'admin':
+    case 'admin/index.php':
+        require __DIR__ . '/view/admin/index.php';
+        break;
     default:
         http_response_code(404);
         require __DIR__ . '/view/404.php';
