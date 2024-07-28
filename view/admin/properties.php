@@ -4,13 +4,16 @@ require_once 'model/PropertyModel.php';
 $propertyModel = new PropertyModel();
 
 $properties = $propertyModel
-    ->select('id', 'precio', 'tipo.nombre')
+    ->select('propiedad.id', 'propiedad.precio', 'tipo.id', 'tipo.nombre')
     ->join('tipo', 'propiedad.id_tipo = tipo.id')
-    ->where('propiedad.id', 1)
-    ->get();
+    ->find('propiedad.id = 1');
+
+
+
+$propertyModel2 = new PropertyModel();
 
 echo "<pre>";
-var_dump($properties);
+var_dump($propertyModel2);
 echo "</pre>";
 ?>
 

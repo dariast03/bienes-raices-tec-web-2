@@ -39,14 +39,4 @@ class Database
     {
         mysqli_close($this->connection);
     }
-
-    // Prevenir la clonación del objeto
-    private function __clone()
-    {
-    }
-
-    // Prevenir la deserialización del objeto
-    public function __wakeup()
-    {
-    }
 }
