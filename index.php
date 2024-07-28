@@ -1,4 +1,11 @@
 <?php
+function debug($values)
+{
+    echo "<pre>";
+    var_dump($values);
+    echo "</pre>";
+}
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 
@@ -24,6 +31,10 @@ switch ($request) {
     case 'admin':
     case 'admin/index.php':
         require __DIR__ . '/view/admin/index.php';
+        break;
+    case 'admin/propiedades':
+    case 'admin/propiedades.php':
+        require __DIR__ . '/view/admin/properties.php';
         break;
     default:
         http_response_code(404);
