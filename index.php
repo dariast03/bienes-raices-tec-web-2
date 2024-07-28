@@ -23,21 +23,28 @@ exit; */
 switch ($request) {
     case '':
     case 'index.php':
-        require __DIR__ . '/view/client/index.php';
+        require 'view/client/index.php';
         break;
     case 'about.php':
-        require __DIR__ . '/view/client/about.php';
+        require 'view/client/about.php';
+        break;
+    case 'contacto.php':
+        require 'view/client/contact.php';
         break;
     case 'admin':
     case 'admin/index.php':
-        require __DIR__ . '/view/admin/index.php';
+        require 'view/admin/index.php';
         break;
     case 'admin/propiedades':
     case 'admin/propiedades.php':
-        require __DIR__ . '/view/admin/properties.php';
+        require 'view/admin/properties.php';
+        break;
+    case 'admin/tipos/lista':
+    case 'admin/tipos/lista.php':
+        require 'view/admin/tipos/lista.php';
         break;
     default:
         http_response_code(404);
-        require __DIR__ . '/view/404.php';
+        require 'view/404.php';
         break;
 }

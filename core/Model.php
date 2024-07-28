@@ -68,8 +68,6 @@ class Model
 
         $sql .= ' ' . $this->orderBy . ' ' . $this->limit;
 
-        debug($sql);
-
         $result = $this->db->query($sql);
         $rows = [];
         while ($row = $this->db->fetch($result)) {
