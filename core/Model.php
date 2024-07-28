@@ -106,8 +106,34 @@ class Model
     public function create($data)
     {
         $columns = implode(", ", array_keys($data));
-        $values = "'" . implode("', '", array_values($data)) . "'";
-        $result =  $this->db->query("INSERT INTO {$this->table} ($columns) VALUES ($values)");
+        $placeholders = implode(", ", array_fill(0, count($data), '?'));
+
+        $sql = "INSERT INTO {$this->table} ($columns) VALUES ($placeholders)";
+
+        $stmt = $this->prepare($sql);
+
+        if (!$stmt) {
+            return false;
+        }
+
+        $types = '';
+        $values = array();
+        foreach ($data as $value) {
+            if (is_int($value)) {
+                $types .= 'i';
+            } elseif (is_float($value)) {
+                $types .= 'd';
+            } elseif (is_string($value)) {
+                $types .= 's';
+            } else {
+                $types .= 'b';
+            }
+            $values[] = $value;
+        }
+
+        $stmt->bind_param($types, ...$values);
+
+        $result = $stmt->execute();
 
         if ($result) {
             return $this->lastInsertId();
@@ -212,5 +238,15 @@ class Model
         } else {
             return count($rows) === 1 ? $rows[0] : $rows;
         }
+    }
+
+    public function prepare($sql)
+    {
+        return $this->db->connection->prepare($sql);
+    }
+
+    public function execute($stmt)
+    {
+        return $stmt->execute();
     }
 }
