@@ -15,7 +15,7 @@ class Model
 
     public function __construct($table)
     {
-        $dbConfig = require_once 'config/database.php';
+        $dbConfig = require 'config/database.php';
         $this->db = new Database($dbConfig['host'], $dbConfig['username'], $dbConfig['password'], $dbConfig['database']);
         $this->table = $table;
     }
@@ -107,7 +107,18 @@ class Model
     {
         $columns = implode(", ", array_keys($data));
         $values = "'" . implode("', '", array_values($data)) . "'";
-        $this->db->query("INSERT INTO {$this->table} ($columns) VALUES ($values)");
+        $result =  $this->db->query("INSERT INTO {$this->table} ($columns) VALUES ($values)");
+
+        if ($result) {
+            return $this->lastInsertId();
+        }
+
+        return false;
+    }
+
+    public function lastInsertId()
+    {
+        return mysqli_insert_id($this->db->connection);
     }
 
     public function update($id, $data)
