@@ -6,9 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, 
                    initial-scale=1.0">
-    <title>GeeksForGeeks</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="responsive.css">
+    <title>ADMINISTRADOR</title>
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/style.css">
 
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
@@ -20,29 +19,20 @@
             font-family: "Poppins", sans-serif;
         }
 
-        :root {
-            --background-color1: #fafaff;
-            --background-color2: #ffffff;
-            --background-color3: #ededed;
-            --background-color4: #cad7fda4;
-            --primary-color: #4b49ac;
-            --secondary-color: #0c007d;
-            --Border-color: #3f0097;
-            --one-use-color: #3f0097;
-            --two-use-color: #5500cb;
-        }
+        /* #00204a */
 
         body {
-            background-color: var(--background-color4);
+            background-color: #cad7fda4;
             max-width: 100%;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
         header {
             height: 70px;
             width: 100vw;
             padding: 0 30px;
-            background-color: var(--background-color1);
+            background-color: #fff;
             position: fixed;
             z-index: 100;
             box-shadow: 1px 1px 15px rgba(161, 182, 253, 0.825);
@@ -54,7 +44,7 @@
         .logo {
             font-size: 27px;
             font-weight: 600;
-            color: rgb(47, 141, 70);
+            color: blue;
         }
 
         .icn {
@@ -172,9 +162,9 @@
         }
 
         .nav {
-            min-height: 91vh;
-            width: 250px;
-            background-color: var(--background-color2);
+            min-height: 90vh;
+            width: 300px;
+            background-color: #fff;
             position: absolute;
             top: 0px;
             left: 00;
@@ -187,12 +177,13 @@
         }
 
         .navcontainer {
-            height: calc(100vh - 70px);
-            width: 250px;
+            height: calc(100vh - 100px);
+            width: 300px;
             position: relative;
-            overflow-y: scroll;
-            overflow-x: hidden;
+
             transition: all 0.5s ease-in-out;
+            margin-top: 40px;
+            margin-right: 100px;
         }
 
         .navcontainer::-webkit-scrollbar {
@@ -200,11 +191,12 @@
         }
 
         .navclose {
-            width: 80px;
+            width: 90px;
+            overflow-x: hidden;
         }
 
         .nav-option {
-            width: 250px;
+            width: 300px;
             height: 60px;
             display: flex;
             align-items: center;
@@ -568,6 +560,10 @@
                 width: 180px;
             }
         }
+
+        .form-select {
+            height: 52px;
+        }
     </style>
 </head>
 
@@ -578,63 +574,13 @@
             <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210182541/Untitled-design-(30).png" class="icn menuicn" id="menuicn" alt="menu-icon">
         </div>
 
-        <div class="searchbar">
-            <input type="text" placeholder="Search">
-            <div class="searchbtn">
-                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180758/Untitled-design-(28).png" class="icn srchicn" alt="search-icon">
-            </div>
-        </div>
-
         <div class="message">
-            <div class="circle"></div>
-            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183322/8.png" class="icn" alt="">
             <div class="dp">
                 <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180014/profile-removebg-preview.png" class="dpicn" alt="dp">
             </div>
         </div>
-
     </header>
 
     <div class="main-container">
-        <div class="navcontainer">
-            <nav class="nav">
-                <div class="nav-upper-options">
-                    <div class="nav-option option1">
-                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210182148/Untitled-design-(29).png" class="nav-img" alt="dashboard">
-                        <h3> Dashboard</h3>
-                    </div>
-
-                    <div class="option2 nav-option">
-                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183322/9.png" class="nav-img" alt="articles">
-                        <h3> Articles</h3>
-                    </div>
-
-                    <div class="nav-option option3">
-                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183320/5.png" class="nav-img" alt="report">
-                        <h3> Report</h3>
-                    </div>
-
-                    <div class="nav-option option4">
-                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183321/6.png" class="nav-img" alt="institution">
-                        <h3> Institution</h3>
-                    </div>
-
-                    <div class="nav-option option5">
-                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183323/10.png" class="nav-img" alt="blog">
-                        <h3> Profile</h3>
-                    </div>
-
-                    <div class="nav-option option6">
-                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183320/4.png" class="nav-img" alt="settings">
-                        <h3> Settings</h3>
-                    </div>
-
-                    <div class="nav-option logout">
-                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183321/7.png" class="nav-img" alt="logout">
-                        <h3>Logout</h3>
-                    </div>
-
-                </div>
-            </nav>
-        </div>
+        <?php include 'view/admin/layout/navbar.php'; ?>
         <div class="main">
