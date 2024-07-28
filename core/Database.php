@@ -2,23 +2,14 @@
 
 class Database
 {
-    private static $instance = null;
-    private $connection;
+    public $connection;
 
-    private function __construct($host, $username, $password, $database)
+    public function __construct($host, $username, $password, $database)
     {
         $this->connection = mysqli_connect($host, $username, $password, $database);
         if (!$this->connection) {
             die("Error de conexión: " . mysqli_connect_error());
         }
-    }
-
-    public static function getInstance($host, $username, $password, $database)
-    {
-        if (self::$instance === null) {
-            self::$instance = new self($host, $username, $password, $database);
-        }
-        return self::$instance;
     }
 
     public function query($sql)

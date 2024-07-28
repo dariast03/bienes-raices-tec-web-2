@@ -15,8 +15,8 @@ class Model
 
     public function __construct($table)
     {
-        $dbConfig = require_once __DIR__ . '../../config/database.php';
-        $this->db = Database::getInstance($dbConfig['host'], $dbConfig['username'], $dbConfig['password'], $dbConfig['database']);
+        $dbConfig = require_once 'config/database.php';
+        $this->db = new Database($dbConfig['host'], $dbConfig['username'], $dbConfig['password'], $dbConfig['database']);
         $this->table = $table;
     }
 

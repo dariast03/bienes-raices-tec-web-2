@@ -8,12 +8,8 @@ $properties = $propertyModel
     ->join('tipo', 'propiedad.id_tipo = tipo.id')
     ->find('propiedad.id = 1');
 
-
-
-$propertyModel2 = new PropertyModel();
-
 echo "<pre>";
-var_dump($propertyModel2);
+var_dump($properties);
 echo "</pre>";
 ?>
 
