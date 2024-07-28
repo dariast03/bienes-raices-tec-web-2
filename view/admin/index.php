@@ -1,115 +1,135 @@
-<?php
-require_once 'model/UserModel.php';
-
-$userModel = new UserModel();
-
-function getError($field)
-{
-    global $errors;
-    if (isset($errors[$field])) {
-        echo $errors[$field];
-    }
-}
-
-function isValidPassword($password)
-{
-    $letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $numbers = '0123456789';
-
-    $hasLetter = false;
-    $hasNumber = false;
-
-    for ($i = 0; $i < strlen($password); $i++) {
-        if (strpos($letters, $password[$i]) !== false) {
-            $hasLetter = true;
-        } else if (strpos($numbers, $password[$i]) !== false) {
-            $hasNumber = true;
-        }
-    }
-
-    var_dump($hasLetter);
-    var_dump($hasNumber);
+<?php include 'view/admin/layout/header.php' ?>
 
 
 
-    return $hasLetter && $hasNumber;
-}
+<div class="searchbar2">
+    <input type="text" name="" id="" placeholder="Search">
+    <div class="searchbtn">
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180758/Untitled-design-(28).png" class="icn srchicn" alt="search-button">
+    </div>
+</div>
 
-$nombre = $correo = $contrasena = '';
-$errors = [];
+<div class="box-container">
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombre = $_POST["nombre"] ?? '';
-    $correo = $_POST["correo"] ?? '';
-    $contrasena = $_POST["contrasena"] ?? '';
+    <div class="box box1">
+        <div class="text">
+            <h2 class="topic-heading">60.5k</h2>
+            <h2 class="topic">Article Views</h2>
+        </div>
 
-    if (empty($nombre)) {
-        $errors['nombre'] = "El nombre es obligatorio.";
-    } elseif (strlen($nombre) < 5) {
-        $errors['nombre'] = "El nombre debe tener al menos 5 caracteres.";
-    } else if (strlen($nombre) > 50) {
-        $errors['nombre'] = "El nombre no debe tener más de 50 caracteres.";
-    }
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210184645/Untitled-design-(31).png" alt="Views">
+    </div>
 
-    if (empty($correo)) {
-        $errors['correo'] = "El correo es obligatorio.";
-    } elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-        $errors['correo'] = "El correo no es válido.";
-    }
+    <div class="box box2">
+        <div class="text">
+            <h2 class="topic-heading">150</h2>
+            <h2 class="topic">Likes</h2>
+        </div>
 
-    if (empty($contrasena)) {
-        $errors['contrasena'] = "La contraseña es obligatoria.";
-    } elseif (strlen($contrasena) < 4) {
-        $errors['contrasena'] = "La contraseña debe tener al menos 4 caracteres.";
-    } elseif (strlen($contrasena) > 40) {
-        $errors['contrasena'] = "La contraseña  no debe tener más de 40 caracteres.";
-    } elseif (isValidPassword($contrasena)) {
-        $errors['contrasena'] = "La contraseña debe incluir al menos una letra y un número.";
-    }
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210185030/14.png" alt="likes">
+    </div>
 
-    if (empty($errors)) {
-        echo "Formulario enviado con éxito.";
+    <div class="box box3">
+        <div class="text">
+            <h2 class="topic-heading">320</h2>
+            <h2 class="topic">Comments</h2>
+        </div>
 
-        $userModel->create([
-            'nombre' => $nombre,
-            'correo' => $correo,
-            'contrasena' => password_hash($contrasena, PASSWORD_DEFAULT)
-        ]);
-    }
-}
-?>
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210184645/Untitled-design-(32).png" alt="comments">
+    </div>
 
-<!DOCTYPE html>
-<html lang="en">
+    <div class="box box4">
+        <div class="text">
+            <h2 class="topic-heading">70</h2>
+            <h2 class="topic">Published</h2>
+        </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
-</head>
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210185029/13.png" alt="published">
+    </div>
+</div>
 
-<body>
-    <form action="" method="post">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" value="<?php echo $nombre; ?>">
-        <div class="error">
-            <?php getError('nombre'); ?>
-        </div><br><br>
+<div class="report-container">
+    <div class="report-header">
+        <h1 class="recent-Articles">Recent Articles</h1>
+        <button class="view">View All</button>
+    </div>
 
-        <label for="correo">Correo:</label>
-        <input type="email" id="correo" name="correo" value="<?php echo $correo; ?>">
-        <div class="error">
-            <?php getError('correo'); ?>
-        </div><br><br>
+    <div class="report-body">
+        <div class="report-topic-heading">
+            <h3 class="t-op">Article</h3>
+            <h3 class="t-op">Views</h3>
+            <h3 class="t-op">Comments</h3>
+            <h3 class="t-op">Status</h3>
+        </div>
 
-        <label for="contrasena">Contraseña:</label>
-        <input type="password" id="contrasena" name="contrasena">
-        <div class="error">
-            <?php getError('contrasena'); ?>
-        </div><br><br>
+        <div class="items">
+            <div class="item1">
+                <h3 class="t-op-nextlvl">Article 73</h3>
+                <h3 class="t-op-nextlvl">2.9k</h3>
+                <h3 class="t-op-nextlvl">210</h3>
+                <h3 class="t-op-nextlvl label-tag">Published</h3>
+            </div>
 
-        <input type="submit" value="Submit">
-    </form>
-</body>
+            <div class="item1">
+                <h3 class="t-op-nextlvl">Article 72</h3>
+                <h3 class="t-op-nextlvl">1.5k</h3>
+                <h3 class="t-op-nextlvl">360</h3>
+                <h3 class="t-op-nextlvl label-tag">Published</h3>
+            </div>
 
-</html>
+            <div class="item1">
+                <h3 class="t-op-nextlvl">Article 71</h3>
+                <h3 class="t-op-nextlvl">1.1k</h3>
+                <h3 class="t-op-nextlvl">150</h3>
+                <h3 class="t-op-nextlvl label-tag">Published</h3>
+            </div>
+
+            <div class="item1">
+                <h3 class="t-op-nextlvl">Article 70</h3>
+                <h3 class="t-op-nextlvl">1.2k</h3>
+                <h3 class="t-op-nextlvl">420</h3>
+                <h3 class="t-op-nextlvl label-tag">Published</h3>
+            </div>
+
+            <div class="item1">
+                <h3 class="t-op-nextlvl">Article 69</h3>
+                <h3 class="t-op-nextlvl">2.6k</h3>
+                <h3 class="t-op-nextlvl">190</h3>
+                <h3 class="t-op-nextlvl label-tag">Published</h3>
+            </div>
+
+            <div class="item1">
+                <h3 class="t-op-nextlvl">Article 68</h3>
+                <h3 class="t-op-nextlvl">1.9k</h3>
+                <h3 class="t-op-nextlvl">390</h3>
+                <h3 class="t-op-nextlvl label-tag">Published</h3>
+            </div>
+
+            <div class="item1">
+                <h3 class="t-op-nextlvl">Article 67</h3>
+                <h3 class="t-op-nextlvl">1.2k</h3>
+                <h3 class="t-op-nextlvl">580</h3>
+                <h3 class="t-op-nextlvl label-tag">Published</h3>
+            </div>
+
+            <div class="item1">
+                <h3 class="t-op-nextlvl">Article 66</h3>
+                <h3 class="t-op-nextlvl">3.6k</h3>
+                <h3 class="t-op-nextlvl">160</h3>
+                <h3 class="t-op-nextlvl label-tag">Published</h3>
+            </div>
+
+            <div class="item1">
+                <h3 class="t-op-nextlvl">Article 65</h3>
+                <h3 class="t-op-nextlvl">1.3k</h3>
+                <h3 class="t-op-nextlvl">220</h3>
+                <h3 class="t-op-nextlvl label-tag">Published</h3>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<?php include 'view/admin/layout/footer.php' ?>
