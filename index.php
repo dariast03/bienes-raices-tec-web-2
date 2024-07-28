@@ -25,10 +25,16 @@ switch ($request) {
     case 'index.php':
         require 'view/client/index.php';
         break;
+    case 'properties.php':
+        require 'view/client/properties.php';
+        break;
+    case 'services.php':
+        require 'view/client/services.php';
+        break;
     case 'about.php':
         require 'view/client/about.php';
         break;
-    case 'contacto.php':
+    case 'contact.php':
         require 'view/client/contact.php';
         break;
     case 'admin':

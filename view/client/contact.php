@@ -21,75 +21,31 @@
 	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 
-	<link rel="stylesheet" href="fonts/icomoon/style.css">
-	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/fonts/icomoon/style.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/fonts/flaticon/font/flaticon.css">
 
-	<link rel="stylesheet" href="css/tiny-slider.css">
-	<link rel="stylesheet" href="css/aos.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/tiny-slider.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/aos.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/style.css">
 
-	<title>Property &mdash; Free Bootstrap 5 Website Template by Untree.co</title>
+	<title>Bienes Raices UPDS &mdash;</title>
 </head>
 
 <body>
 
-	<div class="site-mobile-menu site-navbar-target">
-		<div class="site-mobile-menu-header">
-			<div class="site-mobile-menu-close">
-				<span class="icofont-close js-menu-toggle"></span>
-			</div>
-		</div>
-		<div class="site-mobile-menu-body"></div>
-	</div>
+<?php include ('layout/header.php');?> 
 
-	<nav class="site-nav">
-		<div class="container">
-			<div class="menu-bg-wrap">
-				<div class="site-navigation">
-					<a href="index.php" class="logo m-0 float-start">Property</a>
-
-					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
-						<li><a href="index.php">Home</a></li>
-						<li class="has-children">
-							<a href="properties.html">Properties</a>
-							<ul class="dropdown">
-								<li><a href="#">Buy Property</a></li>
-								<li><a href="#">Sell Property</a></li>
-								<li class="has-children">
-									<a href="#">Dropdown</a>
-									<ul class="dropdown">
-										<li><a href="#">Sub Menu One</a></li>
-										<li><a href="#">Sub Menu Two</a></li>
-										<li><a href="#">Sub Menu Three</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li><a href="services.php">Services</a></li>
-						<li><a href="about.php">About</a></li>
-						<li class="active"><a href="contact.php">Contact Us</a></li>
-					</ul>
-
-					<a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
-						<span></span>
-					</a>
-
-				</div>
-			</div>
-		</div>
-	</nav>
-
-	<div class="hero page-inner overlay" style="background-image: url('images/hero_bg_1.jpg');">
+	<div class="hero page-inner overlay" style="background-image: url('<?php echo BASE_URL ?>/assets/images/hero_bg_1.jpg');">
 
 		<div class="container">
 			<div class="row justify-content-center align-items-center">
 				<div class="col-lg-9 text-center mt-5">
-					<h1 class="heading" data-aos="fade-up">Contact Us</h1>
+					<h1 class="heading" data-aos="fade-up">Contactanos</h1>
 
 					<nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
 						<ol class="breadcrumb text-center justify-content-center">
-							<li class="breadcrumb-item "><a href="index.php">Home</a></li>
-							<li class="breadcrumb-item active text-white-50" aria-current="page">Contact</li>
+							<li class="breadcrumb-item "><a href="index.php">Inicio</a></li>
+							<li class="breadcrumb-item active text-white-50" aria-current="page">Contactanos</li>
 						</ol>
 					</nav>
 				</div>
@@ -106,51 +62,57 @@
 
 						<div class="address mt-2">
 							<i class="icon-room"></i>
-							<h4 class="mb-2">Location:</h4>
-							<p>43 Raymouth Rd. Baltemoer,<br> London 3910</p>
+							<h4 class="mb-2">Ubicación:</h4>
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4413.469081156922!2d-64.74447578990771!3d-21.536282564468955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x940647dfb7a7d803%3A0x9c955b696d54271a!2sUniversidad%20Privada%20Domingo%20Savio!5e0!3m2!1ses-419!2sbo!4v1722205168558!5m2!1ses-419!2sbo" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 						</div>
 
 						<div class="open-hours mt-4">
 							<i class="icon-clock-o"></i>
-							<h4 class="mb-2">Open Hours:</h4>
+							<h4 class="mb-2">Horas:</h4>
 							<p>
-								Sunday-Friday:<br>
-								11:00 AM - 2300 PM
+								Lunes-Sabado:<br>
+								09:00 AM - 19:00 PM
 							</p>
 						</div>
 
 						<div class="email mt-4">
 							<i class="icon-envelope"></i>
 							<h4 class="mb-2">Email:</h4>
-							<p>info@Untree.co</p>
+							<p>proyecto-web.@gmail.com</p>
 						</div>
 
 						<div class="phone mt-4">
 							<i class="icon-phone"></i>
-							<h4 class="mb-2">Call:</h4>
-							<p>+1 1234 55488 55</p>
+							<h4 class="mb-2">Telefono:</h4>
+							<p>75111830</p>
 						</div>
 
 					</div>
 				</div>
 				<div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+				<div class="row mb-5 align-items-center">
+					<div class="col-lg-6 text-center mx-auto">
+						<h2 class="font-weight-bold text-primary heading">Contactanos</h2>
+					</div>
+
+				</div>
 					<form action="#">
 						<div class="row">
 							<div class="col-6 mb-3">
-								<input type="text" class="form-control" placeholder="Your Name">
+								<input type="text" class="form-control" placeholder="Escribe tu nombre">
 							</div>
 							<div class="col-6 mb-3">
-								<input type="email" class="form-control" placeholder="Your Email">
+								<input type="email" class="form-control" placeholder="Escribe tu gmail">
 							</div>
 							<div class="col-12 mb-3">
-								<input type="text" class="form-control" placeholder="Subject">
+								<input type="text" class="form-control" placeholder="Escribe el motivo">
 							</div>
 							<div class="col-12 mb-3">
-								<textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+								<textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Escribe tu mensaje"></textarea>
 							</div>
 
 							<div class="col-12">
-								<input type="submit" value="Send Message" class="btn btn-primary">
+								<input type="submit" value="Enviar mensaje" class="btn btn-primary">
 							</div>
 						</div>
 					</form>
@@ -159,98 +121,7 @@
 		</div>
 	</div> <!-- /.untree_co-section -->
 
-	<div class="site-footer">
-		<div class="container">
-
-			<div class="row">
-				<div class="col-lg-4">
-					<div class="widget">
-						<h3>Contact</h3>
-						<address>43 Raymouth Rd. Baltemoer, London 3910</address>
-						<ul class="list-unstyled links">
-							<li><a href="tel://11234567890">+1(123)-456-7890</a></li>
-							<li><a href="tel://11234567890">+1(123)-456-7890</a></li>
-							<li><a href="mailto:info@mydomain.com">info@mydomain.com</a></li>
-						</ul>
-					</div> <!-- /.widget -->
-				</div> <!-- /.col-lg-4 -->
-				<div class="col-lg-4">
-					<div class="widget">
-						<h3>Sources</h3>
-						<ul class="list-unstyled float-start links">
-							<li><a href="#">About us</a></li>
-							<li><a href="#">Services</a></li>
-							<li><a href="#">Vision</a></li>
-							<li><a href="#">Mission</a></li>
-							<li><a href="#">Terms</a></li>
-							<li><a href="#">Privacy</a></li>
-						</ul>
-						<ul class="list-unstyled float-start links">
-							<li><a href="#">Partners</a></li>
-							<li><a href="#">Business</a></li>
-							<li><a href="#">Careers</a></li>
-							<li><a href="#">Blog</a></li>
-							<li><a href="#">FAQ</a></li>
-							<li><a href="#">Creative</a></li>
-						</ul>
-					</div> <!-- /.widget -->
-				</div> <!-- /.col-lg-4 -->
-				<div class="col-lg-4">
-					<div class="widget">
-						<h3>Links</h3>
-						<ul class="list-unstyled links">
-							<li><a href="#">Our Vision</a></li>
-							<li><a href="#">About us</a></li>
-							<li><a href="#">Contact us</a></li>
-						</ul>
-
-						<ul class="list-unstyled social">
-							<li><a href="#"><span class="icon-instagram"></span></a></li>
-							<li><a href="#"><span class="icon-twitter"></span></a></li>
-							<li><a href="#"><span class="icon-facebook"></span></a></li>
-							<li><a href="#"><span class="icon-linkedin"></span></a></li>
-							<li><a href="#"><span class="icon-pinterest"></span></a></li>
-							<li><a href="#"><span class="icon-dribbble"></span></a></li>
-						</ul>
-					</div> <!-- /.widget -->
-				</div> <!-- /.col-lg-4 -->
-			</div> <!-- /.row -->
-
-			<div class="row mt-5">
-				<div class="col-12 text-center">
-					<!-- 
-              **==========
-              NOTE: 
-              Please don't remove this copyright link unless you buy the license here https://untree.co/license/  
-              **==========
-            -->
-
-					<p>Copyright &copy;<script>
-							document.write(new Date().getFullYear());
-						</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ -->
-					</p>
-
-				</div>
-			</div>
-		</div> <!-- /.container -->
-	</div> <!-- /.site-footer -->
-
-
-	<!-- Preloader -->
-	<div id="overlayer"></div>
-	<div class="loader">
-		<div class="spinner-border" role="status">
-			<span class="visually-hidden">Loading...</span>
-		</div>
-	</div>
-
-
-	<script src="js/bootstrap.bundle.min.js"></script>
-	<script src="js/tiny-slider.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/navbar.js"></script>
-	<script src="js/counter.js"></script>
-	<script src="js/custom.js"></script>
+	<?php include ('layout/footer.php');?> 
 </body>
 
 </html>
