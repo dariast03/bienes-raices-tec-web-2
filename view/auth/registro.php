@@ -3,12 +3,27 @@ require_once 'model/UserModel.php';
 
 $userModel = new UserModel();
 
+// Obtener todos los usuarios
+$usuarios = $userModel->select('correo')->get();
+
 function getError($field)
 {
     global $errors;
     if (isset($errors[$field])) {
         echo $errors[$field];
     }
+}
+
+function repeatedEmail($email)
+{
+    global $usuarios;
+    $isRepeated = false;
+    foreach ($usuarios as $key => $usuario) {
+        if($usuario['correo']==$email){
+            $isRepeated = true;
+        }
+    }
+    return $isRepeated;
 }
 
 function isValidPassword($password)
@@ -43,6 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST["nombre"] ?? '';
     $correo = $_POST["correo"] ?? '';
     $contrasena = $_POST["contrasena"] ?? '';
+    }
 
     if (empty($nombre)) {
         $errors['nombre'] = "El nombre es obligatorio.";
@@ -52,10 +68,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors['nombre'] = "El nombre no debe tener más de 50 caracteres.";
     }
 
+    foreach ($usuarios as $key => $value) {
+
     if (empty($correo)) {
         $errors['correo'] = "El correo es obligatorio.";
     } elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
         $errors['correo'] = "El correo no es válido.";
+    } elseif (repeatedEmail($contrasena)) {
+        $errors['correo'] = "El correo ingresado ya se encuentra en uso.";
     }
 
     if (empty($contrasena)) {
@@ -77,7 +97,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             'contrasena' => password_hash($contrasena, PASSWORD_DEFAULT)
         ]);
     }
-}
+
+    }
 ?>
 
 <!DOCTYPE html>
