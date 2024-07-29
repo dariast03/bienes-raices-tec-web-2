@@ -5,46 +5,56 @@
 * License: https://creativecommons.org/licenses/by/3.0/
 */ -->
 <?php
-require_once 'core/Model.php';
+
 require_once 'model/PropertyModel.php';
 require_once 'model/LocationModel.php';
 require_once 'model/ImageModel.php';
-require_once 'model/CaracteristicaModel.php';
+require_once 'model/CharacteristicPropertyModel.php';
 
 // Verificar si se ha proporcionado el ID de la propiedad codificado
 if (!isset($_GET['id'])) {
-    die('ID de propiedad no especificado.');
+	die('ID de propiedad no especificado.');
 }
 
 // Decodificar el ID de la propiedad
-$id_codificado = $_GET['id'];
-$id = base64_decode(urldecode($id_codificado));
+$id = $_GET['id'];
 
 if ($id === false) {
-    die('ID de propiedad no válido.');
+	die('ID de propiedad no válido.');
 }
 
 // Instanciar los modelos necesarios
 $propertyModel = new PropertyModel();
 $locationModel = new UbicacionModel();
 $imageModel = new ImagenModel();
-$caracteristicaModel = new CaracteristicaModel();
+$propiedadCaracteristicaModel = new PropiedadCaracteristicaModel();
 
 // Obtener los detalles de la propiedad
 $property = $propertyModel->find($id);
 
 if (!$property) {
-    die('Propiedad no encontrada.');
+	die('Propiedad no encontrada.');
 }
+
 
 // Obtener la ubicación de la propiedad
 $location = $locationModel->find($property['id_ubicacion']);
 
+
 // Obtener las imágenes de la propiedad
 $images = $imageModel->where('id_propiedad', $property['id'])->get();
+$propiedadCaracteristicas = $propiedadCaracteristicaModel
+	->select('caracteristica.nombre', 'caracteristica.descripcion', 'caracteristica.id')
+	->join('caracteristica', 'caracteristica.id = propiedad_caracteristica.id_caracteristica')
+	->where('id_propiedad', $property['id'])
+	->get();
 
-// Obtener las características de la propiedad
-$caracteristicas = $caracteristicaModel->where('id_propiedad', $property['id'])->get();
+$caracteristicas = [];
+foreach ($propiedadCaracteristicas as $caracteristica) {
+	$caracteristicas[] = $caracteristica['caracteristica'];
+}
+
+
 ?>
 
 
@@ -100,7 +110,7 @@ $caracteristicas = $caracteristicaModel->where('id_propiedad', $property['id'])-
 						<li><a href="index.php">Inicio</a></li>
 						<li class="active">
 							<a href="properties.php">Propiedades</a>
-							
+
 						</li>
 						<li><a href="services.php">Servicios</a></li>
 						<li><a href="about.php">Nosotros</a></li>
@@ -142,51 +152,51 @@ $caracteristicas = $caracteristicaModel->where('id_propiedad', $property['id'])-
 
 
 	<div class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="property-slider-wrap">
-                        <div class="property-slider">
-                            <?php foreach ($images as $image) : ?>
-                                <div class="property-slide">
-                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($image['imagen']); ?>" alt="Image" class="img-fluid">
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <h2 class="heading text-primary"><?php echo htmlspecialchars($property['direccion']); ?></h2>
-                    <div class="price mb-4"><span>$<?php echo number_format($property['precio']); ?></span></div>
-                    <div class="specs d-flex mb-4">
-                        <span class="d-block d-flex align-items-center me-3">
-                            <span class="icon-bed me-2"></span>
-                            <span class="caption"><?php echo htmlspecialchars($property['num_habitaciones']); ?> camas</span>
-                        </span>
-                        <span class="d-block d-flex align-items-center">
-                            <span class="icon-bath me-2"></span>
-                            <span class="caption"><?php echo htmlspecialchars($property['num_baños']); ?> baños</span>
-                        </span>
-                    </div>
-                    <div class="location mb-4">
-                        <span class="d-block mb-2">Ubicación:</span>
-                        <span><?php echo htmlspecialchars($location['ciudad'] . ', ' . $location['departamento'] . ', ' . $location['pais']); ?></span>
-                    </div>
-                    <div class="description mb-4">
-                        <p><?php echo htmlspecialchars($property['descripcion']); ?></p>
-                    </div>
-                    <div class="features mb-4">
-                        <h3 class="heading text-primary">Características</h3>
-                        <ul class="list-unstyled">
-                            <?php foreach ($caracteristicas as $caracteristica) : ?>
-                                <li><?php echo htmlspecialchars($caracteristica['nombre'] . ': ' . $caracteristica['valor']); ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="property-slider-wrap">
+						<div class="property-slider">
+							<?php foreach ($images as $image) : ?>
+								<div class="property-slide">
+									<img src="data:image/jpeg;base64,<?php echo base64_encode($image['imagen']); ?>" alt="Image" class="img-fluid">
+								</div>
+							<?php endforeach; ?>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<h2 class="heading text-primary"><?php echo htmlspecialchars($property['direccion']); ?></h2>
+					<div class="price mb-4"><span>$<?php echo number_format($property['precio']); ?></span></div>
+					<div class="specs d-flex mb-4">
+						<span class="d-block d-flex align-items-center me-3">
+							<span class="icon-bed me-2"></span>
+							<span class="caption"><?php echo htmlspecialchars($property['num_habitaciones']); ?> camas</span>
+						</span>
+						<span class="d-block d-flex align-items-center">
+							<span class="icon-bath me-2"></span>
+							<span class="caption"><?php echo htmlspecialchars($property['num_baños']); ?> baños</span>
+						</span>
+					</div>
+					<div class="location mb-4">
+						<span class="d-block mb-2">Ubicación:</span>
+						<span><?php echo htmlspecialchars($location['ciudad'] . ', ' . $location['departamento'] . ', ' . $location['pais']); ?></span>
+					</div>
+					<div class="description mb-4">
+						<p><?php echo htmlspecialchars($property['descripcion']); ?></p>
+					</div>
+					<div class="features mb-4">
+						<h3 class="heading text-primary">Características</h3>
+						<ul class="list-unstyled">
+							<?php foreach ($caracteristicas as $caracteristica) : ?>
+								<li><?php echo htmlspecialchars($caracteristica['nombre'] . ': ' . $caracteristica['valor']); ?></li>
+							<?php endforeach; ?>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<div class="site-footer">
 		<div class="container">
