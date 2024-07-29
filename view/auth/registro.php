@@ -68,8 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors['nombre'] = "El nombre no debe tener más de 50 caracteres.";
     }
 
-
-
     if (empty($correo)) {
         $errors['correo'] = "El correo es obligatorio.";
     } elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
@@ -90,12 +88,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (empty($errors)) {
         echo "Formulario enviado con éxito.";
+        echo "<a href='login.php'>Iniciar Sesion</a>";
 
-        /* $userModel->create([
+        $userModel->create([
             'nombre' => $nombre,
             'correo' => $correo,
             'contrasena' => password_hash($contrasena, PASSWORD_DEFAULT)
-        ]); */
+        ]);
     }
 }
 
