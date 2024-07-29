@@ -19,7 +19,7 @@ function repeatedEmail($email)
     global $usuarios;
     $isRepeated = false;
     foreach ($usuarios as $key => $usuario) {
-        if($usuario['correo']==$email){
+        if ($usuario['correo'] == $email) {
             $isRepeated = true;
         }
     }
@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST["nombre"] ?? '';
     $correo = $_POST["correo"] ?? '';
     $contrasena = $_POST["contrasena"] ?? '';
-    }
+
 
     if (empty($nombre)) {
         $errors['nombre'] = "El nombre es obligatorio.";
@@ -68,13 +68,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors['nombre'] = "El nombre no debe tener más de 50 caracteres.";
     }
 
-    foreach ($usuarios as $key => $value) {
+
 
     if (empty($correo)) {
         $errors['correo'] = "El correo es obligatorio.";
     } elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
         $errors['correo'] = "El correo no es válido.";
-    } elseif (repeatedEmail($contrasena)) {
+    } elseif (repeatedEmail($correo)) {
         $errors['correo'] = "El correo ingresado ya se encuentra en uso.";
     }
 
@@ -91,14 +91,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($errors)) {
         echo "Formulario enviado con éxito.";
 
-        $userModel->create([
+        /* $userModel->create([
             'nombre' => $nombre,
             'correo' => $correo,
             'contrasena' => password_hash($contrasena, PASSWORD_DEFAULT)
-        ]);
+        ]); */
     }
+}
 
-    }
 ?>
 
 <!DOCTYPE html>
