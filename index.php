@@ -28,6 +28,9 @@ switch ($request) {
     case 'properties.php':
         require 'view/client/properties.php';
         break;
+    case 'property.php':
+        require 'view/client/property.php';
+        break;
     case 'services.php':
         require 'view/client/services.php';
         break;
