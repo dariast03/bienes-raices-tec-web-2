@@ -24,13 +24,13 @@ if ($id === false) {
 }
 
 // Instanciar los modelos necesarios
-$propertyModel = new PropertyModel();
+$consultaModel = new PropertyModel();
 $locationModel = new UbicacionModel();
 $imageModel = new ImagenModel();
 $propiedadCaracteristicaModel = new PropiedadCaracteristicaModel();
 
 // Obtener los detalles de la propiedad
-$property = $propertyModel->find($id);
+$property = $consultaModel->find($id);
 
 if (!$property) {
 	die('Propiedad no encontrada.');

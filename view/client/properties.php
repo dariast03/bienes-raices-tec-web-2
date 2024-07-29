@@ -4,11 +4,11 @@ require_once 'model/PropertyModel.php';
 require_once 'model/ImageModel.php';
 
 // Instanciar el modelo de propiedad
-$propertyModel = new PropertyModel();
+$consultaModel = new PropertyModel();
 $imageModel = new ImagenModel();
 
 // Obtener todas las propiedades
-$properties = $propertyModel->select('id', 'direccion', 'precio', 'num_habitaciones', 'num_baños')->get();
+$properties = $consultaModel->select('id', 'direccion', 'precio', 'num_habitaciones', 'num_baños')->get();
 
 // Agregar imágenes a las propiedades
 foreach ($properties as $key => $property) {
@@ -41,7 +41,7 @@ foreach ($properties as $key => $property) {
 
 <body>
 
-<?php include('layout/header.php'); ?>
+	<?php include('layout/header.php'); ?>
 
 	<div class="hero page-inner overlay" style="background-image: url('<?php echo BASE_URL ?>/assets/images/hero_bg_1.jpg');">
 		<div class="container">
@@ -102,7 +102,7 @@ foreach ($properties as $key => $property) {
 											<span class="caption"><?php echo $property['num_baños']; ?> baños</span>
 										</span>
 									</div>
-								<a href="property.php?id=<?php echo $property['id']; ?>" class="btn btn-primary py-2 px-3">Ver detalles</a>
+									<a href="property.php?id=<?php echo $property['id']; ?>" class="btn btn-primary py-2 px-3">Ver detalles</a>
 								</div>
 							</div><!-- .property-item -->
 						</div>
