@@ -57,10 +57,6 @@ switch ($request) {
     case 'auth/logout.php':
         require 'view/auth/logout.php';
         break;
-    case 'admin/usuarios':
-    case 'admin/usuarios.php':
-        require 'view/admin/usuarios/index.php';
-        break;
     case 'admin/propiedades':
     case 'admin/propiedades.php':
         require 'view/admin/properties/index.php';
@@ -68,6 +64,14 @@ switch ($request) {
     case 'admin/propiedades/form':
     case 'admin/propiedades/form.php':
         require 'view/admin/properties/form.php';
+        break;
+    case 'admin/usuarios':
+    case 'admin/usuarios.php':
+        require 'view/admin/usuarios/index.php';
+        break;
+    case 'admin/usuarios/form':
+    case 'admin/usuarios/form.php':
+        require 'view/admin/usuarios/form.php';
         break;
     case 'admin/tipos/lista':
     case 'admin/tipos/lista.php':
