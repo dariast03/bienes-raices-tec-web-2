@@ -48,8 +48,11 @@ switch ($request) {
     case 'admin/index.php':
         require 'view/admin/index.php';
         break;
-    case 'usuario/registro.php':
+    case 'auth/registro.php':
         require 'view/auth/registro.php';
+        break;
+    case 'auth/login.php':
+        require 'view/auth/login.php';
         break;
     case 'admin/usuarios':
     case 'admin/usuarios.php':
