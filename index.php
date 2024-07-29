@@ -73,7 +73,7 @@ switch ($request) {
         break;
 
     case 'admin/caracteristicas':
-    case 'admin/characteristics.php':
+    case 'admin/caracteristicas.php':
         require 'view/admin/characteristics/index.php';
         break;
     case 'admin/caracteristicas/form':
@@ -81,13 +81,22 @@ switch ($request) {
         require 'view/admin/characteristics/form.php';
         break;
             
-    case 'admin/ubicacion':
-    case 'admin/location.php':
+    case 'admin/ubicaciones':
+    case 'admin/ubicaciones.php':
         require 'view/admin/location/index.php';
         break;
-    case 'admin/ubicacion/form':
-    case 'admin/ubicacion/form.php':
+    case 'admin/ubicaciones/form':
+    case 'admin/ubicaciones/form.php':
         require 'view/admin/location/form.php';
+        break;
+    
+    case 'admin/tipos':
+    case 'admin/tipos.php':
+        require 'view/admin/tipos/lista.php';
+        break;
+    case 'admin/tipos/crear':
+    case 'admin/tipos/crear.php':
+        require 'view/admin/tipos/crear.php';
         break;
     default:
         http_response_code(404);

@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'longitud' => $longitud
         ]);
 
-        header('Location: ' . BASE_URL . '/admin/location.php');
+        header('Location: ' . BASE_URL . '/admin/ubicaciones.php');
     }
 }
 

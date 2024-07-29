@@ -16,7 +16,7 @@ $ubicaciones = $ubicacionModel->get(); // Obtiene todas las ubicaciones
 ?>
     <div class="report-header">
         <h1 class="recent-Articles">LISTA DE UBICACIONES</h1>
-        <a class="btn btn-primary" href="<?php echo BASE_URL ?>/admin/ubicacion/form">
+        <a class="btn btn-primary" href="<?php echo BASE_URL ?>/admin/ubicaciones/form">
             CREAR
         </a>
     </div>

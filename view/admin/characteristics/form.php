@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
 
 
-        header('Location: ' . BASE_URL . '/admin/characteristics.php');
+        header('Location: ' . BASE_URL . '/admin/caracteristicas.php');
     }
 }
 
