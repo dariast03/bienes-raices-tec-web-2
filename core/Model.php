@@ -240,6 +240,11 @@ class Model
         }
     }
 
+    public function executeQuery($sql)
+    {
+        return $this->db->query($sql);
+    }
+
     public function prepare($sql)
     {
         return $this->db->connection->prepare($sql);
