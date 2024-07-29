@@ -21,75 +21,31 @@
 	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 
-	<link rel="stylesheet" href="fonts/icomoon/style.css">
-	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/fonts/icomoon/style.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/fonts/flaticon/font/flaticon.css">
 
-	<link rel="stylesheet" href="css/tiny-slider.css">
-	<link rel="stylesheet" href="css/aos.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/tiny-slider.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/aos.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/style.css">
 
 	<title>Property &mdash; Free Bootstrap 5 Website Template by Untree.co</title>
 </head>
 
 <body>
 
-	<div class="site-mobile-menu site-navbar-target">
-		<div class="site-mobile-menu-header">
-			<div class="site-mobile-menu-close">
-				<span class="icofont-close js-menu-toggle"></span>
-			</div>
-		</div>
-		<div class="site-mobile-menu-body"></div>
-	</div>
+<?php include ('layout/header.php');?> 
 
-	<nav class="site-nav">
-		<div class="container">
-			<div class="menu-bg-wrap">
-				<div class="site-navigation">
-					<a href="index.php" class="logo m-0 float-start">Property</a>
-
-					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
-						<li><a href="index.php">Home</a></li>
-						<li class="has-children">
-							<a href="properties.html">Properties</a>
-							<ul class="dropdown">
-								<li><a href="#">Buy Property</a></li>
-								<li><a href="#">Sell Property</a></li>
-								<li class="has-children">
-									<a href="#">Dropdown</a>
-									<ul class="dropdown">
-										<li><a href="#">Sub Menu One</a></li>
-										<li><a href="#">Sub Menu Two</a></li>
-										<li><a href="#">Sub Menu Three</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li class="active"><a href="services.php">Services</a></li>
-						<li><a href="about.php">About</a></li>
-						<li><a href="contact.php">Contact Us</a></li>
-					</ul>
-
-					<a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
-						<span></span>
-					</a>
-
-				</div>
-			</div>
-		</div>
-	</nav>
-
-	<div class="hero page-inner overlay" style="background-image: url('images/hero_bg_1.jpg');">
+	<div class="hero page-inner overlay" style="background-image: url('<?php echo BASE_URL ?>/assets/images/hero_bg_1.jpg');">
 
 		<div class="container">
 			<div class="row justify-content-center align-items-center">
 				<div class="col-lg-9 text-center mt-5">
-					<h1 class="heading" data-aos="fade-up">Services</h1>
+					<h1 class="heading" data-aos="fade-up">Servicios</h1>
 
 					<nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
 						<ol class="breadcrumb text-center justify-content-center">
-							<li class="breadcrumb-item "><a href="index.php">Home</a></li>
-							<li class="breadcrumb-item active text-white-50" aria-current="page">Services</li>
+							<li class="breadcrumb-item "><a href="index.php">Inicio</a></li>
+							<li class="breadcrumb-item active text-white-50" aria-current="page">Servicios</li>
 						</ol>
 					</nav>
 				</div>
@@ -104,66 +60,191 @@
 				<div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
 					<div class="box-feature mb-4">
 						<span class="flaticon-house mb-4 d-block"></span>
-						<h3 class="text-black mb-3 font-weight-bold">Quality Properties</h3>
-						<p class="text-black-50">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-						<p><a href="#" class="learn-more">Read more</a></p>
+						<h3 class="text-black mb-3 font-weight-bold">Propiedades de Calidad</h3>
+						<p class="text-black-50">
+						Nuestras propiedades de calidad se distinguen por su excelencia en diversos aspectos que 
+						las hacen altamente deseables para los compradores. Estas propiedades suelen estar 
+						ubicadas en zonas privilegiadas, con fácil acceso a servicios esenciales como escuelas, 
+						hospitales, centros comerciales y transporte público. Además, cuentan con una construcción
+						 robusta y materiales de alta gama que garantizan durabilidad y estética.
+
+						El diseño arquitectónico de una propiedad de calidad es otro factor crucial, ya que busca 
+						maximizar el uso del espacio y la luz natural, creando ambientes confortables y 
+						funcionales. Las instalaciones y acabados, como cocinas modernas, baños elegantes y 
+						sistemas de climatización eficientes, también son características destacadas.
+
+						Estas propiedades suelen ofrecer características adicionales como jardines bien 
+						cuidados, áreas recreativas, seguridad las 24 horas y tecnología de punta para el hogar 
+						inteligente. Todo esto contribuye a una experiencia de vida superior, satisfaciendo las 
+						expectativas más exigentes de los compradores.
+						</p>
 					</div>
 				</div>
 				<div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
 					<div class="box-feature mb-4">
 						<span class="flaticon-house-2 mb-4 d-block-3"></span>
-						<h3 class="text-black mb-3 font-weight-bold">Top Rated Agent</h3>
-						<p class="text-black-50">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-						<p><a href="#" class="learn-more">Read more</a></p>
+						<h3 class="text-black mb-3 font-weight-bold">Mercado Inmobiliario</h3>
+						<p class="text-black-50">
+						En el mercado inmobiliario, se pueden encontrar diferentes tipos de propiedades. 
+						Cada uno de estos segmentos tiene sus propias 
+						características y dinámicas. Por ejemplo, el mercado residencial incluye viviendas 
+						unifamiliares, apartamentos y condominios, mientras que el mercado comercial abarca 
+						oficinas, locales comerciales y centros comerciales.
+
+						Los agentes inmobiliarios juegan un papel crucial en este mercado, ya que facilitan las 
+						transacciones entre compradores y vendedores, proporcionando asesoramiento y gestionando 
+						los aspectos legales y financieros1. Además, el mercado inmobiliario está influenciado 
+						por factores como las tasas de interés, la economía global, las políticas gubernamentales 
+						y las tendencias demográficas.
+
+						Comprender el mercado inmobiliario es esencial para tomar decisiones informadas, ya sea 
+						para comprar, vender o invertir en propiedades. Un análisis detallado de las tendencias 
+						del mercado, la oferta y la demanda, y las condiciones económicas puede ayudar a maximizar
+						 las oportunidades y minimizar los riesgos.
+						</p>
 					</div>
 				</div>
 				<div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="500">
 					<div class="box-feature mb-4">
 						<span class="flaticon-building mb-4 d-block"></span>
-						<h3 class="text-black mb-3 font-weight-bold">Property for Sale</h3>
-						<p class="text-black-50">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-						<p><a href="#" class="learn-more">Read more</a></p>
+						<h3 class="text-black mb-3 font-weight-bold">Propiedades en Venta</h3>
+						<p class="text-black-50">
+						En nuestra página web de bienes raíces, nos 
+						especializamos en ofrecer un servicio completo y personalizado para cada cliente. 
+						Comenzamos con una evaluación detallada de la propiedad para determinar su valor 
+						de mercado. Luego, desarrollamos una estrategia de marketing efectiva que incluye 
+						descripciones detalladas, fotografías de alta calidad, mapa interactivo con la ubicacion 
+						y recorridos virtuales para resaltar las características únicas de cada inmueble. 
+						
+						Utilizamos plataformas digitales y redes sociales para maximizar la visibilidad de las 
+						propiedades y atraer a compradores potenciales. Nuestro equipo de expertos está 
+						disponible para guiar a los clientes a través de cada paso del proceso, desde la 
+						organización de visitas hasta la negociación de ofertas. Además, nos aseguramos 
+						de que todos los aspectos legales y financieros se manejen con la máxima transparencia y 
+						profesionalismo. Nuestro objetivo es facilitar una experiencia de compra o venta sin 
+						complicaciones, asegurando la satisfacción total de nuestros clientes.
+						</p>
 					</div>
 				</div>
 				<div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="600">
 					<div class="box-feature mb-4">
 						<span class="flaticon-house-3 mb-4 d-block-1"></span>
-						<h3 class="text-black mb-3 font-weight-bold">House for Sale</h3>
-						<p class="text-black-50">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-						<p><a href="#" class="learn-more">Read more</a></p>
+						<h3 class="text-black mb-3 font-weight-bold">Agentes Calificados</h3>
+						<p class="text-black-50">
+						Nuestros agentes inmobiliarios calificados son profesionales esenciales en el mercado de 
+						bienes raíces. Su experiencia y conocimientos les permiten guiar a los clientes a través 
+						de todo el proceso de compra, venta o alquiler de propiedades. Estos agentes poseen una 
+						sólida comprensión del mercado inmobiliario, incluyendo las tendencias actuales, los 
+						precios y las regulaciones legales.
+
+						Nuestros agentes se destaca por sus habilidades de comunicación y 
+						negociación, lo que les permite mediar eficazmente entre compradores y vendedores 
+						para alcanzar acuerdos beneficiosos para ambas partes. Además, están capacitados para 
+						realizar evaluaciones precisas de las propiedades y gestionar toda la documentación necesaria para asegurar transacciones 
+						transparentes y seguras.
+
+						Nuestros agentes se esfuerzan por ofrecer un servicio personalizado y de alta calidad. Su objetivo es 
+						facilitar una experiencia sin complicaciones para sus clientes, brindando asesoramiento 
+						integral y apoyo en cada etapa del proceso.
+						</p>
 					</div>
 				</div>
 
 				<div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
 					<div class="box-feature mb-4">
 						<span class="flaticon-house-4 mb-4 d-block"></span>
-						<h3 class="text-black mb-3 font-weight-bold">Quality Properties</h3>
-						<p class="text-black-50">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-						<p><a href="#" class="learn-more">Read more</a></p>
+						<h3 class="text-black mb-3 font-weight-bold">Financiamiento e Hipotecas</h3>
+						<p class="text-black-50">
+						El financiamiento e hipotecas son aspectos fundamentales en la compra de propiedades. En 
+						nuestra página web de bienes raíces, ofrecemos una guía completa para ayudarte a entender 
+						y navegar este proceso. Una hipoteca es un préstamo que te permite financiar la compra de 
+						una propiedad, con la misma propiedad como garantía. Existen diferentes tipos de hipotecas, 
+						como las de tasa fija, tasa variable y mixtas, cada una con sus propias ventajas y 
+						consideraciones.
+
+						Nuestro equipo de expertos está aquí para asesorarte en la elección de la hipoteca que mejor 
+						se adapte a tus necesidades y situación financiera. Te proporcionamos información detallada 
+						sobre las opciones de financiamiento disponibles, incluyendo los requisitos para calificar, 
+						las tasas de interés actuales y los plazos de pago. Además, te ayudamos a preparar toda la 
+						documentación necesaria y te guiamos a través del proceso de solicitud para asegurar una 
+						experiencia sin complicaciones.
+
+						Entendemos que cada cliente es único, por lo que ofrecemos soluciones personalizadas para 
+						ayudarte a alcanzar tus objetivos de propiedad de manera eficiente y segura.
+						</p>
 					</div>
 				</div>
 				<div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
 					<div class="box-feature mb-4">
 						<span class="flaticon-building mb-4 d-block-3"></span>
-						<h3 class="text-black mb-3 font-weight-bold">Top Rated Agent</h3>
-						<p class="text-black-50">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-						<p><a href="#" class="learn-more">Read more</a></p>
+						<h3 class="text-black mb-3 font-weight-bold">Recursos y Herramientas</h3>
+						<p class="text-black-50">
+						En nuestra página web de bienes raíces, ofrecemos una amplia gama de recursos y 
+						herramientas diseñadas para facilitar tu experiencia en el mercado inmobiliario. 
+						Entre nuestros recursos más destacados se encuentran las calculadoras de hipotecas, que 
+						te permiten estimar tus pagos mensuales y comparar diferentes opciones de financiamiento. 
+						También contamos con evaluadores de propiedades que te ayudan a determinar el valor de 
+						mercado de un inmueble basado en características específicas y comparaciones con 
+						propiedades similares.
+
+						Además, proporcionamos guías detalladas sobre el proceso de compra y venta de propiedades, 
+						incluyendo consejos prácticos y pasos a seguir para asegurar una transacción exitosa. 
+						Nuestras herramientas de búsqueda avanzada te permiten filtrar propiedades según tus 
+						preferencias, como ubicación, precio, tamaño y características adicionales.
+
+						Ofrecemos análisis de mercado y tendencias inmobiliarias que te ayudan 
+						a tomar decisiones informadas. También puedes acceder a recursos educativos como artículos 
+						y videos que cubren desde mantenimiento del hogar hasta estrategias 
+						de inversión.
+						</p>
 					</div>
 				</div>
 				<div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="500">
 					<div class="box-feature mb-4">
 						<span class="flaticon-house mb-4 d-block"></span>
-						<h3 class="text-black mb-3 font-weight-bold">Property for Sale</h3>
-						<p class="text-black-50">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-						<p><a href="#" class="learn-more">Read more</a></p>
+						<h3 class="text-black mb-3 font-weight-bold">Inversión Inmobiliaria</h3>
+						<p class="text-black-50">
+						La inversión inmobiliaria es una estrategia financiera que implica la compra, posesión, 
+						gestión, alquiler y/o venta de propiedades con el objetivo de obtener un beneficio. En 
+						nuestra página web de bienes raíces, ofrecemos una guía completa para ayudarte a entender 
+						y aprovechar las oportunidades en este mercado. La inversión en bienes raíces puede 
+						incluir propiedades residenciales, comerciales e industriales, cada una con sus propias 
+						ventajas y consideraciones.
+
+						Nuestro equipo de expertos está aquí para asesorarte en cada paso del proceso, desde la 
+						identificación de propiedades con alto potencial de retorno hasta la gestión de alquileres 
+						y la venta estratégica. Proporcionamos análisis detallados del mercado, tendencias actuales 
+						y proyecciones futuras para ayudarte a tomar decisiones informadas. Además, ofrecemos 
+						recursos educativos y herramientas, como calculadoras de retorno de inversión y evaluadores 
+						de propiedades, para facilitar tu experiencia de inversión.
+
+						Invertir en bienes raíces no solo puede generar ingresos pasivos a través de alquileres, 
+						sino también aumentar tu patrimonio a largo plazo mediante la apreciación del valor de 
+						las propiedades.
+						</p>
 					</div>
 				</div>
 				<div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="600">
 					<div class="box-feature mb-4">
 						<span class="flaticon-house-1 mb-4 d-block-1"></span>
-						<h3 class="text-black mb-3 font-weight-bold">House for Sale</h3>
-						<p class="text-black-50">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-						<p><a href="#" class="learn-more">Read more</a></p>
+						<h3 class="text-black mb-3 font-weight-bold">Noticias y Actualizaciones</h3>
+						<p class="text-black-50">
+						En nuestra página web de bienes raíces, mantenemos a nuestros visitantes informados con 
+						las últimas noticias y actualizaciones del mercado inmobiliario. Ofrecemos artículos y 
+						reportajes sobre tendencias actuales, análisis de mercado, cambios en las regulaciones y 
+						políticas gubernamentales que afectan al sector. También cubrimos eventos importantes, 
+						como ferias inmobiliarias y lanzamientos de nuevos proyectos.
+
+						Nuestro objetivo es proporcionar información precisa y relevante para ayudar a nuestros 
+						usuarios a tomar decisiones informadas. Ofrecemos actualizaciones periódicas 
+						sobre las tasas de interés, opciones de financiamiento y oportunidades de inversión. Los 
+						visitantes pueden mantenerse al día obtener una visión clara del panorama inmobiliario.
+
+						Para aquellos interesados en el mercado local, proporcionamos informes detallados sobre 
+						las condiciones del mercado en diferentes regiones, destacando áreas de crecimiento y 
+						oportunidades emergentes. Buscamos ser una fuente confiable y valiosa de información para 
+						todos los interesados en el mundo de los bienes raíces
+						</p>
 					</div>
 				</div>
 
@@ -172,199 +253,8 @@
 	</div>
 
 
+	<?php include ('layout/footer.php');?> 
 
-	<div class="section sec-testimonials">
-		<div class="container">
-			<div class="row mb-5 align-items-center">
-				<div class="col-md-6">
-					<h2 class="font-weight-bold heading text-primary mb-4 mb-md-0">Customer Says</h2>
-				</div>
-				<div class="col-md-6 text-md-end">
-					<div id="testimonial-nav">
-						<span class="prev" data-controls="prev">Prev</span>
-
-						<span class="next" data-controls="next">Next</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-4">
-
-				</div>
-			</div>
-			<div class="testimonial-slider-wrap">
-				<div class="testimonial-slider">
-					<div class="item">
-						<div class="testimonial">
-							<img src="images/person_1-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-							<div class="rate">
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-							</div>
-							<h3 class="h5 text-primary mb-4">James Smith</h3>
-							<blockquote>
-								<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-							</blockquote>
-							<p class="text-black-50">Designer, Co-founder</p>
-						</div>
-					</div>
-
-					<div class="item">
-						<div class="testimonial">
-							<img src="images/person_2-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-							<div class="rate">
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-							</div>
-							<h3 class="h5 text-primary mb-4">Mike Houston</h3>
-							<blockquote>
-								<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-							</blockquote>
-							<p class="text-black-50">Designer, Co-founder</p>
-						</div>
-					</div>
-
-					<div class="item">
-						<div class="testimonial">
-							<img src="images/person_3-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-							<div class="rate">
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-							</div>
-							<h3 class="h5 text-primary mb-4">Cameron Webster</h3>
-							<blockquote>
-								<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-							</blockquote>
-							<p class="text-black-50">Designer, Co-founder</p>
-						</div>
-					</div>
-
-					<div class="item">
-						<div class="testimonial">
-							<img src="images/person_4-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-							<div class="rate">
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-							</div>
-							<h3 class="h5 text-primary mb-4">Dave Smith</h3>
-							<blockquote>
-								<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-							</blockquote>
-							<p class="text-black-50">Designer, Co-founder</p>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="site-footer">
-		<div class="container">
-
-			<div class="row">
-				<div class="col-lg-4">
-					<div class="widget">
-						<h3>Contact</h3>
-						<address>43 Raymouth Rd. Baltemoer, London 3910</address>
-						<ul class="list-unstyled links">
-							<li><a href="tel://11234567890">+1(123)-456-7890</a></li>
-							<li><a href="tel://11234567890">+1(123)-456-7890</a></li>
-							<li><a href="mailto:info@mydomain.com">info@mydomain.com</a></li>
-						</ul>
-					</div> <!-- /.widget -->
-				</div> <!-- /.col-lg-4 -->
-				<div class="col-lg-4">
-					<div class="widget">
-						<h3>Sources</h3>
-						<ul class="list-unstyled float-start links">
-							<li><a href="#">About us</a></li>
-							<li><a href="#">Services</a></li>
-							<li><a href="#">Vision</a></li>
-							<li><a href="#">Mission</a></li>
-							<li><a href="#">Terms</a></li>
-							<li><a href="#">Privacy</a></li>
-						</ul>
-						<ul class="list-unstyled float-start links">
-							<li><a href="#">Partners</a></li>
-							<li><a href="#">Business</a></li>
-							<li><a href="#">Careers</a></li>
-							<li><a href="#">Blog</a></li>
-							<li><a href="#">FAQ</a></li>
-							<li><a href="#">Creative</a></li>
-						</ul>
-					</div> <!-- /.widget -->
-				</div> <!-- /.col-lg-4 -->
-				<div class="col-lg-4">
-					<div class="widget">
-						<h3>Links</h3>
-						<ul class="list-unstyled links">
-							<li><a href="#">Our Vision</a></li>
-							<li><a href="#">About us</a></li>
-							<li><a href="#">Contact us</a></li>
-						</ul>
-
-						<ul class="list-unstyled social">
-							<li><a href="#"><span class="icon-instagram"></span></a></li>
-							<li><a href="#"><span class="icon-twitter"></span></a></li>
-							<li><a href="#"><span class="icon-facebook"></span></a></li>
-							<li><a href="#"><span class="icon-linkedin"></span></a></li>
-							<li><a href="#"><span class="icon-pinterest"></span></a></li>
-							<li><a href="#"><span class="icon-dribbble"></span></a></li>
-						</ul>
-					</div> <!-- /.widget -->
-				</div> <!-- /.col-lg-4 -->
-			</div> <!-- /.row -->
-
-			<div class="row mt-5">
-				<div class="col-12 text-center">
-					<!-- 
-              **==========
-              NOTE: 
-              Please don't remove this copyright link unless you buy the license here https://untree.co/license/  
-              **==========
-            -->
-
-					<p>Copyright &copy;<script>
-							document.write(new Date().getFullYear());
-						</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ -->
-					</p>
-
-				</div>
-			</div>
-		</div> <!-- /.container -->
-	</div> <!-- /.site-footer -->
-
-
-	<!-- Preloader -->
-	<div id="overlayer"></div>
-	<div class="loader">
-		<div class="spinner-border" role="status">
-			<span class="visually-hidden">Loading...</span>
-		</div>
-	</div>
-
-
-	<script src="js/bootstrap.bundle.min.js"></script>
-	<script src="js/tiny-slider.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/navbar.js"></script>
-	<script src="js/counter.js"></script>
-	<script src="js/custom.js"></script>
 </body>
 
 </html>

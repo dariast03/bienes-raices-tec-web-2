@@ -25,10 +25,16 @@ switch ($request) {
     case 'index.php':
         require 'view/client/index.php';
         break;
+    case 'properties.php':
+        require 'view/client/properties.php';
+        break;
+    case 'services.php':
+        require 'view/client/services.php';
+        break;
     case 'about.php':
         require 'view/client/about.php';
         break;
-    case 'contacto.php':
+    case 'contact.php':
         require 'view/client/contact.php';
         break;
     case 'admin':
@@ -37,7 +43,11 @@ switch ($request) {
         break;
     case 'admin/propiedades':
     case 'admin/propiedades.php':
-        require 'view/admin/properties.php';
+        require 'view/admin/properties/index.php';
+        break;
+    case 'admin/propiedades/form':
+    case 'admin/propiedades/form.php':
+        require 'view/admin/properties/form.php';
         break;
     case 'admin/tipos/lista':
     case 'admin/tipos/lista.php':

@@ -33,63 +33,19 @@
 
 <body>
 
-	<div class="site-mobile-menu site-navbar-target">
-		<div class="site-mobile-menu-header">
-			<div class="site-mobile-menu-close">
-				<span class="icofont-close js-menu-toggle"></span>
-			</div>
-		</div>
-		<div class="site-mobile-menu-body"></div>
-	</div>
-
-	<nav class="site-nav">
-		<div class="container">
-			<div class="menu-bg-wrap">
-				<div class="site-navigation">
-					<a href="index.php" class="logo m-0 float-start">Property</a>
-
-					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
-						<li><a href="index.php">Home</a></li>
-						<li class="has-children">
-							<a href="properties.html">Properties</a>
-							<ul class="dropdown">
-								<li><a href="#">Buy Property</a></li>
-								<li><a href="#">Sell Property</a></li>
-								<li class="has-children">
-									<a href="#">Dropdown</a>
-									<ul class="dropdown">
-										<li><a href="#">Sub Menu One</a></li>
-										<li><a href="#">Sub Menu Two</a></li>
-										<li><a href="#">Sub Menu Three</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li><a href="services.php">Services</a></li>
-						<li class="active"><a href="about.php">About</a></li>
-						<li><a href="contact.php">Contact Us</a></li>
-					</ul>
-
-					<a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
-						<span></span>
-					</a>
-
-				</div>
-			</div>
-		</div>
-	</nav>
+<?php include ('layout/header.php');?> 
 
 	<div class="hero page-inner overlay" style="background-image: url('<?php echo BASE_URL ?>/assets/images/hero_bg_3.jpg');">
 
 		<div class="container">
 			<div class="row justify-content-center align-items-center">
 				<div class="col-lg-9 text-center mt-5">
-					<h1 class="heading" data-aos="fade-up">About</h1>
+					<h1 class="heading" data-aos="fade-up">Sobre Nosotros</h1>
 
 					<nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
 						<ol class="breadcrumb text-center justify-content-center">
-							<li class="breadcrumb-item "><a href="index.php">Home</a></li>
-							<li class="breadcrumb-item active text-white-50" aria-current="page">About</li>
+							<li class="breadcrumb-item "><a href="index.php">Inicio</a></li>
+							<li class="breadcrumb-item active text-white-50" aria-current="page">Sobre Nosotros</li>
 						</ol>
 					</nav>
 				</div>
@@ -105,14 +61,41 @@
 					<h2 class="font-weight-bold heading text-primary mb-4">About Us</h2>
 				</div>
 				<div class="col-lg-6">
-					<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam enim pariatur similique debitis vel nisi qui reprehenderit totam? Quod maiores.</p>
-					<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni saepe, explicabo nihil. Est, autem error cumque ipsum repellendus veniam sed blanditiis unde ullam maxime veritatis perferendis cupiditate, at non esse!</p>
-					<p class="text-black-50">Enim, nisi labore exercitationem facere cupiditate nobis quod autem veritatis quis minima expedita. Cumque odio illo iusto reiciendis, labore impedit omnis, nihil aut atque, facilis necessitatibus asperiores porro qui nam.</p>
+					<p class="text-black-50">
+					Bienvenidos a nuestra pagina web, tu socio confiable en el mundo de los bienes raíces. 
+					Con años de experiencia en el mercado inmobiliario, nos dedicamos a ofrecer un servicio personalizado 
+					y de alta calidad a cada uno de nuestros clientes. Nuestro equipo está compuesto por agentes 
+					inmobiliarios calificados y apasionados, comprometidos en ayudarte a encontrar la propiedad perfecta 
+					o a vender tu inmueble al mejor precio.
+					</p>
+					<p class="text-black-50">
+					Entendemos que cada cliente tiene necesidades y objetivos únicos. Por eso, nos esforzamos por 
+					proporcionar soluciones a medida, basadas en un profundo conocimiento del mercado y en un 
+					enfoque centrado en el cliente. Ofrecemos una amplia gama de servicios, desde la evaluación y 
+					tasación de propiedades hasta la gestión de ventas y alquileres, pasando por asesoramiento en 
+					inversiones inmobiliarias.
+					</p>
+					<p class="text-black-50">
+					Nuestra misión es facilitar el proceso de compra, venta o alquiler de propiedades, asegurando 
+					una experiencia sin complicaciones y satisfactoria. Nos enorgullece nuestra transparencia, 
+					integridad y profesionalismo, valores que nos han permitido construir relaciones duraderas 
+					con nuestros clientes y socios.
+					</p>
 				</div>
 				<div class="col-lg-6">
 
-					<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni saepe, explicabo nihil. Est, autem error cumque ipsum repellendus veniam sed blanditiis unde ullam maxime veritatis perferendis cupiditate, at non esse!</p>
-					<p class="text-black-50">Enim, nisi labore exercitationem facere cupiditate nobis quod autem veritatis quis minima expedita. Cumque odio illo iusto reiciendis, labore impedit omnis, nihil aut atque, facilis necessitatibus asperiores porro qui nam.</p>
+					<p class="text-black-50">
+					Además, utilizamos las últimas tecnologías y estrategias de marketing digital para maximizar 
+					la visibilidad de las propiedades y atraer a compradores potenciales. Nuestro sitio web 
+					ofrece herramientas avanzadas, como buscadores de propiedades, calculadoras de hipotecas y 
+					evaluadores de mercado, diseñadas para ayudarte a tomar decisiones informadas.
+					</p>
+					<p class="text-black-50">
+					No solo vendemos propiedades, sino que también construimos sueños y comunidades. Te invitamos 
+					a explorar nuestro sitio web y a ponerte en contacto con nosotros para cualquier consulta o 
+					para comenzar tu viaje en el mundo inmobiliario. Estamos aquí para ayudarte en cada paso del 
+					camino.
+					</p>
 				</div>
 			</div>
 
@@ -133,8 +116,13 @@
 							<span class="icon-home2"></span>
 						</span>
 						<div class="feature-text">
-							<h3 class="heading">Quality properties</h3>
-							<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste.</p>
+							<h3 class="heading">Experiencia y Conocimiento</h3>
+							<p class="text-black-50">
+							Nuestro profundo conocimiento del sector nos permite identificar las mejores 
+							oportunidades y proporcionar asesoramiento experto en cada transacción. Nos 
+							mantenemos actualizados con las últimas tendencias y regulaciones, asegurando que 
+							nuestros clientes reciban la información más precisa y relevante.
+							</p>
 						</div>
 					</div>
 
@@ -143,8 +131,13 @@
 							<span class="icon-person"></span>
 						</span>
 						<div class="feature-text">
-							<h3 class="heading">Top rated agents</h3>
-							<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste.</p>
+							<h3 class="heading">Profesionalismo y Ética</h3>
+							<p class="text-black-50">
+							Actuamos con integridad y transparencia, asegurando que todas nuestras acciones y 
+							decisiones estén guiadas por los más altos estándares éticos. Nuestro equipo de 
+							agentes inmobiliarios está dedicado a ofrecer un servicio de calidad, respetando 
+							siempre los intereses y necesidades de nuestros clientes.
+							</p>
 						</div>
 					</div>
 
@@ -153,8 +146,13 @@
 							<span class="icon-security"></span>
 						</span>
 						<div class="feature-text">
-							<h3 class="heading">Easy and safe</h3>
-							<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste.</p>
+							<h3 class="heading">Atención Personalizada</h3>
+							<p class="text-black-50">
+							Entendemos que cada persona tiene necesidades y objetivos únicos, por lo que 
+							adaptamos nuestros servicios para satisfacer esas expectativas. Desde la primera 
+							consulta hasta el cierre de la transacción, nuestro equipo de expertos está dedicado 
+							a brindarte un apoyo constante y asesoramiento a medida.
+							</p>
 						</div>
 					</div>
 				</div>
@@ -176,8 +174,13 @@
 							<span class="icon-home2"></span>
 						</span>
 						<div class="feature-text">
-							<h3 class="heading">Quality properties</h3>
-							<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste.</p>
+							<h3 class="heading">Compromiso con la Calidad</h3>
+							<p class="text-black-50">
+							Nos esforzamos por ofrecer servicios inmobiliarios de la más alta calidad, asegurando 
+							que cada transacción se maneje con precisión y profesionalismo. Desde la evaluación 
+							inicial hasta el cierre de la venta, cada paso del proceso es supervisado por 
+							expertos para garantizar la satisfacción total de nuestros clientes.
+							</p>
 						</div>
 					</div>
 
@@ -186,8 +189,12 @@
 							<span class="icon-person"></span>
 						</span>
 						<div class="feature-text">
-							<h3 class="heading">Top rated agents</h3>
-							<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste.</p>
+							<h3 class="heading">Equipo Profesional</h3>
+							<p class="text-black-50">
+							Nuestros agentes inmobiliarios poseen una amplia experiencia y conocimientos 
+							profundos del sector, lo que les permite asesorar a nuestros clientes de manera 
+							efectiva y personalizada. 
+							</p>
 						</div>
 					</div>
 
@@ -196,8 +203,12 @@
 							<span class="icon-security"></span>
 						</span>
 						<div class="feature-text">
-							<h3 class="heading">Easy and safe</h3>
-							<p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste.</p>
+							<h3 class="heading">Responsabilidad Social</h3>
+							<p class="text-black-50">
+							Nos comprometemos a prácticas sostenibles y éticas en todas nuestras operaciones. 
+							Participamos activamente en iniciativas locales, apoyando proyectos de desarrollo 
+							comunitario y conservación del medio ambiente. 
+							</p>
 						</div>
 					</div>
 				</div>
@@ -246,202 +257,8 @@
 		</div>
 	</div>
 
+	<?php include ('layout/footer.php');?> 
 
-
-	<div class="section sec-testimonials bg-light">
-		<div class="container">
-			<div class="row mb-5 align-items-center">
-				<div class="col-md-6">
-					<h2 class="font-weight-bold heading text-primary mb-4 mb-md-0">The Team</h2>
-				</div>
-				<div class="col-md-6 text-md-end">
-					<div id="testimonial-nav">
-						<span class="prev" data-controls="prev">Prev</span>
-
-						<span class="next" data-controls="next">Next</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-4">
-
-				</div>
-			</div>
-			<div class="testimonial-slider-wrap">
-				<div class="testimonial-slider">
-					<div class="item">
-						<div class="testimonial">
-							<img src="<?php echo BASE_URL ?>/assets/images/person_1-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-							<h3 class="h5 text-primary">James Smith</h3>
-							<p class="text-black-50">Designer, Co-founder</p>
-
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-
-							<ul class="social list-unstyled list-inline dark-hover">
-								<li class="list-inline-item"><a href="#"><span class="icon-twitter"></span></a></li>
-								<li class="list-inline-item"><a href="#"><span class="icon-facebook"></span></a></li>
-								<li class="list-inline-item"><a href="#"><span class="icon-linkedin"></span></a></li>
-								<li class="list-inline-item"><a href="#"><span class="icon-instagram"></span></a></li>
-							</ul>
-
-						</div>
-					</div>
-
-					<div class="item">
-						<div class="testimonial">
-							<img src="<?php echo BASE_URL ?>/assets/images/person_2-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-							<h3 class="h5 text-primary">Carol Houston</h3>
-							<p class="text-black-50">Designer, Co-founder</p>
-
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-
-							<ul class="social list-unstyled list-inline dark-hover">
-								<li class="list-inline-item"><a href="#"><span class="icon-twitter"></span></a></li>
-								<li class="list-inline-item"><a href="#"><span class="icon-facebook"></span></a></li>
-								<li class="list-inline-item"><a href="#"><span class="icon-linkedin"></span></a></li>
-								<li class="list-inline-item"><a href="#"><span class="icon-instagram"></span></a></li>
-							</ul>
-
-
-						</div>
-					</div>
-
-					<div class="item">
-						<div class="testimonial">
-							<img src="<?php echo BASE_URL ?>/assets/images/person_3-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-							<h3 class="h5 text-primary">Synthia Cameron</h3>
-							<p class="text-black-50">Designer, Co-founder</p>
-
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-
-							<ul class="social list-unstyled list-inline dark-hover">
-								<li class="list-inline-item"><a href="#"><span class="icon-twitter"></span></a></li>
-								<li class="list-inline-item"><a href="#"><span class="icon-facebook"></span></a></li>
-								<li class="list-inline-item"><a href="#"><span class="icon-linkedin"></span></a></li>
-								<li class="list-inline-item"><a href="#"><span class="icon-instagram"></span></a></li>
-							</ul>
-
-
-						</div>
-					</div>
-
-					<div class="item">
-						<div class="testimonial">
-							<img src="<?php echo BASE_URL ?>/assets/images/person_4.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-							<h3 class="h5 text-primary">Davin Smith</h3>
-							<p class="text-black-50">Designer, Co-founder</p>
-
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-
-							<ul class="social list-unstyled list-inline dark-hover">
-								<li class="list-inline-item"><a href="#"><span class="icon-twitter"></span></a></li>
-								<li class="list-inline-item"><a href="#"><span class="icon-facebook"></span></a></li>
-								<li class="list-inline-item"><a href="#"><span class="icon-linkedin"></span></a></li>
-								<li class="list-inline-item"><a href="#"><span class="icon-instagram"></span></a></li>
-							</ul>
-
-
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="site-footer">
-		<div class="container">
-
-			<div class="row">
-				<div class="col-lg-4">
-					<div class="widget">
-						<h3>Contact</h3>
-						<address>43 Raymouth Rd. Baltemoer, London 3910</address>
-						<ul class="list-unstyled links">
-							<li><a href="tel://11234567890">+1(123)-456-7890</a></li>
-							<li><a href="tel://11234567890">+1(123)-456-7890</a></li>
-							<li><a href="mailto:info@mydomain.com">info@mydomain.com</a></li>
-						</ul>
-					</div> <!-- /.widget -->
-				</div> <!-- /.col-lg-4 -->
-				<div class="col-lg-4">
-					<div class="widget">
-						<h3>Sources</h3>
-						<ul class="list-unstyled float-start links">
-							<li><a href="#">About us</a></li>
-							<li><a href="#">Services</a></li>
-							<li><a href="#">Vision</a></li>
-							<li><a href="#">Mission</a></li>
-							<li><a href="#">Terms</a></li>
-							<li><a href="#">Privacy</a></li>
-						</ul>
-						<ul class="list-unstyled float-start links">
-							<li><a href="#">Partners</a></li>
-							<li><a href="#">Business</a></li>
-							<li><a href="#">Careers</a></li>
-							<li><a href="#">Blog</a></li>
-							<li><a href="#">FAQ</a></li>
-							<li><a href="#">Creative</a></li>
-						</ul>
-					</div> <!-- /.widget -->
-				</div> <!-- /.col-lg-4 -->
-				<div class="col-lg-4">
-					<div class="widget">
-						<h3>Links</h3>
-						<ul class="list-unstyled links">
-							<li><a href="#">Our Vision</a></li>
-							<li><a href="#">About us</a></li>
-							<li><a href="#">Contact us</a></li>
-						</ul>
-
-						<ul class="list-unstyled social">
-							<li><a href="#"><span class="icon-instagram"></span></a></li>
-							<li><a href="#"><span class="icon-twitter"></span></a></li>
-							<li><a href="#"><span class="icon-facebook"></span></a></li>
-							<li><a href="#"><span class="icon-linkedin"></span></a></li>
-							<li><a href="#"><span class="icon-pinterest"></span></a></li>
-							<li><a href="#"><span class="icon-dribbble"></span></a></li>
-						</ul>
-					</div> <!-- /.widget -->
-				</div> <!-- /.col-lg-4 -->
-			</div> <!-- /.row -->
-
-			<div class="row mt-5">
-				<div class="col-12 text-center">
-					<!-- 
-              **==========
-              NOTE: 
-              Please don't remove this copyright link unless you buy the license here https://untree.co/license/  
-              **==========
-            -->
-
-					<p>Copyright &copy;<script>
-							document.write(new Date().getFullYear());
-						</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ -->
-					</p>
-
-				</div>
-			</div>
-		</div> <!-- /.container -->
-	</div> <!-- /.site-footer -->
-
-
-	<!-- Preloader -->
-	<div id="overlayer"></div>
-	<div class="loader">
-		<div class="spinner-border" role="status">
-			<span class="visually-hidden">Loading...</span>
-		</div>
-	</div>
-
-
-	<script src="<?php echo BASE_URL ?>/assets/js/bootstrap.bundle.min.js"></script>
-	<script src="<?php echo BASE_URL ?>/assets/js/tiny-slider.js"></script>
-	<script src="<?php echo BASE_URL ?>/assets/js/aos.js"></script>
-	<script src="<?php echo BASE_URL ?>/assets/js/navbar.js"></script>
-	<script src="<?php echo BASE_URL ?>/assets/js/counter.js"></script>
-	<script src="<?php echo BASE_URL ?>/assets/js/custom.js"></script>
 </body>
 
 </html>
