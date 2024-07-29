@@ -1,5 +1,5 @@
 <?php
-require_once 'model/TipoModel.php';
+/* require_once 'model/TipoModel.php';
 require_once 'model/LocationModel.php';
 require_once 'model/CharacteristicModel.php';
 require_once 'model/CharacteristicPropertyModel.php';
@@ -38,7 +38,7 @@ foreach ($propiedades as $key => $value) {
 	}
 }
 
-exit;
+exit; */
 
 ?>
 
