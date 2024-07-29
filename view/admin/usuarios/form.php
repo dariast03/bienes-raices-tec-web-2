@@ -7,6 +7,41 @@ $users = $userModel->get();
 
 $errors = [];
 
+function repeatedEmail($email)
+{
+    global $users;
+    $isRepeated = false;
+    foreach ($users as $key => $usuario) {
+        if ($usuario['correo'] == $email) {
+            $isRepeated = true;
+        }
+    }
+    return $isRepeated;
+}
+
+function isValidPassword($password)
+{
+    $letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $numbers = '0123456789';
+
+    $hasLetter = false;
+    $hasNumber = false;
+
+    for ($i = 0; $i < strlen($password); $i++) {
+        if (strpos($letters, $password[$i]) !== false) {
+            $hasLetter = true;
+        }
+        if (strpos($numbers, $password[$i]) !== false) {
+            $hasNumber = true;
+        }
+    }
+
+
+
+    return $hasLetter && $hasNumber;
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST["nombre"] ?? '';
     $correo = $_POST["correo"] ?? '';

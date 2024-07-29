@@ -2,7 +2,7 @@
 include 'view/admin/layout/header.php';
 require_once 'model/UserModel.php';
 
-$userModel  = new PropertyModel();
+$userModel  = new UserModel();
 $usuarios = $userModel->get();
 ?>
 
