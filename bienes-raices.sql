@@ -76,8 +76,8 @@ CREATE TABLE `propiedad` (
   `id_ubicacion` int(11) NOT NULL,
   `direccion` varchar(300) NOT NULL,
   `precio` decimal(10,0) NOT NULL,
-  `superficie_total` int(11) NOT NULL,
-  `superficie_construida` int(11) NOT NULL,
+  `superficie_total` float NOT NULL,
+  `superficie_construida` float NOT NULL,
   `num_habitaciones` int(11) NOT NULL,
   `num_baños` int(11) NOT NULL,
   `año_construccion` date NOT NULL,
@@ -93,7 +93,6 @@ CREATE TABLE `propiedad` (
 --
 
 CREATE TABLE `propiedad_caracteristica` (
-  `id` int(11) NOT NULL,
   `id_caracteristica` int(11) NOT NULL,
   `valor` varchar(20) NOT NULL,
   `id_propiedad` int(11) NOT NULL
