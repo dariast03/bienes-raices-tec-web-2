@@ -58,7 +58,7 @@
 		<div class="container">
 			<div class="row text-left mb-5">
 				<div class="col-12">
-					<h2 class="font-weight-bold heading text-primary mb-4">About Us</h2>
+					<h2 class="font-weight-bold heading text-primary mb-4">Sobre Nosotros</h2>
 				</div>
 				<div class="col-lg-6">
 					<p class="text-black-50">
