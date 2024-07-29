@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors['correo'] = "El correo es obligatorio.";
     } elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
         $errors['correo'] = "El correo no es válido.";
-    } elseif (verifyEmail($correo, $contrasena)==false) {
+    } elseif (verifyEmail($correo, $contrasena) == false) {
         $errors['correo'] = "El correo o la contraseña ingresados no son correctos";
     }
 
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors['contrasena'] = "La contraseña debe tener al menos 4 caracteres.";
     } elseif (strlen($contrasena) > 40) {
         $errors['contrasena'] = "La contraseña  no debe tener más de 40 caracteres.";
-    } elseif (verifyEmail($correo, $contrasena)==false) {
+    } elseif (verifyEmail($correo, $contrasena) == false) {
         $errors['contrasena'] = "El correo o la contraseña ingresados no son correctos";
     }
 
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["user_id"] = $usuario["id"];
         $_SESSION["user_email"] = $usuario["correo"];
         $_SESSION["user_name"] = $usuario["nombre"];
-        header("Location: ".BASE_URL."/index.php");
+        header("Location: " . BASE_URL . "/admin/index.php");
         exit;
     }
 }
@@ -93,14 +93,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="submit" value="Submit">
     </form>
 
-    <?php if (isset($_SESSION["user_id"])): ?>
+    <?php if (isset($_SESSION["user_id"])) : ?>
 
         <p>Estas logueado</p>
 
         <p><a href="login.php">Log out</a></p>
 
-    <?php else: ?>
+    <?php else : ?>
         <p>No estas registrado? <a href="registro.php">Registrarse</a></p>
     <?php endif; ?>
 </body>
+
 </html>
