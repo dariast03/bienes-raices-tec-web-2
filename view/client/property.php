@@ -4,6 +4,54 @@
 * Template URI: https://untree.co/
 * License: https://creativecommons.org/licenses/by/3.0/
 */ -->
+<?php
+require_once 'core/Model.php';
+require_once 'model/PropertyModel.php';
+require_once 'model/LocationModel.php';
+require_once 'model/ImageModel.php';
+require_once 'model/CaracteristicaModel.php';
+
+// Verificar si se ha proporcionado el ID de la propiedad codificado
+if (!isset($_GET['id'])) {
+    die('ID de propiedad no especificado.');
+}
+
+// Decodificar el ID de la propiedad
+$id_codificado = $_GET['id'];
+$id = base64_decode(urldecode($id_codificado));
+
+if ($id === false) {
+    die('ID de propiedad no válido.');
+}
+
+// Instanciar los modelos necesarios
+$propertyModel = new PropertyModel();
+$locationModel = new UbicacionModel();
+$imageModel = new ImagenModel();
+$caracteristicaModel = new CaracteristicaModel();
+
+// Obtener los detalles de la propiedad
+$property = $propertyModel->find($id);
+
+if (!$property) {
+    die('Propiedad no encontrada.');
+}
+
+// Obtener la ubicación de la propiedad
+$location = $locationModel->find($property['id_ubicacion']);
+
+// Obtener las imágenes de la propiedad
+$images = $imageModel->where('id_propiedad', $property['id'])->get();
+
+// Obtener las características de la propiedad
+$caracteristicas = $caracteristicaModel->where('id_propiedad', $property['id'])->get();
+?>
+
+
+
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -21,12 +69,12 @@
 	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 
-	<link rel="stylesheet" href="fonts/icomoon/style.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/fonts/icomoon/style.css">
 	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
 
-	<link rel="stylesheet" href="css/tiny-slider.css">
-	<link rel="stylesheet" href="css/aos.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/tiny-slider.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/aos.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/style.css">
 
 	<title>Property &mdash; Free Bootstrap 5 Website Template by Untree.co</title>
 </head>
@@ -46,28 +94,17 @@
 		<div class="container">
 			<div class="menu-bg-wrap">
 				<div class="site-navigation">
-					<a href="index.php" class="logo m-0 float-start">Property</a>
+					<a href="index.php" class="logo m-0 float-start">Bienes y Raices</a>
 
 					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
-						<li><a href="index.php">Home</a></li>
-						<li class="has-children">
-							<a href="properties.html">Properties</a>
-							<ul class="dropdown">
-								<li><a href="#">Buy Property</a></li>
-								<li><a href="#">Sell Property</a></li>
-								<li class="has-children">
-									<a href="#">Dropdown</a>
-									<ul class="dropdown">
-										<li><a href="#">Sub Menu One</a></li>
-										<li><a href="#">Sub Menu Two</a></li>
-										<li><a href="#">Sub Menu Three</a></li>
-									</ul>
-								</li>
-							</ul>
+						<li><a href="index.php">Inicio</a></li>
+						<li class="active">
+							<a href="properties.php">Propiedades</a>
+							
 						</li>
-						<li><a href="services.php">Services</a></li>
-						<li><a href="about.php">About</a></li>
-						<li class="active"><a href="contact.php">Contact Us</a></li>
+						<li><a href="services.php">Servicios</a></li>
+						<li><a href="about.php">Nosotros</a></li>
+						<li class="active"><a href="contact.php">Contactanos</a></li>
 					</ul>
 
 					<a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
@@ -80,7 +117,7 @@
 	</nav>
 
 
-	<div class="hero page-inner overlay" style="background-image: url('images/hero_bg_3.jpg');">
+	<div class="hero page-inner overlay" style="background-image: url('<?php echo BASE_URL ?>/assets/images/hero_bg_3.jpg');">
 
 		<div class="container">
 			<div class="row justify-content-center align-items-center">
@@ -105,44 +142,51 @@
 
 
 	<div class="section">
-		<div class="container">
-			<div class="row justify-content-between">
-				<div class="col-lg-7">
-					<div class="img-property-slide-wrap">
-						<div class="img-property-slide">
-							<img src="images/img_1.jpg" alt="Image" class="img-fluid">
-							<img src="images/img_2.jpg" alt="Image" class="img-fluid">
-							<img src="images/img_3.jpg" alt="Image" class="img-fluid">
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<h2 class="heading text-primary">5232 California Ave. 21BC</h2>
-					<p class="meta">California, United States</p>
-					<p class="text-black-50">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione laborum quo quos omnis sed magnam id, ducimus saepe, debitis error earum, iste dicta odio est sint dolorem magni animi tenetur.</p>
-					<p class="text-black-50">Perferendis eligendi reprehenderit, assumenda molestias nisi eius iste reiciendis porro tenetur in, repudiandae amet libero. Doloremque, reprehenderit cupiditate error laudantium qui, esse quam debitis, eum cumque perferendis, illum harum expedita.</p>
-
-					<div class="d-block agent-box p-5">
-						<div class="img mb-4">
-							<img src="images/person_2-min.jpg" alt="Image" class="img-fluid">
-						</div>
-						<div class="text">
-							<h3 class="mb-0">Alicia Huston</h3>
-							<div class="meta mb-3">Real Estate</div>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione laborum quo quos omnis sed magnam id ducimus saepe</p>
-							<ul class="list-unstyled social dark-hover d-flex">
-								<li class="me-1"><a href="#"><span class="icon-instagram"></span></a></li>
-								<li class="me-1"><a href="#"><span class="icon-twitter"></span></a></li>
-								<li class="me-1"><a href="#"><span class="icon-facebook"></span></a></li>
-								<li class="me-1"><a href="#"><span class="icon-linkedin"></span></a></li>
-
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="property-slider-wrap">
+                        <div class="property-slider">
+                            <?php foreach ($images as $image) : ?>
+                                <div class="property-slide">
+                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($image['imagen']); ?>" alt="Image" class="img-fluid">
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h2 class="heading text-primary"><?php echo htmlspecialchars($property['direccion']); ?></h2>
+                    <div class="price mb-4"><span>$<?php echo number_format($property['precio']); ?></span></div>
+                    <div class="specs d-flex mb-4">
+                        <span class="d-block d-flex align-items-center me-3">
+                            <span class="icon-bed me-2"></span>
+                            <span class="caption"><?php echo htmlspecialchars($property['num_habitaciones']); ?> camas</span>
+                        </span>
+                        <span class="d-block d-flex align-items-center">
+                            <span class="icon-bath me-2"></span>
+                            <span class="caption"><?php echo htmlspecialchars($property['num_baños']); ?> baños</span>
+                        </span>
+                    </div>
+                    <div class="location mb-4">
+                        <span class="d-block mb-2">Ubicación:</span>
+                        <span><?php echo htmlspecialchars($location['ciudad'] . ', ' . $location['departamento'] . ', ' . $location['pais']); ?></span>
+                    </div>
+                    <div class="description mb-4">
+                        <p><?php echo htmlspecialchars($property['descripcion']); ?></p>
+                    </div>
+                    <div class="features mb-4">
+                        <h3 class="heading text-primary">Características</h3>
+                        <ul class="list-unstyled">
+                            <?php foreach ($caracteristicas as $caracteristica) : ?>
+                                <li><?php echo htmlspecialchars($caracteristica['nombre'] . ': ' . $caracteristica['valor']); ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 	<div class="site-footer">
 		<div class="container">
@@ -230,12 +274,12 @@
 	</div>
 
 
-	<script src="js/bootstrap.bundle.min.js"></script>
-	<script src="js/tiny-slider.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/navbar.js"></script>
-	<script src="js/counter.js"></script>
-	<script src="js/custom.js"></script>
+	<script src="<?php echo BASE_URL ?>/assets/js/bootstrap.bundle.min.js"></script>
+	<script src="<?php echo BASE_URL ?>/assets/js/tiny-slider.js"></script>
+	<script src="<?php echo BASE_URL ?>/assets/js/aos.js"></script>
+	<script src="<?php echo BASE_URL ?>/assets/js/navbar.js"></script>
+	<script src="<?php echo BASE_URL ?>/assets/js/counter.js"></script>
+	<script src="<?php echo BASE_URL ?>/assets/js/custom.js"></script>
 </body>
 
 </html>
