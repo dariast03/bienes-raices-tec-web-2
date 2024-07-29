@@ -43,7 +43,11 @@ switch ($request) {
         break;
     case 'admin/propiedades':
     case 'admin/propiedades.php':
-        require 'view/admin/properties.php';
+        require 'view/admin/properties/index.php';
+        break;
+    case 'admin/propiedades/form':
+    case 'admin/propiedades/form.php':
+        require 'view/admin/properties/form.php';
         break;
     case 'admin/tipos/lista':
     case 'admin/tipos/lista.php':
