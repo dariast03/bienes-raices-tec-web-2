@@ -1,43 +1,59 @@
 <?php include 'view/admin/layout/header.php' ?>
-
-<!--
-LISTA DE UBICACIONES
-
-<a class="btn btn-primary" href="<?php echo BASE_URL ?>/admin/ubicacion/form">
-    CREAR
-</a>
--->
-
 <?php
-require_once 'model/LocationModel.php'; // Asegúrate de que la ruta sea correcta
+require_once 'model/LocationModel.php';
 
-$ubicacionModel = new UbicacionModel(); // Crea una instancia del modelo
-$ubicaciones = $ubicacionModel->get(); // Obtiene todas las ubicaciones
+$locationModel = new UbicacionModel();
+
+$ubicaciones = $locationModel
+    ->select('ciudad', 'departamento', 'pais', 'latitud', 'longitud')
+    ->get();
 ?>
+
+<style>
+.report-body {
+    width: 100%;
+}
+.report-table {
+    width: 100%;
+}
+.report-table th, .report-table td {
+    border: 1px solid #ddd;
+    padding: 10px; 
+    
+}
+
+</style>
+<div class="report-container">
     <div class="report-header">
         <h1 class="recent-Articles">LISTA DE UBICACIONES</h1>
         <a class="btn btn-primary" href="<?php echo BASE_URL ?>/admin/ubicaciones/form">
             CREAR
-        </a>
+        </a>    
     </div>
+
     <div class="report-body">
-        <div class="report-topic-heading">
-            <h3 class="t-op">Ciudad</h3>
-            <h3 class="t-op">Departamento</h3>
-            <h3 class="t-op">Pais</h3>
-            <h3 class="t-op">Latitud</h3>
-            <h3 class="t-op">Longitud</h3>
-        </div>
-        <?php foreach ($ubicaciones as $ubicacion): ?>
-        <div class="items">
-            <div class="item1">
-                <h3 class="t-op-nextlvl"><?php echo $ubicacion['ciudad']; ?></h3>
-                <h3 class="t-op-nextlvl"><?php echo $ubicacion['departamento']; ?></h3>
-                <h3 class="t-op-nextlvl"><?php echo $ubicacion['pais']; ?></h3>
-                <h3 class="t-op-nextlvl"><?php echo $ubicacion['latitud']; ?></h3>
-                <h3 class="t-op-nextlvl"><?php echo $ubicacion['longitud']; ?></h3>
-            </div>
-        </div>
-        <?php endforeach; ?>
+        <table class="report-table">
+            <thead>
+                <tr>
+                    <th class="t-op">Ciudad</th>
+                    <th class="t-op">Departamento</th>
+                    <th class="t-op">País</th>
+                    <th class="t-op">Latitud</th>
+                    <th class="t-op">Longitud</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($ubicaciones as $ubicacion): ?>
+                <tr>
+                    <td class="t-op-nextlvl"><?php echo $ubicacion['ciudad']; ?></td>
+                    <td class="t-op-nextlvl"><?php echo $ubicacion['departamento']; ?></td>
+                    <td class="t-op-nextlvl"><?php echo $ubicacion['pais']; ?></td>
+                    <td class="t-op-nextlvl"><?php echo $ubicacion['latitud']; ?></td>
+                    <td class="t-op-nextlvl"><?php echo $ubicacion['longitud']; ?></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 <?php include 'view/admin/layout/footer.php' ?>
