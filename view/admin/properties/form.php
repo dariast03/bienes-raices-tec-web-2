@@ -12,7 +12,7 @@ $typeModel = new TipoModel();
 $locationModel = new UbicacionModel();
 $characteristicModel = new CaracteristicaModel();
 $characteristicPropertyModel = new PropiedadCaracteristicaModel();
-$propertyModel = new PropertyModel();
+$consultaModel = new PropertyModel();
 $imageModel = new ImagenModel();
 
 $types = $typeModel->get();
@@ -178,7 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($errors)) {
         if (!$id) {
-            $idPropiedad =  $propertyModel->create([
+            $idPropiedad =  $consultaModel->create([
                 'id_tipo' => $idTipo,
                 'id_ubicacion' => $idUbicacion,
                 'direccion' => $direccion,
@@ -206,7 +206,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $imageModel->create($image);
             }
         } else {
-            $propertyModel->update($id, [
+            $consultaModel->update($id, [
                 'id_tipo' => $idTipo,
                 'id_ubicacion' => $idUbicacion,
                 'direccion' => $direccion,
@@ -250,7 +250,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: ' . BASE_URL . '/admin/propiedades.php');
     }
 } else {
-    $property = $propertyModel->find($id);
+    $property = $consultaModel->find($id);
 
     $_POST['id_tipo'] = $property['id_tipo'];
     $_POST['id_ubicacion'] = $property['id_ubicacion'];

@@ -2,8 +2,8 @@
 include 'view/admin/layout/header.php';
 require_once 'model/PropertyModel.php';
 
-$propertyModel  = new PropertyModel();
-$propiedades = $propertyModel->get();
+$consultaModel  = new PropertyModel();
+$consultas = $consultaModel->get();
 ?>
 
 <div class="card">
@@ -29,7 +29,7 @@ $propiedades = $propertyModel->get();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($propiedades as $propiedad) : ?>
+                    <?php foreach ($consultas as $propiedad) : ?>
                         <tr>
                             <th scope="row"><?php echo $propiedad['id'] ?></th>
                             <td><?php echo $propiedad['direccion'] ?></td>
