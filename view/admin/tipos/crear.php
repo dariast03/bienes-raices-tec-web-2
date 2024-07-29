@@ -8,7 +8,7 @@ $types = $typeModel->get();
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-   
+
     $nombre = trim($_POST['nombre'] ?? '');
     $descripcion = trim($_POST['descripcion'] ?? '');
 
@@ -78,7 +78,7 @@ function getError($field)
                     <textarea name="descripcion" id="descripcion" class="form-control <?php echo !empty(getError('descripcion')) ? 'is-invalid' : ''; ?>" "  rows=" 3"><?php echo isset($_POST['descripcion']) ? $_POST['descripcion'] : ''; ?></textarea>
                     <div class="invalid-feedback"><?php echo getError('descripcion'); ?></div>
                 </div>
-    
+
                 <div class="col-12 mt-4">
                     <button type="submit" class="btn btn-primary">Crear Tipo</button>
                 </div>

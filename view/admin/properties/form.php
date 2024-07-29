@@ -6,11 +6,13 @@ require_once 'model/CharacteristicPropertyModel.php';
 require_once 'model/PropertyModel.php';
 require_once 'model/ImageModel.php';
 
+$id = $_GET['id'] ?? null;
+
 $typeModel = new TipoModel();
 $locationModel = new UbicacionModel();
 $characteristicModel = new CaracteristicaModel();
 $characteristicPropertyModel = new PropiedadCaracteristicaModel();
-$propertyModel = new PropertyModel();
+$consultaModel = new PropertyModel();
 $imageModel = new ImagenModel();
 
 $types = $typeModel->get();
@@ -175,35 +177,105 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
-        $idPropiedad =  $propertyModel->create([
-            'id_tipo' => $idTipo,
-            'id_ubicacion' => $idUbicacion,
-            'direccion' => $direccion,
-            'precio' => $precio,
-            'superficie_total' => $superficieTotal,
-            'superficie_construida' => $superficieConstruida,
-            'num_habitaciones' => $numHabitaciones,
-            'num_baños' => $numBaños,
-            'año_construccion' => $añoConstruccion,
-            'estado' => $estado,
-            'descripcion' => $descripcion,
-            'id_usuario' => 1, //TODO: Cambiar por el ID del usuario logueado  $_SESSION['user']['id']
-        ]);
-
-        foreach ($selectedCaracteristicas as $caracteristica) {
-            $characteristicPropertyModel->create([
-                'id_caracteristica' => $caracteristica,
-                'id_propiedad' => $idPropiedad,
-                'valor' => 'si'
+        if (!$id) {
+            $idPropiedad =  $consultaModel->create([
+                'id_tipo' => $idTipo,
+                'id_ubicacion' => $idUbicacion,
+                'direccion' => $direccion,
+                'precio' => $precio,
+                'superficie_total' => $superficieTotal,
+                'superficie_construida' => $superficieConstruida,
+                'num_habitaciones' => $numHabitaciones,
+                'num_baños' => $numBaños,
+                'año_construccion' => $añoConstruccion,
+                'estado' => $estado,
+                'descripcion' => $descripcion,
+                'id_usuario' => 1, //TODO: Cambiar por el ID del usuario logueado  $_SESSION['user']['id']
             ]);
-        }
 
-        foreach ($imagesToUpload as $image) {
-            $image['id_propiedad'] = $idPropiedad;
-            $imageModel->create($image);
+            foreach ($selectedCaracteristicas as $caracteristica) {
+                $characteristicPropertyModel->create([
+                    'id_caracteristica' => $caracteristica,
+                    'id_propiedad' => $idPropiedad,
+                    'valor' => 'si'
+                ]);
+            }
+
+            foreach ($imagesToUpload as $image) {
+                $image['id_propiedad'] = $idPropiedad;
+                $imageModel->create($image);
+            }
+        } else {
+            $consultaModel->update($id, [
+                'id_tipo' => $idTipo,
+                'id_ubicacion' => $idUbicacion,
+                'direccion' => $direccion,
+                'precio' => $precio,
+                'superficie_total' => $superficieTotal,
+                'superficie_construida' => $superficieConstruida,
+                'num_habitaciones' => $numHabitaciones,
+                'num_baños' => $numBaños,
+                'año_construccion' => $añoConstruccion,
+                'estado' => $estado,
+                'descripcion' => $descripcion,
+                'id_usuario' => 1, //TODO: Cambiar por el ID del usuario logueado  $_SESSION['user']['id']
+            ]);
+
+            $propertyCharacteristics  = $characteristicPropertyModel
+                ->select('caracteristica.nombre', 'caracteristica.descripcion', 'caracteristica.id')
+                ->join('caracteristica', 'caracteristica.id = propiedad_caracteristica.id_caracteristica')
+                ->where('id_propiedad', $id)
+                ->get();
+
+            $saveCharacteristics = [];
+
+            foreach ($propertyCharacteristics as $characteristic) {
+                $characteristicPropertyModel->executeQuery("DELETE FROM propiedad_caracteristica WHERE id_propiedad = $id AND id_caracteristica = {$characteristic['caracteristica']['id']}");
+            }
+
+            foreach ($selectedCaracteristicas as $caracteristica) {
+                $characteristicPropertyModel->create([
+                    'id_caracteristica' => $caracteristica,
+                    'id_propiedad' => $id,
+                    'valor' => 'si'
+                ]);
+            }
+
+            /* foreach ($imagesToUpload as $image) {
+                $image['id_propiedad'] = $idPropiedad;
+                $imageModel->create($image);
+            } */
         }
 
         header('Location: ' . BASE_URL . '/admin/propiedades.php');
+    }
+} else {
+    $property = $consultaModel->find($id);
+
+    $_POST['id_tipo'] = $property['id_tipo'];
+    $_POST['id_ubicacion'] = $property['id_ubicacion'];
+    $_POST['direccion'] = $property['direccion'];
+    $_POST['precio'] = $property['precio'];
+    $_POST['superficie_total'] = $property['superficie_total'];
+    $_POST['superficie_construida'] = $property['superficie_construida'];
+    $_POST['num_habitaciones'] = $property['num_habitaciones'];
+    $_POST['num_baños'] = $property['num_baños'];
+    $_POST['año_construccion'] = $property['año_construccion'];
+    $_POST['estado'] = $property['estado'];
+    $_POST['descripcion'] = $property['descripcion'];
+
+    // HASTA AQUI YA ESTARIA
+    // NO HACE FALTA ESTO YA QUE MI TABLA ES DE MUCHOS A MUCHOS Y LAS DE USTEDES SON DE 1
+    $propertyCharacteristics  = $characteristicPropertyModel
+        ->select('caracteristica.nombre', 'caracteristica.descripcion', 'caracteristica.id')
+        ->join('caracteristica', 'caracteristica.id = propiedad_caracteristica.id_caracteristica')
+        ->where('id_propiedad', $id)
+        ->get();
+
+    $saveCharacteristics = [];
+
+    foreach ($propertyCharacteristics as $characteristic) {
+        $_POST['caracteristicas'][] = $characteristic['caracteristica']['id'];
     }
 }
 
