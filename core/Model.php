@@ -16,7 +16,7 @@ class Model
     public function __construct($table)
     {
         $dbConfig = require 'config/database.php';
-        $this->db = new Database($dbConfig['host'], $dbConfig['username'], $dbConfig['password'], $dbConfig['database']);
+        $this->db = new Database($dbConfig['host'], $dbConfig['username'], $dbConfig['password'], $dbConfig['database'], $dbConfig['port']);
         $this->table = $table;
     }
 
@@ -238,6 +238,11 @@ class Model
         } else {
             return count($rows) === 1 ? $rows[0] : $rows;
         }
+    }
+
+    public function executeQuery($sql)
+    {
+        return $this->db->query($sql);
     }
 
     public function prepare($sql)
