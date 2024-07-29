@@ -13,10 +13,13 @@ require_once 'config/web.php';
 
 $request = $_SERVER['REQUEST_URI'];
 $request = str_replace(BASE_PATH, '', $request);
+$queryParams = explode('?', $request);
+
+$request = $queryParams[0];
 $request = ltrim($request, '/');
 
-/* echo $request . "<br>";
-exit; */
+$queryString = isset($queryParams[1]) ? $queryParams[1] : '';
+
 
 //TODO: Add more routes
 
@@ -29,6 +32,7 @@ switch ($request) {
         require 'view/client/properties.php';
         break;
     case 'property.php':
+        $_SERVER['QUERY_STRING'] = $queryString;
         require 'view/client/property.php';
         break;
     case 'services.php':
