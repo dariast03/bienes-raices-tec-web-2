@@ -69,6 +69,10 @@ switch ($request) {
     case 'admin/propiedades/form.php':
         require 'view/admin/properties/form.php';
         break;
+    case 'admin/consultas':
+    case 'admin/consultas.php':
+        require 'view/admin/consultas/index.php';
+        break;
     case 'admin/tipos/lista':
     case 'admin/tipos/lista.php':
         require 'view/admin/tipos/lista.php';
@@ -86,7 +90,7 @@ switch ($request) {
     case 'admin/caracteristicas/form.php':
         require 'view/admin/characteristics/form.php';
         break;
-            
+
     case 'admin/ubicaciones':
     case 'admin/ubicaciones.php':
         require 'view/admin/location/index.php';
@@ -95,7 +99,7 @@ switch ($request) {
     case 'admin/ubicaciones/form.php':
         require 'view/admin/location/form.php';
         break;
-    
+
     case 'admin/tipos':
     case 'admin/tipos.php':
         require 'view/admin/tipos/lista.php';
