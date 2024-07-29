@@ -41,6 +41,9 @@ switch ($request) {
     case 'admin/index.php':
         require 'view/admin/index.php';
         break;
+    case 'usuario/registro.php':
+        require 'view/auth/registro.php';
+        break;
     case 'admin/usuarios':
     case 'admin/usuarios.php':
         require 'view/admin/usuarios/index.php';
