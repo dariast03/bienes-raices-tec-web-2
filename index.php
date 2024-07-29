@@ -67,6 +67,28 @@ switch ($request) {
     case 'admin/tipos/lista.php':
         require 'view/admin/tipos/lista.php';
         break;
+    case 'admin/tipos/crear':
+    case 'admin/tipos/crear.php':
+        require 'view/admin/tipos/crear.php';
+        break;
+
+    case 'admin/caracteristicas':
+    case 'admin/characteristics.php':
+        require 'view/admin/characteristics/index.php';
+        break;
+    case 'admin/caracteristicas/form':
+    case 'admin/caracteristicas/form.php':
+        require 'view/admin/characteristics/form.php';
+        break;
+            
+    case 'admin/ubicacion':
+    case 'admin/location.php':
+        require 'view/admin/location/index.php';
+        break;
+    case 'admin/ubicacion/form':
+    case 'admin/ubicacion/form.php':
+        require 'view/admin/location/form.php';
+        break;
     default:
         http_response_code(404);
         require 'view/404.php';

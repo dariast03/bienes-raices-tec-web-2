@@ -30,3 +30,13 @@ debug($data);
 </body>
 
 </html>
+
+<?php include 'view/admin/layout/header.php' ?>
+
+LISTA DE TIPOS
+
+<a class="btn btn-primary" href="<?php echo BASE_URL ?>/admin/tipos/crear">
+    CREAR
+</a>
+
+<?php include 'view/admin/layout/footer.php' ?>
