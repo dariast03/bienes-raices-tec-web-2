@@ -61,7 +61,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["user_id"] = $usuario["id"];
         $_SESSION["user_email"] = $usuario["correo"];
         $_SESSION["user_name"] = $usuario["nombre"];
-        var_dump($_SESSION);
+        header("Location: ".BASE_URL."/index.php");
+        exit;
     }
 }
 
@@ -99,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p><a href="login.php">Log out</a></p>
 
     <?php else: ?>
-        <p><a href="login.php">Log in</a> o <a href="registro.php">Registrarse</a></p>
+        <p>No estas registrado? <a href="registro.php">Registrarse</a></p>
     <?php endif; ?>
 </body>
 </html>

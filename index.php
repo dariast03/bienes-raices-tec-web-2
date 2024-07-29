@@ -54,6 +54,9 @@ switch ($request) {
     case 'auth/login.php':
         require 'view/auth/login.php';
         break;
+    case 'auth/logout.php':
+        require 'view/auth/logout.php';
+        break;
     case 'admin/usuarios':
     case 'admin/usuarios.php':
         require 'view/admin/usuarios/index.php';
