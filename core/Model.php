@@ -12,12 +12,19 @@ class Model
     protected $limit = '';
     protected $joinNames = [];
     protected $selectColumns = [];
+    protected $count = false;
 
     public function __construct($table)
     {
         $dbConfig = require 'config/database.php';
         $this->db = new Database($dbConfig['host'], $dbConfig['username'], $dbConfig['password'], $dbConfig['database'], $dbConfig['port']);
         $this->table = $table;
+    }
+
+    public function count()
+    {
+        $this->count = true;
+        return $this;
     }
 
     public function select(...$columns)
@@ -76,6 +83,10 @@ class Model
         }
 
         $this->resetQuery();
+
+        if ($this->count) {
+            return $rows[0]['COUNT(*)'];
+        }
 
         return $rows;
     }
@@ -185,6 +196,10 @@ class Model
 
     private function buildSelectQuery()
     {
+        if ($this->count) {
+            return "SELECT COUNT(*) FROM {$this->table}";
+        }
+
         if (empty($this->selectColumns)) {
             return "SELECT * FROM {$this->table}";
         }
