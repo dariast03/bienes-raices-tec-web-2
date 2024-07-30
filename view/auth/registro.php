@@ -103,43 +103,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/sign.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/style.css">
     <title>Registro de Usuario</title>
 </head>
 
 <body>
-    <form class="form" action="" method="post">
-        <p class="title">Registro de Usuario</p>
-        <p class="message">Registrate y obten acceso completo a nuestra plataforma. </p>
-        
-        <div class="flex">
+    <main>
+        <form class="form" action="" method="post">
+            <p class="title">Registro de Usuario</p>
+            <p class="message">Registrate y obten acceso completo a nuestra plataforma. </p>
+
+            <div class="flex">
+                <label>
+                    <input type="text" id="nombre" name="nombre" value="<?php echo $nombre; ?>" type="text" class="input">
+                    <span>Nombre</span>
+                    <div class="error">
+                        <?php getError('nombre'); ?>
+                    </div>
+                </label>
+            </div>
+
             <label>
-                <input type="text" id="nombre" name="nombre" value="<?php echo $nombre; ?>"  type="text" class="input">
-                <span>Nombre</span>
+                <input type="email" id="correo" name="correo" value="<?php echo $correo; ?>" class="input">
+                <span>Correo</span>
                 <div class="error">
-                    <?php getError('nombre'); ?>
+                    <?php getError('correo'); ?>
                 </div>
             </label>
-        </div>  
 
-        <label>
-            <input type="email" id="correo" name="correo" value="<?php echo $correo; ?>" class="input">
-            <span>Correo</span>
-            <div class="error">
-                <?php getError('correo'); ?>
-            </div>
-        </label> 
 
-            
-        <label>
-            <input type="password" id="contrasena" name="contrasena" class="input">
-            <span>Contraseña</span>
-            <div class="error">
-                <?php getError('contrasena'); ?>
-            </div>
-        </label>
-        <input type="submit" value="Submit" class="submit">
-        <p class="signin">Ya tienes una cuenta? <a href="login.php">Iniciar Sesion</a> </p>
-    </form>
+            <label>
+                <input type="password" id="contrasena" name="contrasena" class="input">
+                <span>Contraseña</span>
+                <div class="error">
+                    <?php getError('contrasena'); ?>
+                </div>
+            </label>
+            <input type="submit" value="Submit" class="btn btn-success">
+            <p class="signin">Ya tienes una cuenta? <a href="login.php">Iniciar Sesion</a> </p>
+        </form>
+    </main>
 </body>
 
 </html>
