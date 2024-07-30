@@ -250,32 +250,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: ' . BASE_URL . '/admin/propiedades.php');
     }
 } else {
-    $property = $consultaModel->find($id);
+    if ($id) {
+        $property = $consultaModel->find($id);
 
-    $_POST['id_tipo'] = $property['id_tipo'];
-    $_POST['id_ubicacion'] = $property['id_ubicacion'];
-    $_POST['direccion'] = $property['direccion'];
-    $_POST['precio'] = $property['precio'];
-    $_POST['superficie_total'] = $property['superficie_total'];
-    $_POST['superficie_construida'] = $property['superficie_construida'];
-    $_POST['num_habitaciones'] = $property['num_habitaciones'];
-    $_POST['num_baños'] = $property['num_baños'];
-    $_POST['año_construccion'] = $property['año_construccion'];
-    $_POST['estado'] = $property['estado'];
-    $_POST['descripcion'] = $property['descripcion'];
+        $_POST['id_tipo'] = $property['id_tipo'];
+        $_POST['id_ubicacion'] = $property['id_ubicacion'];
+        $_POST['direccion'] = $property['direccion'];
+        $_POST['precio'] = $property['precio'];
+        $_POST['superficie_total'] = $property['superficie_total'];
+        $_POST['superficie_construida'] = $property['superficie_construida'];
+        $_POST['num_habitaciones'] = $property['num_habitaciones'];
+        $_POST['num_baños'] = $property['num_baños'];
+        $_POST['año_construccion'] = $property['año_construccion'];
+        $_POST['estado'] = $property['estado'];
+        $_POST['descripcion'] = $property['descripcion'];
 
-    // HASTA AQUI YA ESTARIA
-    // NO HACE FALTA ESTO YA QUE MI TABLA ES DE MUCHOS A MUCHOS Y LAS DE USTEDES SON DE 1
-    $propertyCharacteristics  = $characteristicPropertyModel
-        ->select('caracteristica.nombre', 'caracteristica.descripcion', 'caracteristica.id')
-        ->join('caracteristica', 'caracteristica.id = propiedad_caracteristica.id_caracteristica')
-        ->where('id_propiedad', $id)
-        ->get();
+        // HASTA AQUI YA ESTARIA
+        // NO HACE FALTA ESTO YA QUE MI TABLA ES DE MUCHOS A MUCHOS Y LAS DE USTEDES SON DE 1
+        $propertyCharacteristics  = $characteristicPropertyModel
+            ->select('caracteristica.nombre', 'caracteristica.descripcion', 'caracteristica.id')
+            ->join('caracteristica', 'caracteristica.id = propiedad_caracteristica.id_caracteristica')
+            ->where('id_propiedad', $id)
+            ->get();
 
-    $saveCharacteristics = [];
+        $saveCharacteristics = [];
 
-    foreach ($propertyCharacteristics as $characteristic) {
-        $_POST['caracteristicas'][] = $characteristic['caracteristica']['id'];
+        foreach ($propertyCharacteristics as $characteristic) {
+            $_POST['caracteristicas'][] = $characteristic['caracteristica']['id'];
+        }
     }
 }
 

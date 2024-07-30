@@ -112,6 +112,9 @@ switch ($request) {
     case 'admin/tipos/crear.php':
         require 'view/admin/tipos/crear.php';
         break;
+    case 'admin/delete':
+        require 'view/admin/delete.php';
+        break;
     default:
         http_response_code(404);
         require 'view/404.php';
