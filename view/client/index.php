@@ -83,6 +83,7 @@ foreach ($properties as $key => $property) {
 	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/aos.css">
 	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/style.css">
 
+
 	<title>Bienes Raices UPDS &mdash;</title>
 </head>
 
@@ -137,9 +138,9 @@ foreach ($properties as $key => $property) {
 									?>
 									<a href="property.php?id=<?php echo $property['id']; ?>" class="img">
 										<?php if ($hasImage) : ?>
-											<img src="data:image/jpeg;base64,<?php echo base64_encode($image) ?>" width="600" height="800" alt="Image" class="img-fluid">
+											<img src="data:image/jpeg;base64,<?php echo base64_encode($image) ?>" width="600" height="800" alt="Image" class="img-responsive">
 										<?php else : ?>
-											<img src="<?php echo BASE_URL ?>/assets/images/<?php echo $image; ?>" width="600" height="800" alt="Image" class="img-fluid">
+											<img src="<?php echo BASE_URL ?>/assets/images/<?php echo $image; ?>" width="600" height="800" alt="Image" class="img-responsive">
 										<?php endif; ?>
 									</a>
 									<div class="property-content">
@@ -323,7 +324,7 @@ foreach ($properties as $key => $property) {
 				<div class="testimonial-slider">
 					<div class="item">
 						<div class="testimonial">
-						<img src="<?php echo BASE_URL ?>/assets/images/persona6.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+							<img src="<?php echo BASE_URL ?>/assets/images/persona6.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
 							<div class="rate">
 								<span class="icon-star text-warning"></span>
 								<span class="icon-star text-warning"></span>

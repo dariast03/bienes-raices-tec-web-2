@@ -35,6 +35,7 @@ foreach ($properties as $key => $property) {
 	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/tiny-slider.css">
 	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/aos.css">
 	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/style.css">
+
 </head>
 
 <body>
@@ -78,9 +79,9 @@ foreach ($properties as $key => $property) {
 							<a href="property.php?id=<?php echo $property['id']; ?>" class="img">
 
 								<?php if ($hasImage) : ?>
-									<img src="data:image/jpeg;base64,<?php echo base64_encode($image) ?>" width="600" height="800" alt="Image" class="img-fluid">
+									<img src="data:image/jpeg;base64,<?php echo base64_encode($image) ?>" width="600" height="800" alt="Image" class="img-responsive">
 								<?php else : ?>
-									<img src="<?php echo BASE_URL ?>/assets/images/<?php echo $image; ?>" width="600" height="800" alt="Image" class="img-fluid">
+									<img src="<?php echo BASE_URL ?>/assets/images/<?php echo $image; ?>" width="600" height="800" alt="Image" class="img-responsive">
 								<?php endif; ?>
 
 							</a>
