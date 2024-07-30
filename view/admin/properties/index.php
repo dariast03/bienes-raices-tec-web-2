@@ -59,17 +59,5 @@ $consultas = $consultaModel->get();
     </div>
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        document.querySelectorAll('.delete-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const isConfirmed = confirm('¿Estás seguro de que deseas eliminar este registro?');
-                if (!isConfirmed) {
-                    e.preventDefault();
-                }
-            });
-        });
-    });
-</script>
 
 <?php include 'view/admin/layout/footer.php' ?>
