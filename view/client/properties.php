@@ -15,8 +15,6 @@ foreach ($properties as $key => $property) {
 	$images = $imageModel->where('id_propiedad', $property['id'])->select('imagen')->get();
 	$properties[$key]['imagenes'] = $images;
 }
-
-
 ?>
 
 <!doctype html>

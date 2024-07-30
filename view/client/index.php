@@ -41,7 +41,24 @@ foreach ($propiedades as $key => $value) {
 exit; */
 
 ?>
+<?php
+require_once 'core/Model.php';
+require_once 'model/PropertyModel.php';
+require_once 'model/ImageModel.php';
 
+// Instanciar el modelo de propiedad
+$consultaModel = new PropertyModel();
+$imageModel = new ImagenModel();
+
+// Obtener todas las propiedades
+$properties = $consultaModel->select('id', 'direccion', 'precio', 'num_habitaciones', 'num_baños')->get();
+
+// Agregar imágenes a las propiedades
+foreach ($properties as $key => $property) {
+	$images = $imageModel->where('id_propiedad', $property['id'])->select('imagen')->get();
+	$properties[$key]['imagenes'] = $images;
+}
+?>
 <!doctype html>
 <html lang="en">
 
@@ -103,242 +120,51 @@ exit; */
 					<h2 class="font-weight-bold text-primary heading">Propiedades Populares</h2>
 				</div>
 				<div class="col-lg-6 text-lg-end">
-					<p><a href="#" target="_blank" class="btn btn-primary text-white py-3 px-4">Todas las
+					<p><a href="properties.php" target="_blank" class="btn btn-primary text-white py-3 px-4">Todas las
 							propiedades</a></p>
 				</div>
 			</div>
-
 			<div class="row">
 				<div class="col-12">
 					<div class="property-slider-wrap">
 						<div class="property-slider">
-							<div class="property-item">
-								<a href="property-single.html" class="img">
-									<img src="<?php echo BASE_URL ?>/assets/images/img_1.jpg" alt="Image" class="img-fluid">
-								</a>
-								<div class="property-content">
-									<div class="price mb-2"><span>$1,291,000</span></div>
-									<div>
-										<span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-										<span class="city d-block mb-3">California, USA</span>
-										<div class="specs d-flex mb-4">
-											<span class="d-block d-flex align-items-center me-3">
-												<span class="icon-bed me-2"></span>
-												<span class="caption">2 camas</span>
-											</span>
-											<span class="d-block d-flex align-items-center">
-												<span class="icon-bath me-2"></span>
-												<span class="caption">2 baños</span>
-											</span>
+							<?php foreach ($properties as $property) : ?>
+								<div class="property-item">
+									<!-- Usa la primera imagen de las imágenes asociadas a la propiedad o imagen por defecto -->
+									<?php
+									$hasImage = !empty($property['imagenes']);
+									$image = $hasImage ? $property['imagenes'][0]['imagen'] : 'casad.jpg';
+									?>
+									<a href="property.php?id=<?php echo $property['id']; ?>" class="img">
+										<?php if ($hasImage) : ?>
+											<img src="data:image/jpeg;base64,<?php echo base64_encode($image) ?>" width="600" height="800" alt="Image" class="img-fluid">
+										<?php else : ?>
+											<img src="<?php echo BASE_URL ?>/assets/images/<?php echo $image; ?>" width="600" height="800" alt="Image" class="img-fluid">
+										<?php endif; ?>
+									</a>
+									<div class="property-content">
+										<div class="price mb-2"><span>$<?php echo number_format($property['precio']); ?></span></div>
+										<div>
+											<span class="d-block mb-2 text-black-50"><?php echo htmlspecialchars($property['direccion']); ?></span>
+											<div class="specs d-flex mb-4">
+												<span class="d-block d-flex align-items-center me-3">
+													<span class="icon-bed me-2"></span>
+													<span class="caption"><?php echo htmlspecialchars($property['num_habitaciones']); ?> camas</span>
+												</span>
+												<span class="d-block d-flex align-items-center">
+													<span class="icon-bath me-2"></span>
+													<span class="caption"><?php echo $property['num_baños']; ?> baños</span>
+												</span>
+											</div>
+											<a href="property.php?id=<?php echo $property['id']; ?>" class="btn btn-primary py-2 px-3">Ver detalles</a>
 										</div>
-										<a href="property-single.html" class="btn btn-primary py-2 px-3">Ver detalles</a>
-									</div>
+									</div><!-- .property-item -->
 								</div>
-							</div> <!-- .item -->
-
-
-							<div class="property-item">
-								<a href="property-single.html" class="img">
-									<img src="<?php echo BASE_URL ?>/assets/images/img_2.jpg" alt="Image" class="img-fluid">
-								</a>
-								<div class="property-content">
-									<div class="price mb-2"><span>$1,291,000</span></div>
-									<div>
-										<span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-										<span class="city d-block mb-3">California, USA</span>
-										<div class="specs d-flex mb-4">
-											<span class="d-block d-flex align-items-center me-3">
-												<span class="icon-bed me-2"></span>
-												<span class="caption">2 camas</span>
-											</span>
-											<span class="d-block d-flex align-items-center">
-												<span class="icon-bath me-2"></span>
-												<span class="caption">2 baños</span>
-											</span>
-										</div>
-										<a href="property-single.html" class="btn btn-primary py-2 px-3">Ver detalles</a>
-									</div>
-								</div>
-							</div> <!-- .item -->
-
-
-							<div class="property-item">
-								<a href="property-single.html" class="img">
-									<img src="<?php echo BASE_URL ?>/assets/images/img_3.jpg" alt="Image" class="img-fluid">
-								</a>
-								<div class="property-content">
-									<div class="price mb-2"><span>$1,291,000</span></div>
-									<div>
-										<span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-										<span class="city d-block mb-3">California, USA</span>
-										<div class="specs d-flex mb-4">
-											<span class="d-block d-flex align-items-center me-3">
-												<span class="icon-bed me-2"></span>
-												<span class="caption">2 camas</span>
-											</span>
-											<span class="d-block d-flex align-items-center">
-												<span class="icon-bath me-2"></span>
-												<span class="caption">2 baños</span>
-											</span>
-										</div>
-										<a href="property-single.html" class="btn btn-primary py-2 px-3">Ver detalles</a>
-									</div>
-								</div>
-							</div> <!-- .item -->
-
-
-							<div class="property-item">
-								<a href="property-single.html" class="img">
-									<img src="<?php echo BASE_URL ?>/assets/images/img_4.jpg" alt="Image" class="img-fluid">
-								</a>
-								<div class="property-content">
-									<div class="price mb-2"><span>$1,291,000</span></div>
-									<div>
-										<span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-										<span class="city d-block mb-3">California, USA</span>
-										<div class="specs d-flex mb-4">
-											<span class="d-block d-flex align-items-center me-3">
-												<span class="icon-bed me-2"></span>
-												<span class="caption">2 camas</span>
-											</span>
-											<span class="d-block d-flex align-items-center">
-												<span class="icon-bath me-2"></span>
-												<span class="caption">2 baños</span>
-											</span>
-										</div>
-										<a href="property-single.html" class="btn btn-primary py-2 px-3">Ver detalles</a>
-									</div>
-								</div>
-							</div> <!-- .item -->
-
-
-							<div class="property-item">
-								<a href="property-single.html" class="img">
-									<img src="<?php echo BASE_URL ?>/assets/images/img_5.jpg" alt="Image" class="img-fluid">
-								</a>
-								<div class="property-content">
-									<div class="price mb-2"><span>$1,291,000</span></div>
-									<div>
-										<span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-										<span class="city d-block mb-3">California, USA</span>
-										<div class="specs d-flex mb-4">
-											<span class="d-block d-flex align-items-center me-3">
-												<span class="icon-bed me-2"></span>
-												<span class="caption">2 camas</span>
-											</span>
-											<span class="d-block d-flex align-items-center">
-												<span class="icon-bath me-2"></span>
-												<span class="caption">2 baños</span>
-											</span>
-										</div>
-										<a href="property-single.html" class="btn btn-primary py-2 px-3">Ver detalles</a>
-									</div>
-								</div>
-							</div> <!-- .item -->
-
-
-							<div class="property-item">
-								<a href="property-single.html" class="img">
-									<img src="<?php echo BASE_URL ?>/assets/images/img_6.jpg" alt="Image" class="img-fluid">
-								</a>
-								<div class="property-content">
-									<div class="price mb-2"><span>$1,291,000</span></div>
-									<div>
-										<span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-										<span class="city d-block mb-3">California, USA</span>
-										<div class="specs d-flex mb-4">
-											<span class="d-block d-flex align-items-center me-3">
-												<span class="icon-bed me-2"></span>
-												<span class="caption">2 camas</span>
-											</span>
-											<span class="d-block d-flex align-items-center">
-												<span class="icon-bath me-2"></span>
-												<span class="caption">2 baños</span>
-											</span>
-										</div>
-										<a href="property-single.html" class="btn btn-primary py-2 px-3">Ver detalles</a>
-									</div>
-								</div>
-							</div> <!-- .item -->
-
-
-							<div class="property-item">
-								<a href="property-single.html" class="img">
-									<img src="<?php echo BASE_URL ?>/assets/images/img_7.jpg" alt="Image" class="img-fluid">
-								</a>
-								<div class="property-content">
-									<div class="price mb-2"><span>$1,291,000</span></div>
-									<div>
-										<span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-										<span class="city d-block mb-3">California, USA</span>
-										<div class="specs d-flex mb-4">
-											<span class="d-block d-flex align-items-center me-3">
-												<span class="icon-bed me-2"></span>
-												<span class="caption">2 camas</span>
-											</span>
-											<span class="d-block d-flex align-items-center">
-												<span class="icon-bath me-2"></span>
-												<span class="caption">2 baños</span>
-											</span>
-										</div>
-										<a href="property-single.html" class="btn btn-primary py-2 px-3">Ver detalles</a>
-									</div>
-								</div>
-							</div> <!-- .item -->
-
-
-							<div class="property-item">
-								<a href="property-single.html" class="img">
-									<img src="<?php echo BASE_URL ?>/assets/images/img_8.jpg" alt="Image" class="img-fluid">
-								</a>
-								<div class="property-content">
-									<div class="price mb-2"><span>$1,291,000</span></div>
-									<div>
-										<span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-										<span class="city d-block mb-3">California, USA</span>
-										<div class="specs d-flex mb-4">
-											<span class="d-block d-flex align-items-center me-3">
-												<span class="icon-bed me-2"></span>
-												<span class="caption">2 camas</span>
-											</span>
-											<span class="d-block d-flex align-items-center">
-												<span class="icon-bath me-2"></span>
-												<span class="caption">2 baños</span>
-											</span>
-										</div>
-										<a href="property-single.html" class="btn btn-primary py-2 px-3">Ver detalles</a>
-									</div>
-								</div>
-							</div> <!-- .item -->
-
-
-							<div class="property-item">
-								<a href="property-single.html" class="img">
-									<img src="<?php echo BASE_URL ?>/assets/images/img_1.jpg" alt="Image" class="img-fluid">
-								</a>
-								<div class="property-content">
-									<div class="price mb-2"><span>$1,291,000</span></div>
-									<div>
-										<span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-										<span class="city d-block mb-3">California, USA</span>
-										<div class="specs d-flex mb-4">
-											<span class="d-block d-flex align-items-center me-3">
-												<span class="icon-bed me-2"></span>
-												<span class="caption">2 camas</span>
-											</span>
-											<span class="d-block d-flex align-items-center">
-												<span class="icon-bath me-2"></span>
-												<span class="caption">2 baños</span>
-											</span>
-										</div>
-										<a href="property-single.html" class="btn btn-primary py-2 px-3">Ver detalles</a>
-									</div>
-								</div>
-							</div> <!-- .item -->
+							<?php endforeach; ?>
 						</div>
 						<div id="property-nav" class="controls" tabindex="0" aria-label="Carousel Navigation">
-							<span class="prev" data-controls="prev" aria-controls="property" tabindex="-1">Prev</span>
-							<span class="next" data-controls="next" aria-controls="property" tabindex="-1">Next</span>
+							<span class="prev" data-controls="prev" aria-controls="property" tabindex="-1">Anterior</span>
+							<span class="next" data-controls="next" aria-controls="property" tabindex="-1">Siguiente</span>
 						</div>
 					</div>
 				</div>
@@ -497,7 +323,7 @@ exit; */
 				<div class="testimonial-slider">
 					<div class="item">
 						<div class="testimonial">
-							<img src="<?php echo BASE_URL ?>/assets/images/person_2-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+						<img src="<?php echo BASE_URL ?>/assets/images/persona6.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
 							<div class="rate">
 								<span class="icon-star text-warning"></span>
 								<span class="icon-star text-warning"></span>
@@ -505,7 +331,7 @@ exit; */
 								<span class="icon-star text-warning"></span>
 								<span class="icon-star text-warning"></span>
 							</div>
-							<h3 class="h5 text-primary mb-4">Mike Houston</h3>
+							<h3 class="h5 text-primary mb-4">Mercedes Apaza Colque</h3>
 							<blockquote>
 								<p>&ldquo;La selección de propiedades es impresionante. Encontré una gran variedad de opciones que se ajustaban a mi presupuesto y estilo de vida.
 									Las descripciones de las propiedades son muy detalladas y precisas. No tuve que hacer muchas preguntas adicionales.&rdquo;</p>
@@ -516,7 +342,7 @@ exit; */
 
 					<div class="item">
 						<div class="testimonial">
-							<img src="<?php echo BASE_URL ?>/assets/images/person_3-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+							<img src="<?php echo BASE_URL ?>/assets/images/persona2.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
 							<div class="rate">
 								<span class="icon-star text-warning"></span>
 								<span class="icon-star text-warning"></span>
@@ -524,7 +350,7 @@ exit; */
 								<span class="icon-star text-warning"></span>
 								<span class="icon-star text-warning"></span>
 							</div>
-							<h3 class="h5 text-primary mb-4">Cameron Webster</h3>
+							<h3 class="h5 text-primary mb-4">Juana Mamani Castro</h3>
 							<blockquote>
 								<p>&ldquo;Mi agente inmobiliario fue excepcional. Siempre estuvo disponible para responder a mis preguntas y me guió en todo el proceso de compra.
 									Su conocimiento del mercado y su profesionalismo me dieron mucha confianza.&rdquo;</p>
@@ -535,7 +361,7 @@ exit; */
 
 					<div class="item">
 						<div class="testimonial">
-							<img src="<?php echo BASE_URL ?>/assets/images/person_4-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+							<img src="<?php echo BASE_URL ?>/assets/images/persona3.png" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
 							<div class="rate">
 								<span class="icon-star text-warning"></span>
 								<span class="icon-star text-warning"></span>
@@ -543,7 +369,7 @@ exit; */
 								<span class="icon-star text-warning"></span>
 								<span class="icon-star text-warning"></span>
 							</div>
-							<h3 class="h5 text-primary mb-4">Dave Smith</h3>
+							<h3 class="h5 text-primary mb-4">David Rodriguez Sanchez</h3>
 							<blockquote>
 								<p>&ldquo;Encontré mi hogar ideal gracias La casa está ubicada en un barrio tranquilo y familiar,
 									cerca de todos los servicios que necesito. El jardín es perfecto para mis hijos y la cocina es
