@@ -50,7 +50,7 @@ session_start();
         .logo {
             font-size: 27px;
             font-weight: 600;
-            color: blue;
+            color: #005555 !important;
         }
 
         .icn {
@@ -211,6 +211,10 @@ session_start();
             transition: all 0.1s ease-in-out;
         }
 
+        .nav-option h3 {
+            margin: 0;
+        }
+
         .nav-option:hover {
             border-left: 5px solid #a2a2a2;
             background-color: #dadada;
@@ -225,18 +229,23 @@ session_start();
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px;
+            gap: 10px;
+        }
+
+        .nav-icon {
+            width: 30px;
+            height: 30px;
         }
 
         .option1 {
-            border-left: 5px solid #010058af;
+            border-left: 5px solid #005555;
             background-color: var(--Border-color);
             color: white;
             cursor: pointer;
         }
 
         .option1:hover {
-            border-left: 5px solid #010058af;
+            border-left: 5px solid #005555;
             background-color: var(--Border-color);
         }
 
@@ -315,14 +324,14 @@ session_start();
         .recent-Articles {
             font-size: 30px;
             font-weight: 600;
-            color: #5500cb;
+            color: #005555;
         }
 
         .view {
             height: 35px;
             width: 90px;
             border-radius: 8px;
-            background-color: #5500cb;
+            background-color: #005555;
             color: white;
             font-size: 15px;
             border: none;
@@ -578,13 +587,10 @@ session_start();
 
         .session p,
         .session a {
-            margin: 5px 0; /* Adjust the 5px to whatever value you prefer */
+            margin: 5px 0;
+            /* Adjust the 5px to whatever value you prefer */
             padding: 0;
         }
-
-
-        
-
     </style>
 </head>
 
@@ -597,11 +603,11 @@ session_start();
 
         <?php if (isset($_SESSION["user_id"])) : ?>
             <div class="session">
-            <p>Bienvenido, <?php echo ($_SESSION["user_name"]) ?>       ></p>
-            <a href="<?php echo BASE_URL ?>/auth/logout.php">Cerrar Sesion</a>
+                <p>Bienvenido, <?php echo ($_SESSION["user_name"]) ?> ></p>
+                <a href="<?php echo BASE_URL ?>/auth/logout.php">Cerrar Sesion</a>
             </div>
-		<?php endif; ?>
-        
+        <?php endif; ?>
+
 
         <div class="message">
             <div class="dp">
