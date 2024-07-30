@@ -1,5 +1,6 @@
 <?php
 require_once 'model/LocationModel.php';
+$id = $_GET['id'] ?? null;
 
 $locationModel = new UbicacionModel();
 
@@ -63,19 +64,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-
-    
-
     if (empty($errors)) {
-        $idUbicacion =  $locationModel->create([
-            'ciudad' => $ciudad,
-            'departamento' => $departamento,
-            'pais' => $pais,
-            'latitud' => $latitud,
-            'longitud' => $longitud
-        ]);
+        if (!$id) {
+            $idUbicacion =  $locationModel->create([
+                'ciudad' => $ciudad,
+                'departamento' => $departamento,
+                'pais' => $pais,
+                'latitud' => $latitud,
+                'longitud' => $longitud
+            ]);
+        } else {
+            $locationModel->update($id, [
+                'ciudad' => $ciudad,
+                'departamento' => $departamento,
+                'pais' => $pais,
+                'latitud' => $latitud,
+                'longitud' => $longitud
+            ]);
+        }
 
         header('Location: ' . BASE_URL . '/admin/ubicaciones.php');
+    }
+}else {
+    if ($id) {
+        $location = $locationModel->find($id);
+
+        $_POST['ciudad'] = $location['ciudad'];
+        $_POST['departamento'] = $location['departamento'];
+        $_POST['pais'] = $location['pais'];
+        $_POST['latitud'] = $location['latitud'];
+        $_POST['longitud'] = $location['longitud'];
     }
 }
 

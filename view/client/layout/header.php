@@ -28,6 +28,14 @@ session_start();
 	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/aos.css">
 	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/style.css">
 
+	<style>
+		.img-responsive {
+			width: 400px !important;
+			height: 400px !important;
+			object-fit: cover !important;
+		}
+	</style>
+
 	<title>Bienes Raices UPDS &mdash;</title>
 </head>
 
@@ -51,12 +59,11 @@ session_start();
 					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
 						<li class="active"><a href="index.php">Inicio</a></li>
 						<li><a href="properties.php">Propiedades</a></li>
-						<li><a href="services.php">Servicios</a></li>
 						<li><a href="about.php">Sobre Nosotros</a></li>
 						<li><a href="contact.php">Contactanos</a></li>
-						<?php if (isset($_SESSION["user_id"])): ?>
-							<li><a href="<?php echo BASE_URL ?>/auth/logout.php"><?php echo ($_SESSION["user_email"])?></a></li>
-						<?php else: ?>
+						<?php if (isset($_SESSION["user_id"])) : ?>
+							<li><a href="<?php echo BASE_URL ?>/auth/logout.php"><?php echo ($_SESSION["user_email"]) ?></a></li>
+						<?php else : ?>
 							<li><a href="<?php echo BASE_URL ?>/auth/login.php">Iniciar Sesion</a></li>
 						<?php endif; ?>
 					</ul>

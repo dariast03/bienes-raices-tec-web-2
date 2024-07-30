@@ -1,48 +1,34 @@
-<!-- /*
-* Template Name: Property
-* Template Author: Untree.co
-* Template URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
 <?php
 
 require_once 'model/PropertyModel.php';
 require_once 'model/LocationModel.php';
 require_once 'model/ImageModel.php';
 require_once 'model/CharacteristicPropertyModel.php';
+require_once 'model/ConsultaModel.php';
 
-// Verificar si se ha proporcionado el ID de la propiedad codificado
-if (!isset($_GET['id'])) {
-	die('ID de propiedad no especificado.');
+$id = $_GET['id'] ?? null;
+
+if (!$id) {
+	header('Location: ' . BASE_URL);
 }
 
-// Decodificar el ID de la propiedad
-$id = $_GET['id'];
-
-if ($id === false) {
-	die('ID de propiedad no válido.');
-}
-
-// Instanciar los modelos necesarios
 $consultaModel = new PropertyModel();
 $locationModel = new UbicacionModel();
 $imageModel = new ImagenModel();
 $propiedadCaracteristicaModel = new PropiedadCaracteristicaModel();
+$citaModel = new ConsultaModel();
 
-// Obtener los detalles de la propiedad
+
 $property = $consultaModel->find($id);
 
 if (!$property) {
-	die('Propiedad no encontrada.');
+	header('Location: ' . BASE_URL);
 }
 
-
-// Obtener la ubicación de la propiedad
 $location = $locationModel->find($property['id_ubicacion']);
 
-
-// Obtener las imágenes de la propiedad
 $images = $imageModel->where('id_propiedad', $property['id'])->get();
+
 $propiedadCaracteristicas = $propiedadCaracteristicaModel
 	->select('caracteristica.nombre', 'caracteristica.descripcion', 'caracteristica.id')
 	->join('caracteristica', 'caracteristica.id = propiedad_caracteristica.id_caracteristica')
@@ -54,14 +40,65 @@ foreach ($propiedadCaracteristicas as $caracteristica) {
 	$caracteristicas[] = $caracteristica['caracteristica'];
 }
 
+$hasImage = !empty($images);
+
+// Obtener la ubicación de la propiedad, incluyendo latitud y longitud
+$location = $locationModel->find($property['id_ubicacion']);
+if (!$location) {
+	die('Ubicación no encontrada.');
+}
+
+$latitud = $location['latitud'];
+$longitud = $location['longitud'];
+
+
+
+if (isset($_POST['submit'])) {
+    $error = [];
+    $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : "";
+	$gmail = isset($_POST['gmail']) ? $_POST['gmail'] : "";
+    $telefono = isset($_POST['telefono']) ? $_POST['telefono'] : "";
+	$mensaje = isset($_POST['mensaje']) ? $_POST['mensaje'] : "";
+
+    if (strlen($nombre) <= 0) {
+        $error[0]="<font color='#FF0000'> Nombre es requerido";
+    }
+    elseif (strlen($nombre) <= 3 || strlen($nombre) >= 20) {
+        $error[0]="<font color='#FF0000'>El nombre tiene que tener mínimo 3 letras y máximo 20 letras. </font>"."<br>";  
+    }
+    if (strlen($gmail) <= 0) {
+        $error[1]="<font color='#FF0000'> Gmail es requerido";
+    }
+    elseif (!preg_match('/@gmail\.com$/', $gmail)) {
+        $error[1]="<font color='#FF0000'>El gmail ingresado es incorrecto</font>"."<br>";
+    }
+    if (strlen($telefono) <= 0) {
+        $error[2]="<font color='#FF0000'> Telefono es requerido";
+    }
+    elseif (strlen($telefono) < 8 || strlen($telefono) > 8) {
+        $error[2]="<font color='#FF0000'>El telefono tiene que tener 8 digitos. </font>"."<br>";  
+    }
+	if (strlen($mensaje) <= 0) {
+        $error[3]="<font color='#FF0000'> Mensaje es requerido";
+    }
+    elseif (strlen($mensaje) <= 3 || strlen($mensaje) >= 50) {
+        $error[3]="<font color='#FF0000'>El mensaje tiene que tener mínimo 3 letras y máximo 50 letras. </font>"."<br>";  
+    }
+
+    if (empty($error)) {
+		$citaModel->create([
+			'id_propiedad'=>$id,
+			'nombre'=>$nombre,
+			'correo'=>$gmail,
+			'telefono'=>$telefono,
+			'mensaje'=>$mensaje
+		]);
+    }
+}
+
+
 
 ?>
-
-
-
-
-
-
 <!doctype html>
 <html lang="en">
 
@@ -80,8 +117,7 @@ foreach ($propiedadCaracteristicas as $caracteristica) {
 
 
 	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/fonts/icomoon/style.css">
-	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-
+	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/fonts/flaticon/font/flaticon.css">
 	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/tiny-slider.css">
 	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/aos.css">
 	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/style.css">
@@ -91,77 +127,42 @@ foreach ($propiedadCaracteristicas as $caracteristica) {
 
 <body>
 
-	<div class="site-mobile-menu site-navbar-target">
-		<div class="site-mobile-menu-header">
-			<div class="site-mobile-menu-close">
-				<span class="icofont-close js-menu-toggle"></span>
-			</div>
-		</div>
-		<div class="site-mobile-menu-body"></div>
-	</div>
-
-	<nav class="site-nav">
-		<div class="container">
-			<div class="menu-bg-wrap">
-				<div class="site-navigation">
-					<a href="index.php" class="logo m-0 float-start">Bienes y Raices</a>
-
-					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
-						<li><a href="index.php">Inicio</a></li>
-						<li class="active">
-							<a href="properties.php">Propiedades</a>
-
-						</li>
-						<li><a href="services.php">Servicios</a></li>
-						<li><a href="about.php">Nosotros</a></li>
-						<li class="active"><a href="contact.php">Contactanos</a></li>
-					</ul>
-
-					<a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
-						<span></span>
-					</a>
-
-				</div>
-			</div>
-		</div>
-	</nav>
+	<?php include('layout/header.php'); ?>
 
 
-	<div class="hero page-inner overlay" style="background-image: url('<?php echo BASE_URL ?>/assets/images/hero_bg_3.jpg');">
-
+	<div class="hero page-inner overlay" style="background-image: url('<?= BASE_URL ?>/assets/images/hero_bg_3.jpg');">
 		<div class="container">
 			<div class="row justify-content-center align-items-center">
 				<div class="col-lg-9 text-center mt-5">
-					<h1 class="heading" data-aos="fade-up">5232 California AVE. 21BC</h1>
+					<h1 class="heading" data-aos="fade-up"><?php echo htmlspecialchars($property['direccion']); ?></h1>
 
 					<nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
 						<ol class="breadcrumb text-center justify-content-center">
-							<li class="breadcrumb-item "><a href="index.php">Home</a></li>
-							<li class="breadcrumb-item "><a href="properties.html">Properties</a></li>
-							<li class="breadcrumb-item active text-white-50" aria-current="page">5232 California AVE. 21BC</li>
+							<li class="breadcrumb-item "><a href="<?php echo BASE_URL ?>/index.php">Inicio</a></li>
+							<li class="breadcrumb-item "><a href="<?php echo BASE_URL ?>/properties.php">Propiedades</a></li>
+							<li class="breadcrumb-item active text-white-50" aria-current="page"><?php echo htmlspecialchars($property['direccion']); ?></li>
 						</ol>
 					</nav>
-
-
 				</div>
 			</div>
-
-
 		</div>
 	</div>
 
 
 	<div class="section">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-8">
-					<div class="property-slider-wrap">
-						<div class="property-slider">
-							<?php foreach ($images as $image) : ?>
-								<div class="property-slide">
-									<img src="data:image/jpeg;base64,<?php echo base64_encode($image['imagen']); ?>" alt="Image" class="img-fluid">
-								</div>
-							<?php endforeach; ?>
+			<div class="row justify-content-between">
+				<div class="col-lg-7">
+					<div class="img-property-slide-wrap">
+						<div class="img-property-slide">
+							<?php if ($hasImage) : ?>
+								<?php foreach ($images as $image) : ?>
+									<img src="data:image/jpeg;base64,<?= base64_encode($image['imagen']) ?>" alt="Image" class="img-fluid">
+								<?php endforeach; ?>
+							<?php else : ?>
+								<img src="<?= BASE_URL ?>/assets/images/casad.jpg" alt="Image" class="img-fluid">
+							<?php endif; ?>
+
 						</div>
 					</div>
 				</div>
@@ -189,7 +190,7 @@ foreach ($propiedadCaracteristicas as $caracteristica) {
 						<h3 class="heading text-primary">Características</h3>
 						<ul class="list-unstyled">
 							<?php foreach ($caracteristicas as $caracteristica) : ?>
-								<li><?php echo htmlspecialchars($caracteristica['nombre'] . ': ' . $caracteristica['valor']); ?></li>
+								<li><?php echo htmlspecialchars($caracteristica['nombre'] . ': ' . $caracteristica['descripcion']); ?></li>
 							<?php endforeach; ?>
 						</ul>
 					</div>
@@ -198,98 +199,82 @@ foreach ($propiedadCaracteristicas as $caracteristica) {
 		</div>
 	</div>
 
-	<div class="site-footer">
-		<div class="container">
-
-			<div class="row">
-				<div class="col-lg-4">
-					<div class="widget">
-						<h3>Contact</h3>
-						<address>43 Raymouth Rd. Baltemoer, London 3910</address>
-						<ul class="list-unstyled links">
-							<li><a href="tel://11234567890">+1(123)-456-7890</a></li>
-							<li><a href="tel://11234567890">+1(123)-456-7890</a></li>
-							<li><a href="mailto:info@mydomain.com">info@mydomain.com</a></li>
-						</ul>
-					</div> <!-- /.widget -->
-				</div> <!-- /.col-lg-4 -->
-				<div class="col-lg-4">
-					<div class="widget">
-						<h3>Sources</h3>
-						<ul class="list-unstyled float-start links">
-							<li><a href="#">About us</a></li>
-							<li><a href="#">Services</a></li>
-							<li><a href="#">Vision</a></li>
-							<li><a href="#">Mission</a></li>
-							<li><a href="#">Terms</a></li>
-							<li><a href="#">Privacy</a></li>
-						</ul>
-						<ul class="list-unstyled float-start links">
-							<li><a href="#">Partners</a></li>
-							<li><a href="#">Business</a></li>
-							<li><a href="#">Careers</a></li>
-							<li><a href="#">Blog</a></li>
-							<li><a href="#">FAQ</a></li>
-							<li><a href="#">Creative</a></li>
-						</ul>
-					</div> <!-- /.widget -->
-				</div> <!-- /.col-lg-4 -->
-				<div class="col-lg-4">
-					<div class="widget">
-						<h3>Links</h3>
-						<ul class="list-unstyled links">
-							<li><a href="#">Our Vision</a></li>
-							<li><a href="#">About us</a></li>
-							<li><a href="#">Contact us</a></li>
-						</ul>
-
-						<ul class="list-unstyled social">
-							<li><a href="#"><span class="icon-instagram"></span></a></li>
-							<li><a href="#"><span class="icon-twitter"></span></a></li>
-							<li><a href="#"><span class="icon-facebook"></span></a></li>
-							<li><a href="#"><span class="icon-linkedin"></span></a></li>
-							<li><a href="#"><span class="icon-pinterest"></span></a></li>
-							<li><a href="#"><span class="icon-dribbble"></span></a></li>
-						</ul>
-					</div> <!-- /.widget -->
-				</div> <!-- /.col-lg-4 -->
-			</div> <!-- /.row -->
-
-			<div class="row mt-5">
-				<div class="col-12 text-center">
-					<!-- 
-              **==========
-              NOTE: 
-              Please don't remove this copyright link unless you buy the license here https://untree.co/license/  
-              **==========
-            -->
-
-					<p>Copyright &copy;<script>
-							document.write(new Date().getFullYear());
-						</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ -->
-					</p>
-
+	<div class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<?php if ($latitud && $longitud): ?>
+					<iframe 
+						src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d59378.116142524115!2d<?php echo $longitud; ?>!3d<?php echo $latitud; ?>!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sbo!4v1722309007128!5m2!1ses!2sbo"
+						width="600" 
+						height="450" 
+						style="border:0;" 
+						allowfullscreen="" 
+						loading="lazy" 
+						referrerpolicy="no-referrer-when-downgrade">
+					</iframe>
+					<?php else: ?>
+						<p>La ubicación de la propiedad no está disponible.</p>
+					<?php endif; ?>
 				</div>
 			</div>
-		</div> <!-- /.container -->
-	</div> <!-- /.site-footer -->
-
-
-	<!-- Preloader -->
-	<div id="overlayer"></div>
-	<div class="loader">
-		<div class="spinner-border" role="status">
-			<span class="visually-hidden">Loading...</span>
 		</div>
 	</div>
 
 
-	<script src="<?php echo BASE_URL ?>/assets/js/bootstrap.bundle.min.js"></script>
-	<script src="<?php echo BASE_URL ?>/assets/js/tiny-slider.js"></script>
-	<script src="<?php echo BASE_URL ?>/assets/js/aos.js"></script>
-	<script src="<?php echo BASE_URL ?>/assets/js/navbar.js"></script>
-	<script src="<?php echo BASE_URL ?>/assets/js/counter.js"></script>
-	<script src="<?php echo BASE_URL ?>/assets/js/custom.js"></script>
+	<div class="section">
+		<div class="container">
+			<div class="row"></div>
+				<div class="row mb-5 align-items-center">
+					<div class="col-lg-6 text-center mx-auto">
+						<h2 class="font-weight-bold text-primary heading">Agenda tu Cita</h2>
+					</div>
+				</div>
+				<form action="" method="post">
+					<div class="row">
+						<div class="col-6 mb-3">
+							<input type="text" name="nombre" class="form-control" placeholder="Escribe tu nombre" class="<?php echo isset($error[0]) ? 'input-error' : ''; ?>">
+							<?php 
+        					if (isset($error[0])) {
+            					echo '<p class="error">'.$error[0].'</p>';
+        					}
+        					?>
+						</div>
+						<div class="col-6 mb-3">
+							<input type="text" name="gmail" class="form-control" placeholder="Escribe tu gmail" class="<?php echo isset($error[1]) ? 'input-error' : ''; ?>">
+							<?php 
+        					if (isset($error[1])) {
+            					echo '<p class="error">'.$error[1].'</p>';
+        					}
+        					?>						
+						</div>
+						<div class="col-12 mb-3">
+							<input type="text" name="telefono" class="form-control" placeholder="Escribe tu numero telefonico" class="<?php echo isset($error[2]) ? 'input-error' : ''; ?>">
+							<?php 
+        					if (isset($error[2])) {
+            					echo '<p class="error">'.$error[2].'</p>';
+        					}
+        					?>
+						</div>
+						<div class="col-12 mb-3">
+							<textarea name="mensaje" id="" cols="30" rows="7" class="form-control" placeholder="Escribe tu mensaje" class="<?php echo isset($error[3]) ? 'input-error' : ''; ?>"></textarea>
+							<?php 
+        					if (isset($error[3])) {
+            					echo '<p class="error">'.$error[3].'</p>';
+        					}
+        					?>
+						</div>
+
+						<div class="col-12">
+							<input type="submit" name="submit" value="Enviar mensaje" class="btn btn-primary">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<?php include('layout/footer.php'); ?>
 </body>
 
 </html>

@@ -83,6 +83,7 @@ foreach ($properties as $key => $property) {
 	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/aos.css">
 	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/style.css">
 
+
 	<title>Bienes Raices UPDS &mdash;</title>
 </head>
 
@@ -103,8 +104,8 @@ foreach ($properties as $key => $property) {
 			<div class="row justify-content-center align-items-center">
 				<div class="col-lg-9 text-center">
 					<h1 class="heading" data-aos="fade-up">Encuentra la casa de tus sueños</h1>
-					<form action="#" class="narrow-w form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
-						<input type="text" class="form-control px-4" placeholder="Buscar propiedades">
+					<form action="<?= BASE_URL ?>/properties.php" class="narrow-w form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
+						<input type="text" class="form-control px-4" placeholder="Buscar propiedades" name="query">
 						<button type="submit" class="btn btn-primary">Buscar</button>
 					</form>
 				</div>
@@ -137,9 +138,9 @@ foreach ($properties as $key => $property) {
 									?>
 									<a href="property.php?id=<?php echo $property['id']; ?>" class="img">
 										<?php if ($hasImage) : ?>
-											<img src="data:image/jpeg;base64,<?php echo base64_encode($image) ?>" width="600" height="800" alt="Image" class="img-fluid">
+											<img src="data:image/jpeg;base64,<?php echo base64_encode($image) ?>" width="600" height="800" alt="Image" class="img-responsive">
 										<?php else : ?>
-											<img src="<?php echo BASE_URL ?>/assets/images/<?php echo $image; ?>" width="600" height="800" alt="Image" class="img-fluid">
+											<img src="<?php echo BASE_URL ?>/assets/images/<?php echo $image; ?>" width="600" height="800" alt="Image" class="img-responsive">
 										<?php endif; ?>
 									</a>
 									<div class="property-content">
@@ -323,7 +324,7 @@ foreach ($properties as $key => $property) {
 				<div class="testimonial-slider">
 					<div class="item">
 						<div class="testimonial">
-						<img src="<?php echo BASE_URL ?>/assets/images/persona6.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+							<img src="<?php echo BASE_URL ?>/assets/images/persona6.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
 							<div class="rate">
 								<span class="icon-star text-warning"></span>
 								<span class="icon-star text-warning"></span>

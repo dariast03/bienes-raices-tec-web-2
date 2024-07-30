@@ -3,14 +3,24 @@ require_once 'core/Model.php';
 require_once 'model/PropertyModel.php';
 require_once 'model/ImageModel.php';
 
-// Instanciar el modelo de propiedad
+$query = $_GET['query'] ?? null;
+
 $consultaModel = new PropertyModel();
 $imageModel = new ImagenModel();
 
-// Obtener todas las propiedades
-$properties = $consultaModel->select('id', 'direccion', 'precio', 'num_habitaciones', 'num_baños')->get();
+if ($query) {
+	$properties = $consultaModel
+		->select('id', 'direccion', 'precio', 'num_habitaciones', 'num_baños')
+		->where("direccion LIKE '%$query%'",)
+		->get();
+} else {
+	$properties = $consultaModel
+		->select('id', 'direccion', 'precio', 'num_habitaciones', 'num_baños')
+		->get();
+}
 
-// Agregar imágenes a las propiedades
+
+
 foreach ($properties as $key => $property) {
 	$images = $imageModel->where('id_propiedad', $property['id'])->select('imagen')->get();
 	$properties[$key]['imagenes'] = $images;
@@ -35,6 +45,7 @@ foreach ($properties as $key => $property) {
 	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/tiny-slider.css">
 	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/aos.css">
 	<link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/style.css">
+
 </head>
 
 <body>
@@ -64,49 +75,52 @@ foreach ($properties as $key => $property) {
 			</div>
 		</div>
 		<div class="container">
-			<div class="row">
-				<?php foreach ($properties as $property) : ?>
-					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-						<div class="property-item mb-30">
-							<!-- Usa la primera imagen de las imágenes asociadas a la propiedad o imagen por defecto -->
-							<?php
-							$hasImage = !empty($property['imagenes']);
-							$image = $hasImage ? $property['imagenes'][0]['imagen'] : 'casad.jpg';
+			<?php if (!empty($properties)) : ?>
+				<div class="row">
+					<?php foreach ($properties as $property) : ?>
+						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+							<div class="property-item mb-30">
+								<?php
+								$hasImage = !empty($property['imagenes']);
+								$image = $hasImage ? $property['imagenes'][0]['imagen'] : 'casad.jpg';
 
-							?>
+								?>
 
-							<a href="property.php?id=<?php echo $property['id']; ?>" class="img">
+								<a href="property.php?id=<?php echo $property['id']; ?>" class="img">
 
-								<?php if ($hasImage) : ?>
-									<img src="data:image/jpeg;base64,<?php echo base64_encode($image) ?>" width="600" height="800" alt="Image" class="img-fluid">
-								<?php else : ?>
-									<img src="<?php echo BASE_URL ?>/assets/images/<?php echo $image; ?>" width="600" height="800" alt="Image" class="img-fluid">
-								<?php endif; ?>
+									<?php if ($hasImage) : ?>
+										<img src="data:image/jpeg;base64,<?php echo base64_encode($image) ?>" width="600" height="800" alt="Image" class="img-responsive">
+									<?php else : ?>
+										<img src="<?php echo BASE_URL ?>/assets/images/<?php echo $image; ?>" width="600" height="800" alt="Image" class="img-responsive">
+									<?php endif; ?>
 
-							</a>
+								</a>
 
-							<div class="property-content">
-								<div class="price mb-2"><span>$<?php echo number_format($property['precio']); ?></span></div>
+								<div class="property-content">
+									<div class="price mb-2"><span>$<?php echo number_format($property['precio']); ?></span></div>
 
-								<div>
-									<span class="d-block mb-2 text-black-50"><?php echo htmlspecialchars($property['direccion']); ?></span>
-									<div class="specs d-flex mb-4">
-										<span class="d-block d-flex align-items-center me-3">
-											<span class="icon-bed me-2"></span>
-											<span class="caption"><?php echo htmlspecialchars($property['num_habitaciones']); ?> camas</span>
-										</span>
-										<span class="d-block d-flex align-items-center">
-											<span class="icon-bath me-2"></span>
-											<span class="caption"><?php echo $property['num_baños']; ?> baños</span>
-										</span>
+									<div>
+										<span class="d-block mb-2 text-black-50"><?php echo htmlspecialchars($property['direccion']); ?></span>
+										<div class="specs d-flex mb-4">
+											<span class="d-block d-flex align-items-center me-3">
+												<span class="icon-bed me-2"></span>
+												<span class="caption"><?php echo htmlspecialchars($property['num_habitaciones']); ?> camas</span>
+											</span>
+											<span class="d-block d-flex align-items-center">
+												<span class="icon-bath me-2"></span>
+												<span class="caption"><?php echo $property['num_baños']; ?> baños</span>
+											</span>
+										</div>
+										<a href="property.php?id=<?php echo $property['id']; ?>" class="btn btn-primary py-2 px-3">Ver detalles</a>
 									</div>
-									<a href="property.php?id=<?php echo $property['id']; ?>" class="btn btn-primary py-2 px-3">Ver detalles</a>
-								</div>
-							</div><!-- .property-item -->
+								</div><!-- .property-item -->
+							</div>
 						</div>
-					</div>
-				<?php endforeach; ?>
-			</div>
+					<?php endforeach; ?>
+				</div>
+			<?php else : ?>
+				<h1>NO HAY RESULTADOS</h1>
+			<?php endif; ?>
 		</div>
 	</div>
 	<?php include('layout/footer.php'); ?>
