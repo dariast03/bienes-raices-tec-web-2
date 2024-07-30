@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -564,6 +570,21 @@
         .form-select {
             height: 52px;
         }
+
+        .session {
+            margin-left: auto;
+            /* You may need to add additional styles like display:inline-block if there are other sibling elements */
+        }
+
+        .session p,
+        .session a {
+            margin: 5px 0; /* Adjust the 5px to whatever value you prefer */
+            padding: 0;
+        }
+
+
+        
+
     </style>
 </head>
 
@@ -573,6 +594,14 @@
             <div class="logo">Bienes Raices</div>
             <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210182541/Untitled-design-(30).png" class="icn menuicn" id="menuicn" alt="menu-icon">
         </div>
+
+        <?php if (isset($_SESSION["user_id"])) : ?>
+            <div class="session">
+            <p>Bienvenido, <?php echo ($_SESSION["user_name"]) ?>       ></p>
+            <a href="<?php echo BASE_URL ?>/auth/logout.php">Cerrar Sesion</a>
+            </div>
+		<?php endif; ?>
+        
 
         <div class="message">
             <div class="dp">

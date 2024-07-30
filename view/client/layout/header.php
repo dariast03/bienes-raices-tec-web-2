@@ -61,11 +61,7 @@ session_start();
 						<li><a href="properties.php">Propiedades</a></li>
 						<li><a href="about.php">Sobre Nosotros</a></li>
 						<li><a href="contact.php">Contactanos</a></li>
-						<?php if (isset($_SESSION["user_id"])) : ?>
-							<li><a href="<?php echo BASE_URL ?>/auth/logout.php"><?php echo ($_SESSION["user_email"]) ?></a></li>
-						<?php else : ?>
-							<li><a href="<?php echo BASE_URL ?>/auth/login.php">Iniciar Sesion</a></li>
-						<?php endif; ?>
+						<li><a href="<?php echo BASE_URL ?>/auth/login.php">Iniciar Sesion</a></li>
 					</ul>
 
 					<a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
