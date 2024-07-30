@@ -4,6 +4,7 @@ require_once 'model/PropertyModel.php';
 require_once 'model/LocationModel.php';
 require_once 'model/ImageModel.php';
 require_once 'model/CharacteristicPropertyModel.php';
+require_once 'model/ConsultaModel.php';
 
 $id = $_GET['id'] ?? null;
 
@@ -15,6 +16,7 @@ $consultaModel = new PropertyModel();
 $locationModel = new UbicacionModel();
 $imageModel = new ImagenModel();
 $propiedadCaracteristicaModel = new PropiedadCaracteristicaModel();
+$citaModel = new ConsultaModel();
 
 
 $property = $consultaModel->find($id);
@@ -40,12 +42,22 @@ foreach ($propiedadCaracteristicas as $caracteristica) {
 
 $hasImage = !empty($images);
 
+// Obtener la ubicación de la propiedad, incluyendo latitud y longitud
+$location = $locationModel->find($property['id_ubicacion']);
+if (!$location) {
+	die('Ubicación no encontrada.');
+}
+
+$latitud = $location['latitud'];
+$longitud = $location['longitud'];
+
+
+
 if (isset($_POST['submit'])) {
     $error = [];
     $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : "";
-    $apellido = isset($_POST['apellido']) ? $_POST['apellido'] : "";
-    $telefono = isset($_POST['telefono']) ? $_POST['telefono'] : "";
 	$gmail = isset($_POST['gmail']) ? $_POST['gmail'] : "";
+    $telefono = isset($_POST['telefono']) ? $_POST['telefono'] : "";
 	$mensaje = isset($_POST['mensaje']) ? $_POST['mensaje'] : "";
 
     if (strlen($nombre) <= 0) {
@@ -54,11 +66,11 @@ if (isset($_POST['submit'])) {
     elseif (strlen($nombre) <= 3 || strlen($nombre) >= 20) {
         $error[0]="<font color='#FF0000'>El nombre tiene que tener mínimo 3 letras y máximo 20 letras. </font>"."<br>";  
     }
-    if (strlen($apellido) <= 0) {
-        $error[1]="<font color='#FF0000'> Apellido es requerido";
+    if (strlen($gmail) <= 0) {
+        $error[1]="<font color='#FF0000'> Gmail es requerido";
     }
-    elseif (strlen($apellido) <= 3 || strlen($apellido) >= 20) {
-        $error[1]="<font color='#FF0000'>El apellido tiene que tener mínimo 3 letras y máximo 20 letras. </font>"."<br>";
+    elseif (!preg_match('/@gmail\.com$/', $gmail)) {
+        $error[1]="<font color='#FF0000'>El gmail ingresado es incorrecto</font>"."<br>";
     }
     if (strlen($telefono) <= 0) {
         $error[2]="<font color='#FF0000'> Telefono es requerido";
@@ -66,7 +78,24 @@ if (isset($_POST['submit'])) {
     elseif (strlen($telefono) < 8 || strlen($telefono) > 8) {
         $error[2]="<font color='#FF0000'>El telefono tiene que tener 8 digitos. </font>"."<br>";  
     }
+	if (strlen($mensaje) <= 0) {
+        $error[3]="<font color='#FF0000'> Mensaje es requerido";
+    }
+    elseif (strlen($mensaje) <= 3 || strlen($mensaje) >= 50) {
+        $error[3]="<font color='#FF0000'>El mensaje tiene que tener mínimo 3 letras y máximo 50 letras. </font>"."<br>";  
+    }
+
+    if (empty($error)) {
+		$citaModel->create([
+			'id_propiedad'=>$id,
+			'nombre'=>$nombre,
+			'correo'=>$gmail,
+			'telefono'=>$telefono,
+			'mensaje'=>$mensaje
+		]);
+    }
 }
+
 
 
 ?>
@@ -171,6 +200,29 @@ if (isset($_POST['submit'])) {
 	</div>
 
 	<div class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<?php if ($latitud && $longitud): ?>
+					<iframe 
+						src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d59378.116142524115!2d<?php echo $longitud; ?>!3d<?php echo $latitud; ?>!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sbo!4v1722309007128!5m2!1ses!2sbo"
+						width="600" 
+						height="450" 
+						style="border:0;" 
+						allowfullscreen="" 
+						loading="lazy" 
+						referrerpolicy="no-referrer-when-downgrade">
+					</iframe>
+					<?php else: ?>
+						<p>La ubicación de la propiedad no está disponible.</p>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="section">
 		<div class="container">
 			<div class="row"></div>
 				<div class="row mb-5 align-items-center">
@@ -178,23 +230,43 @@ if (isset($_POST['submit'])) {
 						<h2 class="font-weight-bold text-primary heading">Agenda tu Cita</h2>
 					</div>
 				</div>
-				<form action="#">
+				<form action="" method="post">
 					<div class="row">
 						<div class="col-6 mb-3">
-							<input type="text" name="nombre" class="form-control" placeholder="Escribe tu nombre">
+							<input type="text" name="nombre" class="form-control" placeholder="Escribe tu nombre" class="<?php echo isset($error[0]) ? 'input-error' : ''; ?>">
+							<?php 
+        					if (isset($error[0])) {
+            					echo '<p class="error">'.$error[0].'</p>';
+        					}
+        					?>
 						</div>
 						<div class="col-6 mb-3">
-							<input type="email" name="gmail" class="form-control" placeholder="Escribe tu gmail">
+							<input type="text" name="gmail" class="form-control" placeholder="Escribe tu gmail" class="<?php echo isset($error[1]) ? 'input-error' : ''; ?>">
+							<?php 
+        					if (isset($error[1])) {
+            					echo '<p class="error">'.$error[1].'</p>';
+        					}
+        					?>						
 						</div>
 						<div class="col-12 mb-3">
-							<input type="text" name="telefono" class="form-control" placeholder="Escribe tu numero telefonico">
+							<input type="text" name="telefono" class="form-control" placeholder="Escribe tu numero telefonico" class="<?php echo isset($error[2]) ? 'input-error' : ''; ?>">
+							<?php 
+        					if (isset($error[2])) {
+            					echo '<p class="error">'.$error[2].'</p>';
+        					}
+        					?>
 						</div>
 						<div class="col-12 mb-3">
-							<textarea name="mensaje" id="" cols="30" rows="7" class="form-control" placeholder="Escribe tu mensaje"></textarea>
+							<textarea name="mensaje" id="" cols="30" rows="7" class="form-control" placeholder="Escribe tu mensaje" class="<?php echo isset($error[3]) ? 'input-error' : ''; ?>"></textarea>
+							<?php 
+        					if (isset($error[3])) {
+            					echo '<p class="error">'.$error[3].'</p>';
+        					}
+        					?>
 						</div>
 
 						<div class="col-12">
-							<input type="submit" value="Enviar mensaje" class="btn btn-primary">
+							<input type="submit" name="submit" value="Enviar mensaje" class="btn btn-primary">
 						</div>
 					</div>
 				</form>
