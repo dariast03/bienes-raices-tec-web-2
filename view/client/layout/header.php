@@ -60,7 +60,6 @@ session_start();
 						<li class="active"><a href="index.php">Inicio</a></li>
 						<li><a href="properties.php">Propiedades</a></li>
 						<li><a href="about.php">Sobre Nosotros</a></li>
-						<li><a href="contact.php">Contactanos</a></li>
 						<li><a href="<?php echo BASE_URL ?>/auth/login.php">Iniciar Sesion</a></li>
 					</ul>
 
