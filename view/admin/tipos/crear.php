@@ -1,5 +1,6 @@
 <?php
 require_once 'model/TipoModel.php';
+$id = $_GET['id'] ?? null;
 
 $typeModel = new TipoModel();
 
@@ -39,15 +40,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     if (empty($errors)) {
-        $idTipo =  $typeModel->create([
-            'nombre' => $nombre,
-            'descripcion' => $descripcion
-        ]);
+        if (!$id) {
+            $idTipo =  $typeModel->create([
+                'nombre' => $nombre,
+                'descripcion' => $descripcion
+            ]);
+        } else {
+            $typeModel->update($id, [
+                'nombre' => $nombre,
+                'descripcion' => $descripcion
+            ]);
+        }
 
 
         header('Location: ' . BASE_URL . '/admin/tipos.php');
     }
+} else {
+    if ($id) {
+        $property = $typeModel->find($id);
+
+        $_POST['nombre'] = $property['nombre'];
+        $_POST['descripcion'] = $property['descripcion'];
+    }
 }
+
 
 function getError($field)
 {
