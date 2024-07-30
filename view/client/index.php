@@ -104,8 +104,8 @@ foreach ($properties as $key => $property) {
 			<div class="row justify-content-center align-items-center">
 				<div class="col-lg-9 text-center">
 					<h1 class="heading" data-aos="fade-up">Encuentra la casa de tus sueños</h1>
-					<form action="#" class="narrow-w form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
-						<input type="text" class="form-control px-4" placeholder="Buscar propiedades">
+					<form action="<?= BASE_URL ?>/properties.php" class="narrow-w form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
+						<input type="text" class="form-control px-4" placeholder="Buscar propiedades" name="query">
 						<button type="submit" class="btn btn-primary">Buscar</button>
 					</form>
 				</div>
