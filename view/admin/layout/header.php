@@ -591,6 +591,10 @@ session_start();
             /* Adjust the 5px to whatever value you prefer */
             padding: 0;
         }
+
+        .border-left-primary {
+            border-left: .25rem solid #4e73df !important;
+        }
     </style>
 </head>
 
