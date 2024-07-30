@@ -1,5 +1,6 @@
 <?php
 require_once 'model/CharacteristicModel.php';
+$id = $_GET['id'] ?? null;
 
 $characteristicModel = new CaracteristicaModel();
 
@@ -36,13 +37,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
-        $idCaracteristica =  $characteristicModel->create([
-            'nombre' => $nombre,
-            'descripcion' => $descripcion
-        ]);
+        if (!$id) {
+            $idCaracteristica =  $characteristicModel->create([
+                'nombre' => $nombre,
+                'descripcion' => $descripcion
+            ]);
+        } else {
+            $characteristicModel->update($id, [
+                'nombre' => $nombre,
+                'descripcion' => $descripcion
+            ]);
+        }
 
 
         header('Location: ' . BASE_URL . '/admin/caracteristicas.php');
+    }
+} else {
+    if ($id) {
+        $characteristic = $characteristicModel->find($id);
+
+        $_POST['nombre'] = $characteristic['nombre'];
+        $_POST['descripcion'] = $characteristic['descripcion'];
     }
 }
 
