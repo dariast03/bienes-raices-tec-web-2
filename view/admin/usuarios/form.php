@@ -36,8 +36,6 @@ function isValidPassword($password)
         }
     }
 
-
-
     return $hasLetter && $hasNumber;
 }
 
