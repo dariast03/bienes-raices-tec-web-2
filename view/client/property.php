@@ -93,6 +93,7 @@ if (isset($_POST['submit'])) {
 			'telefono'=>$telefono,
 			'mensaje'=>$mensaje
 		]);
+		$men[0]="<font color='#0EAF15'> Cita Registrada Correctamente";
     }
 }
 
@@ -199,15 +200,20 @@ if (isset($_POST['submit'])) {
 		</div>
 	</div>
 
-	<div class="section">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8">
-				<?php if ($latitud && $longitud): ?>
+	<div class="section" align="center">
+		<div class="container">
+			<div class="row">
+				<div class="row mb-5 align-items-center">
+					<div class="col-lg-6 text-center mx-auto">
+						<h2 class="font-weight-bold text-primary heading">Ubicacion de la Propiedad</h2>
+					</div>
+				</div>
+				<div class="col-lg-8">
+					<?php if ($latitud && $longitud): ?>
 					<iframe 
 						src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d59378.116142524115!2d<?php echo $longitud; ?>!3d<?php echo $latitud; ?>!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sbo!4v1722309007128!5m2!1ses!2sbo"
-						width="600" 
-						height="450" 
+						width="1300" 
+						height="600" 
 						style="border:0;" 
 						allowfullscreen="" 
 						loading="lazy" 
@@ -266,7 +272,12 @@ if (isset($_POST['submit'])) {
 						</div>
 
 						<div class="col-12">
-							<input type="submit" name="submit" value="Enviar mensaje" class="btn btn-primary">
+							<input type="submit" name="submit" value="Enviar mensaje" class="btn btn-primary" class="<?php echo isset($men[0]) ? 'input-error' : ''; ?>">
+							<?php
+							if (isset($men[0])) {
+            					echo '<p class="error">'.$men[0].'</p>';
+        					}
+        					?>
 						</div>
 					</div>
 				</form>
