@@ -46,7 +46,7 @@
             </a>
 
 
-            <a href="<?php echo BASE_URL ?>/admin/logout.php" class="nav-option logout">
+            <a href="<?php echo BASE_URL ?>" class="nav-option logout">
                 <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183321/7.png" class="nav-img" alt="logout">
                 <h3>Salir</h3>
             </a>
