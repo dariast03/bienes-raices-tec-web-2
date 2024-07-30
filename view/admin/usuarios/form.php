@@ -1,5 +1,6 @@
 <?php
 require_once 'model/UserModel.php';
+$id = $_GET['id'] ?? null;
 
 $userModel = new UserModel();
 
@@ -40,6 +41,8 @@ function isValidPassword($password)
 }
 
 
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST["nombre"] ?? '';
     $correo = $_POST["correo"] ?? '';
@@ -72,13 +75,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
-        $userModel->create([
-            'nombre' => $nombre,
-            'correo' => $correo,
-            'contrasena' => password_hash($contrasena, PASSWORD_DEFAULT)
-        ]);
-
+        if (!$id) {
+            $userModel->create([
+                'nombre' => $nombre,
+                'correo' => $correo,
+                'contrasena' => password_hash($contrasena, PASSWORD_DEFAULT)
+            ]);
+        } else {
+            $userModel->update($id, [
+                'nombre' => $nombre,
+                'correo' => $correo,
+                'contrasena' => password_hash($contrasena, PASSWORD_DEFAULT)
+            ]);
+        }
         header('Location: ' . BASE_URL . '/admin/usuarios.php');
+    }
+} else {
+    if ($id) {
+        $usuario = $userModel->find($id);
+
+        $_POST['nombre'] = $usuario['nombre'];
+        $_POST['correo'] = $usuario['correo'];
     }
 }
 
