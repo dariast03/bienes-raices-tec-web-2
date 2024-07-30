@@ -35,7 +35,7 @@ main {
 
 .title {
   font-size: 28px;
-  color: royalblue;
+  color: darkgreen;
   font-weight: 600;
   letter-spacing: -1px;
   position: relative;
@@ -52,19 +52,19 @@ main {
   width: 16px;
   border-radius: 50%;
   left: 0px;
-  background-color: royalblue;
+  background-color: darkgreen;
 }
 
 .title::before {
   width: 18px;
   height: 18px;
-  background-color: royalblue;
+  background-color: darkgreen;
 }
 
 .title::after {
   width: 18px;
   height: 18px;
-  animation: pulse 1s linear infinite;
+  animation: pulse 1s linear infinite; 
 }
 
 .message,
@@ -78,11 +78,11 @@ main {
 }
 
 .signin a {
-  color: royalblue;
+  color: darkgreen;
 }
 
 .signin a:hover {
-  text-decoration: underline royalblue;
+  text-decoration: underline darkgreen;
 }
 
 .flex {
@@ -144,7 +144,7 @@ main {
   background-color: rgb(56, 90, 194);
 }
 
-@keyframes pulse {
+/* @keyframes pulse {
   from {
     transform: scale(0.9);
     opacity: 1;
@@ -154,4 +154,4 @@ main {
     transform: scale(1.8);
     opacity: 0;
   }
-}
+} */

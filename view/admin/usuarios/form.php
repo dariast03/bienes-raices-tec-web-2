@@ -56,13 +56,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['nombre'] = "El nombre no debe tener más de 50 caracteres.";
     }
 
-    if (empty($correo)) {
-        $errors['correo'] = "El correo es obligatorio.";
-    } elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-        $errors['correo'] = "El correo no es válido.";
-    } elseif (repeatedEmail($correo)) {
-        $errors['correo'] = "El correo ingresado ya se encuentra en uso.";
+    if (!$id) {
+        if (empty($correo)) {
+            $errors['correo'] = "El correo es obligatorio.";
+        } elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+            $errors['correo'] = "El correo no es válido.";
+        } elseif (repeatedEmail($correo)) {
+            $errors['correo'] = "El correo ingresado ya se encuentra en uso.";
+        }
+    } else {
+        if (empty($correo)) {
+            $errors['correo'] = "El correo es obligatorio.";
+        } elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+            $errors['correo'] = "El correo no es válido.";
+        }
     }
+    
 
     if (empty($contrasena)) {
         $errors['contrasena'] = "La contraseña es obligatoria.";

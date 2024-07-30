@@ -74,35 +74,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesion</title>
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/sign.css">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/style.css">
 </head>
 
 <body>
-    <form action="" method="post">
-        <label for="correo">Correo:</label>
-        <input type="email" id="correo" name="correo" value="<?php echo $correo; ?>">
-        <div class="error">
-            <?php getError('correo'); ?>
-        </div><br><br>
-
-        <label for="contrasena">Contraseña:</label>
-        <input type="password" id="contrasena" name="contrasena">
-        <div class="error">
-            <?php getError('contrasena'); ?>
-        </div><br><br>
-
-        <input type="submit" value="Submit">
-    </form>
-
-    <?php if (isset($_SESSION["user_id"])) : ?>
-
-        <p>Estas logueado</p>
-
-        <p><a href="login.php">Log out</a></p>
-
-    <?php else : ?>
-        <p>No estas registrado? <a href="registro.php">Registrarse</a></p>
-    <?php endif; ?>
+<main>
+        <form class="form" action="" method="post">
+            <p class="title">Iniciar Sesion</p>
+            <label>
+                <input type="email" id="correo" name="correo" value="<?php echo $correo; ?>" class="input">
+                <span>Correo</span>
+                <div class="error">
+                    <?php getError('correo'); ?>
+                </div>
+            </label>
+            <label>
+                <input type="password" id="contrasena" name="contrasena" class="input">
+                <span>Contraseña</span>
+                <div class="error">
+                    <?php getError('contrasena'); ?>
+                </div>
+            </label>
+            <input type="submit" value="Ingresar" class="btn btn-success">
+        </form>
+    </main>
 </body>
 
 </html>
