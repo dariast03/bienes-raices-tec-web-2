@@ -94,7 +94,6 @@
 					<div class="col-lg-6 text-center mx-auto">
 						<h2 class="font-weight-bold text-primary heading">Contactanos</h2>
 					</div>
-
 				</div>
 					<form action="#">
 						<div class="row">

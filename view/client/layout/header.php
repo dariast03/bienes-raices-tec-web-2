@@ -51,9 +51,7 @@ session_start();
 					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
 						<li class="active"><a href="index.php">Inicio</a></li>
 						<li><a href="properties.php">Propiedades</a></li>
-						<li><a href="services.php">Servicios</a></li>
 						<li><a href="about.php">Sobre Nosotros</a></li>
-						<li><a href="contact.php">Contactanos</a></li>
 						<?php if (isset($_SESSION["user_id"])): ?>
 							<li><a href="<?php echo BASE_URL ?>/auth/logout.php"><?php echo ($_SESSION["user_email"])?></a></li>
 						<?php else: ?>
