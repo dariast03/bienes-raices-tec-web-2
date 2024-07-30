@@ -3,6 +3,7 @@ require_once 'core/Model.php';
 
 $id = $_GET['id'];
 $entity = $_GET['entity'];
+$route = $_GET['route'];
 
 $model = new Model($entity);
 
@@ -13,5 +14,5 @@ if ($entity == 'propiedad') {
     header('Location: ' . BASE_URL . '/admin/propiedades');
 } else {
     $model->delete($id);
-    header('Location: ' . BASE_URL . '/admin/' . $entity);
+    header('Location: ' . BASE_URL . '/admin/' . $route);
 }
