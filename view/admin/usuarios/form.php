@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors['correo'] = "El correo no es válido.";
         }
     }
-    
+
 
     if (empty($contrasena)) {
         $errors['contrasena'] = "La contraseña es obligatoria.";
@@ -135,7 +135,7 @@ function getError($field)
                     <input type="email" name="correo" id="correo" class="form-control <?php echo !empty(getError('correo')) ? 'is-invalid' : ''; ?>" value="<?php echo isset($_POST['correo']) ? $_POST['correo'] : ''; ?>">
                     <div class="invalid-feedback"><?php echo getError('correo'); ?></div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-12  ">
                     <label for="contrasena" class="form-label">Contraseña:</label>
                     <input type="password" name="contrasena" id="contrasena" class="form-control <?php echo !empty(getError('contrasena')) ? 'is-invalid' : ''; ?>" step="0.01" value="<?php echo isset($_POST['contrasena']) ? $_POST['contrasena'] : ''; ?>">
                     <div class="invalid-feedback"><?php echo getError('contrasena'); ?></div>

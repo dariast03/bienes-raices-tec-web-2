@@ -3,7 +3,7 @@ require_once 'core/Model.php';
 
 $id = $_GET['id'];
 $entity = $_GET['entity'];
-$route = $_GET['route'];
+$route = $_GET['route'] ?? '';
 
 $model = new Model($entity);
 

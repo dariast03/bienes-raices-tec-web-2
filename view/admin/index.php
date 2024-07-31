@@ -5,12 +5,12 @@ require_once 'model/PropertyModel.php';
 require_once 'model/LocationModel.php';
 require_once 'model/UserModel.php';
 
-$propertyModel = new ConsultaModel();
+$consultaModel = new ConsultaModel();
 $propertyModel = new PropertyModel();
 $locationModel = new UbicacionModel();
 $userModel = new UserModel();
 
-$totalConsultas = $propertyModel->count()->get();
+$totalConsultas = $consultaModel->count()->get();
 $totalProperties = $propertyModel->count()->get();
 $totalLocations = $locationModel->count()->get();
 $totalUsers = $userModel->count()->get();
@@ -638,7 +638,7 @@ $totalUsers = $userModel->count()->get();
             },
             {
                 name: "Este Mes",
-                data: trigoSeries(52, 27)
+                data: trigoSeries(52, 10)
             },
         ],
         title: {
@@ -650,7 +650,7 @@ $totalUsers = $userModel->count()->get();
             }
         },
         subtitle: {
-            text: '168,215',
+            text: '120',
             align: 'center',
             margin: 30,
             offsetY: 40,

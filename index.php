@@ -111,6 +111,9 @@ switch ($request) {
     case 'admin/delete':
         require 'view/admin/delete.php';
         break;
+    case '500.php':
+        require 'view/500.php';
+        break;
     default:
         http_response_code(404);
         require 'view/404.php';
