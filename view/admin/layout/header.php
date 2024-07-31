@@ -233,8 +233,8 @@ session_start();
         }
 
         .nav-icon {
-            width: 30px;
-            height: 30px;
+            width: 25px;
+            height: 25px;
         }
 
         .option1 {
@@ -247,6 +247,10 @@ session_start();
         .option1:hover {
             border-left: 5px solid #005555;
             background-color: var(--Border-color);
+        }
+
+        .nav-option h3 {
+            font-size: 20px;
         }
 
         .box {
@@ -390,9 +394,6 @@ session_start();
                 gap: 30px;
             }
 
-            .nav-option h3 {
-                font-size: 15px;
-            }
 
             .report-topic-heading,
             .item1,
@@ -410,9 +411,6 @@ session_start();
                 gap: 30px;
             }
 
-            .nav-option h3 {
-                font-size: 20px;
-            }
 
             .report-topic-heading,
             .item1,
@@ -489,9 +487,7 @@ session_start();
                 gap: 25px;
             }
 
-            .nav-option h3 {
-                font-size: 12px;
-            }
+
 
             .nav-upper-options {
                 gap: 15px;
