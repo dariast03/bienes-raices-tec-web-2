@@ -10,7 +10,7 @@ $consultas = $propertyModel
 <div class="card">
     <div class="card-body">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <h1>LISTA DE CONSULTAS</h1>
+            <h1>LISTA DE CITAS</h1>
         </div>
 
         <div class="table-responsive">

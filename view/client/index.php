@@ -183,7 +183,6 @@ foreach ($properties as $key => $property) {
 						<p>Explora nuestra amplia gama de propiedades en venta y descubre las mejores
 							oportunidades del mercado.
 						</p>
-						<p><a href="services.php" class="learn-more">Saber mas</a></p>
 					</div>
 				</div>
 				<div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="500">
@@ -193,7 +192,6 @@ foreach ($properties as $key => $property) {
 						<p>Ofrecemos una variada cartera de propiedades en venta, desde acogedores
 							apartamentos hasta amplias casas con jardín.
 						</p>
-						<p><a href="services.php" class="learn-more">Saber mas</a></p>
 					</div>
 				</div>
 				<div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
@@ -203,7 +201,6 @@ foreach ($properties as $key => $property) {
 						<p>Con años de experiencia en el sector, nuestros agentes inmobiliarios te
 							brindarán un asesoramiento personalizado.
 						</p>
-						<p><a href="services.php" class="learn-more">Saber mas</a></p>
 					</div>
 				</div>
 				<div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="600">
@@ -213,7 +210,6 @@ foreach ($properties as $key => $property) {
 						<p>Disfruta de la comodidad de vivir en una casa espaciosa, ideal
 							para compartir momentos inolvidables con tu familia.
 						</p>
-						<p><a href="services.php" class="learn-more">Saber mas</a></p>
 					</div>
 				</div>
 			</div>
