@@ -5,16 +5,16 @@ require_once 'model/ImageModel.php';
 
 $query = $_GET['query'] ?? null;
 
-$consultaModel = new PropertyModel();
+$propertyModel = new PropertyModel();
 $imageModel = new ImagenModel();
 
 if ($query) {
-	$properties = $consultaModel
+	$properties = $propertyModel
 		->select('id', 'direccion', 'precio', 'num_habitaciones', 'num_baños')
 		->where("direccion LIKE '%$query%'",)
 		->get();
 } else {
-	$properties = $consultaModel
+	$properties = $propertyModel
 		->select('id', 'direccion', 'precio', 'num_habitaciones', 'num_baños')
 		->get();
 }

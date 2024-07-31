@@ -5,12 +5,12 @@ require_once 'model/PropertyModel.php';
 require_once 'model/LocationModel.php';
 require_once 'model/UserModel.php';
 
-$consultaModel = new ConsultaModel();
+$propertyModel = new ConsultaModel();
 $propertyModel = new PropertyModel();
 $locationModel = new UbicacionModel();
 $userModel = new UserModel();
 
-$totalConsultas = $consultaModel->count()->get();
+$totalConsultas = $propertyModel->count()->get();
 $totalProperties = $propertyModel->count()->get();
 $totalLocations = $locationModel->count()->get();
 $totalUsers = $userModel->count()->get();

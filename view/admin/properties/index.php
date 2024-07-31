@@ -2,8 +2,8 @@
 include 'view/admin/layout/header.php';
 require_once 'model/PropertyModel.php';
 
-$consultaModel  = new PropertyModel();
-$consultas = $consultaModel->get();
+$propertyModel  = new PropertyModel();
+$consultas = $propertyModel->get();
 ?>
 
 <div class="card">

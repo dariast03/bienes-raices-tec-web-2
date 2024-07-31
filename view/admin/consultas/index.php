@@ -2,8 +2,8 @@
 include 'view/admin/layout/header.php';
 require_once 'model/ConsultaModel.php';
 
-$consultaModel  = new ConsultaModel();
-$consultas = $consultaModel
+$propertyModel  = new ConsultaModel();
+$consultas = $propertyModel
     ->get();
 ?>
 

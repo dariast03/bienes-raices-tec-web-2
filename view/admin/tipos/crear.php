@@ -1,10 +1,9 @@
 <?php
 require_once 'model/TipoModel.php';
+
 $id = $_GET['id'] ?? null;
 
 $typeModel = new TipoModel();
-
-$types = $typeModel->get();
 
 $errors = [];
 
@@ -80,7 +79,7 @@ function getError($field)
         <h1 class="mb-4">Crear Tipo</h1>
 
 
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="" method="POST">
             <div class="row g-3">
 
                 <div class="col-12">

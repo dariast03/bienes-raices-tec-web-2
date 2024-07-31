@@ -12,7 +12,7 @@ ini_set('display_startup_errors', 1);
 require_once 'config/web.php';
 
 $request = $_SERVER['REQUEST_URI'];
-$request = str_replace(BASE_PATH, '', $request);
+$request = str_replace(BASE_PATH, '', $request); // login.php
 $queryParams = explode('?', $request);
 
 $request = $queryParams[0];
@@ -107,10 +107,6 @@ switch ($request) {
     case 'admin/tipos':
     case 'admin/tipos.php':
         require 'view/admin/tipos/lista.php';
-        break;
-    case 'admin/tipos/crear':
-    case 'admin/tipos/crear.php':
-        require 'view/admin/tipos/crear.php';
         break;
     case 'admin/delete':
         require 'view/admin/delete.php';

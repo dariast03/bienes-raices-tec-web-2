@@ -47,11 +47,11 @@ require_once 'model/PropertyModel.php';
 require_once 'model/ImageModel.php';
 
 // Instanciar el modelo de propiedad
-$consultaModel = new PropertyModel();
+$propertyModel = new PropertyModel();
 $imageModel = new ImagenModel();
 
 // Obtener todas las propiedades
-$properties = $consultaModel->select('id', 'direccion', 'precio', 'num_habitaciones', 'num_baños')->get();
+$properties = $propertyModel->select('id', 'direccion', 'precio', 'num_habitaciones', 'num_baños')->get();
 
 // Agregar imágenes a las propiedades
 foreach ($properties as $key => $property) {

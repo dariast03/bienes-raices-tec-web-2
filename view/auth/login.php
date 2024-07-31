@@ -11,12 +11,10 @@ function verifyEmail($email, $pass)
     if (!empty($ingresados)) {
         foreach ($ingresados as $ingresado) {
             if (password_verify($pass, $ingresado['contrasena'])) {
-                // Contraseña verificada
                 return $ingresado;
             }
         }
     } else {
-        // Usuario no encontrado
         return false;
     }
 }
@@ -79,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-<main>
+    <main>
         <form class="form" action="" method="post">
             <p class="title">Iniciar Sesion</p>
             <label>
