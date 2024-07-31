@@ -36,7 +36,7 @@ session_start();
 		}
 	</style>
 
-	<title>Bienes Raices UPDS &mdash;</title>
+	<title>Lujo Urbano &mdash;</title>
 </head>
 
 <body>
@@ -54,7 +54,7 @@ session_start();
 		<div class="container">
 			<div class="menu-bg-wrap">
 				<div class="site-navigation">
-					<a href="index.php" class="logo m-0 float-start">Bienes Raices</a>
+					<a href="index.php" class="logo m-0 float-start">Lujo Urbano</a>
 
 					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
 						<li class="active"><a href="index.php">Inicio</a></li>
