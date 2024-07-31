@@ -14,11 +14,17 @@ class Database
 
     public function query($sql)
     {
-        $result = mysqli_query($this->connection, $sql);
-        if (!$result) {
-            die("Error en la consulta: " . mysqli_error($this->connection));
+        try {
+            $result = mysqli_query($this->connection, $sql);
+            if (!$result) {
+                die("Error en la consulta: " . mysqli_error($this->connection));
+            }
+            return $result;
+        } catch (\Throwable $th) {
+            $mesaage = $th->getMessage();
+            header('Location: ' . BASE_URL . '/500.php?message=' . $mesaage);
+            die("ERROR");
         }
-        return $result;
     }
 
     public function fetch($result)
